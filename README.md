@@ -20,6 +20,8 @@ Please join the mpmb Discord to help out: https://discord.gg/Qjq9Z5Q
 
 Please ensure that there are no existing [pull requests](https://github.com/Smashman/MPMB-v13-content-catchup/pulls) or reservations for the content that you'd like to work on.
 
+Please use v13 syntax for any contributions.
+
 1. Fork this repo.
 2. Work on the feature.
 3. Ensure that descriptions follow formatting guidelines (details below).
