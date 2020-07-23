@@ -67,10 +67,10 @@ FeatsList["fey touched"] = {
 	source: [
 		["UA:F20", 2]
 	],
-	description: "I learn Misty Step and one 1st level spell of my choice from the divination or enchantment school of magic. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so.",
+	description: "I learn Misty Step and one 1st level divination or enchantment spell. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so.",
 	choices: ["Intelligence", "Wisdom", "Charisma"],
 	"intelligence": {
-		description: "I learn Misty Step and one 1st level spell of my choice from the divination or enchantment school of magic. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Intelligence is my spellcasting ability [+1 Intelligence]",
+		description: "I learn Misty Step and one 1st level divination or enchantment spell. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Intelligence is my spellcasting ability for these spells. [+1 Intelligence]",
 		spellcastingBonus: [{
 			name: "Fey Touched",
 			spellcastingAbility: 4,
@@ -87,7 +87,7 @@ FeatsList["fey touched"] = {
 		scores: [0, 0, 0, 1, 0, 0],
 	},
 	"wisdom": {
-		description: "I learn Misty Step and one 1st level spell of my choice from the divination or enchantment school of magic. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Wisdom is my spellcasting ability [+1 Wisdom]",
+		description: "I learn Misty Step and one 1st level divination or enchantment spell. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Wisdom is my spellcasting ability for these spells. [+1 Wisdom]",
 		spellcastingBonus: [{
 			name: "Fey Touched",
 			spellcastingAbility: 5,
@@ -104,7 +104,7 @@ FeatsList["fey touched"] = {
 		scores: [0, 0, 0, 0, 1, 0],
 	},
 	"charisma": {
-		description: "I learn Misty Step and one 1st level spell of my choice from the divination or enchantment school of magic. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Charisma is my spellcasting ability [+1 Charisma]",
+		description: "I learn Misty Step and one 1st level divination or enchantment spell. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Charisma is my spellcasting ability for these spells. [+1 Charisma]",
 		spellcastingBonus: [{
 			name: "Fey Touched",
 			spellcastingAbility: 6,
@@ -276,10 +276,10 @@ FeatsList["shadow touched"] = {
 	source: [
 		["UA:F20", 3]
 	],
-	description: "I learn Darkness and one 1st level spell of my choice from the illusion or necromancy school of magic. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so.",
+	description: "I learn Darkness and one 1st level illusion or necromancy spell. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so.",
 	choices: ["Intelligence", "Wisdom", "Charisma"],
 	"intelligence": {
-		description: "I learn Darkness and one 1st level spell of my choice from the illusion or necromancy school of magic. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Intelligence is my spellcasting ability [+1 Intelligence]",
+		description: "I learn Darkness and one 1st level illusion or necromancy spell. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Intelligence is my spellcasting ability for these spells. [+1 Intelligence]",
 		spellcastingBonus: [{
 			name: "Shadow Touched",
 			spellcastingAbility: 4,
@@ -296,7 +296,7 @@ FeatsList["shadow touched"] = {
 		scores: [0, 0, 0, 1, 0, 0],
 	},
 	"wisdom": {
-		description: "I learn Darkness and one 1st level spell of my choice from the illusion or necromancy school of magic. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Wisdom is my spellcasting ability [+1 Wisdom]",
+		description: "I learn Darkness and one 1st level illusion or necromancy spell. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Wisdom is my spellcasting ability for these spells. [+1 Wisdom]",
 		spellcastingBonus: [{
 			name: "Shadow Touched",
 			spellcastingAbility: 5,
@@ -313,7 +313,7 @@ FeatsList["shadow touched"] = {
 		scores: [0, 0, 0, 0, 1, 0],
 	},
 	"charisma": {
-		description: "I learn Darkness and one 1st level spell of my choice from the illusion or necromancy school of magic. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Charisma is my spellcasting ability [+1 Charisma]",
+		description: "I learn Darkness and one 1st level illusion or necromancy spell. I can cast each once per lost rest without expending a spell slot, and can cast them if I have the slot to do so. Charisma is my spellcasting ability for these spells. [+1 Charisma]",
 		spellcastingBonus: [{
 			name: "Shadow Touched",
 			spellcastingAbility: 6,
