@@ -123,6 +123,9 @@ FeatsList["fighting initiate"] = {
 	descriptionFull : "Your martial training has helped you develop a particular style of fighting. As a result, you learn one Fighting Style option of your choice from the fighter class. If you already have a style, the one you choose must be different. Whenever you gain a level, you can replace this feat’s fighting style with another one from the fighter class that you don’t have.",
 	description: "I learn one Fighting Style from the fighter class. If I already have one, the new one must be different. I can replace the fighting style whenever I gain a level.",
 	prerequisite: "Proficiency with a martial weapon",
+	prereqeval : function(v) {
+		return v.martialWeaponsProf;
+	},
 };
 FeatsList["gunner"] = {
 	name: "Gunner",
