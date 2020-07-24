@@ -55,7 +55,7 @@ FeatsList["eldritch adept"] = {
 	description: "I learn one Eldritch Invocation option of my choice from the Warlock class. If it has a prerequisite, I can only take it if I am a warlock and meet the prerequisite. I can replace the invocation whenever I gain a level.",
 	prerequisite: "Spellcasting or Pact Magic feature",
 	prereqeval: function (v) {
-		return What('Class Features').toLowerCase().indexOf('spellcasting') === -1 || What('Class Features').toLowerCase().indexOf('pact magic') === -1;
+		return What('Class Features').toLowerCase().indexOf('spellcasting') !== -1 || What('Class Features').toLowerCase().indexOf('pact magic') !== -1;
 	}
 };
 FeatsList["fey touched"] = {
@@ -155,7 +155,7 @@ FeatsList["metamagic adept"] = {
 	description: "I learn two metamagic options from the sorcerer class. I can use only one option on a spell unless the option says otherwise. I gain 2 sorcery points, and regain all expended points on a long rest.",
 	prerequisite: "Spellcasting or Pact Magic feature",
 	prereqeval: function (v) {
-		return What('Class Features').toLowerCase().indexOf('spellcasting') === -1 || What('Class Features').toLowerCase().indexOf('pact magic') === -1;
+		return What('Class Features').toLowerCase().indexOf('spellcasting') !== -1 || What('Class Features').toLowerCase().indexOf('pact magic') !== -1;
 	},
 	usages: 2,
 	recovery: "long rest",
