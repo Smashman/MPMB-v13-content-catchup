@@ -248,6 +248,69 @@ RaceList["triton-mot"] = {
 };
 
 // MOT Subclasses
+// Contributed by u/Holynight6
+AddSubClass("bard", "college of eloquence", {
+	regExpSearch : /^(?=.*(college|bard|minstrel|troubadour|jongleur))(?=.*eloquence).*$/i,
+	subname : "College of Eloquence",
+	source : ["MOT", 28],
+	features : {
+		"subclassfeature3" : {
+			name : "Silver Tongue",
+			source : ["MOT", 28],
+			minlevel : 3,
+			description : desc([
+				"When I make a Persuasion or Deception check, I can treat a roll of 9 or lower as a 10"
+			])
+		},
+		"subclassfeature3.1" : {
+			name : "Unsettling Words",
+			source : ["MOT", 28],
+			minlevel : 3,
+			description : desc([
+				"As a bonus action I can choose one creature I can see within 60 feet",
+				"They subtract my inspiration die from their first saving throw before my next turn"
+			]),
+			additional : "1 bardic inspiration die",
+			action : [["bonus action", ""]]
+		},
+		"subclassfeature6" : {
+			name : "Unfailing Inspiration",
+			source : ["MOT", 28],
+			minlevel : 6,
+			description : desc([
+				"When a creature adds my inspiration die to a roll and fails, they keep the die"
+			])
+		},
+		"subclassfeature6.1" : {
+			name : "Universal Speech",
+			source : ["MOT", 28],
+			minlevel : 6,
+			description : desc([
+				"As an action I can choose up to my Charisma mod (min 1) creatures within 60 feet",
+				"Those creatures understand any language I speak for an hour",
+				"I can expend a spell slot of any level to use this feature again"
+			]),
+			recovery : "long rest",
+			usages : 1,
+			action : [["action", ""]]
+		},
+		"subclassfeature14" : {
+			name : "Infectious Inspiration",
+			source : ["MOT", 28],
+			minlevel : 14,
+			description : desc([
+				"As a reaction when a creature uses my inspiration die and succeeds, I can inspire another",
+				"I give a creature within 60 ft that can hear me an inspiration die without expending any",
+				"I can use this reaction a number of times per long rest equal to my Cha mod (min 1)"
+			]),
+			action : [["reaction", ""]],
+			usages : "Charisma mod per ",
+			usagescalc : "event.value = Math.max(1, What('Cha Mod'));",
+			recovery : "long rest"
+		}
+	}
+});
+
 AddSubClass("paladin", "oath of glory", {
     regExpSearch : /^(((?=.*(glory|destined))(((?=.*paladin)|((?=.*(exalted|sacred|holy|divine))(?=.*(knight|fighter|warrior|warlord|trooper))))))).*$/i,
     subname : "Oath of Glory",
@@ -341,4 +404,243 @@ SpellsList["wall of water"] = {
 	description : "30\u00D71\u00D710ft (l\u00D7w\u00D7h) or 20-ft rad 20-ft high; dif. ter.; range wea dis.; Fire dmg half; Cold dmg freezes",
 	descriptionMetric : "9\u00D70,3\u00D73m (l\u00D7w\u00D7h) or 6-m rad 6-m high; dif. ter.; ranged wea dis.; Fire dmg half; Cold dmg freezes",
 	descriptionFull : "You create a wall of water on the ground at a point you can see within range. You can make the wall up to 30 feet long, 10 feet high, and 1 foot thick, or you can make a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall vanishes when the spell ends. The wall's space is difficult terrain. " + "\n   " + "Any ranged weapon attack that enters the wall's space has disadvantage on the attack roll, and fire damage is halved if the fire effect passes through the wall to reach its target. Spells that deal cold damage that pass through the wall cause the area of the wall they pass through to freeze solid (at least a 5-foot-square section is frozen). Each 5-foot-square frozen section has AC 5 and 15 hit points. Reducing a frozen section to 0 hit points destroys it. When a section is destroyed, the wall's water doesn't fill it. "
+};
+
+// MOT Backgrounds
+// Contributed by Smashman
+BackgroundList["athlete"] = {
+    regExpSearch: /athlete/i,
+    name: "Athlete",
+    source: [["MOT", 31]],
+    skills: ["acrobatics" /* Acrobatics */, "athletics" /* Athletics */],
+    gold: 10,
+    equipleft: [
+        ["A bronze discus or leather ball", "", ""],
+    ],
+    equipright: [
+        ["Traveler's clothes", "", 4],
+        ["A lucky charm or past trophy", "", ""],
+        ["Belt pouch (with coins)", "", 1]
+    ],
+    feature: "Echoes of Victory",
+    trait: [
+        "I feel most at peace during physical exertion, be it exercise or battle.",
+        "I don't like to sit idle.",
+        "I have a daily exercise routine that I refuse to break.",
+        "Obstacles exist to be overcome.",
+        "When I see others struggling, I offer to help.",
+        "I love to trade banter and gibes.",
+        "Anything worth doing is worth doing best.",
+        "I get irritated if people praise someone else and not me.",
+    ],
+    ideal: [
+        ["Competition", "Competition: I strive to test myself in all things. (Chaotic)"],
+        ["Triumph", "Triumph: The best part of winning is seeing my rivals brought low. (Evil)"],
+        ["Camaraderie", "Camaraderie: The strongest bonds are forged through struggle. (Good)"],
+        ["People", "People: I strive to inspire my spectators. (Neutral)"],
+        ["Tradition", "Tradition: Every game has rules, and the playing field must be level. (Lawful)"],
+        ["Growth", "Growth: Lessons hide in victory and defeat. (Any)"],
+    ],
+    bond: [
+        "My teammates are my family.",
+        "I will overcome a rival and prove myself their better.",
+        "My mistake got someone hurt. I'll never make that mistake again.",
+        "I will be the best for the honor and glory of my home.",
+        "The person who trained me is the most important person in my world.",
+        "I strive to live up to a specific hero's example.",
+    ],
+    flaw: [
+        "I indulge in a habit that threatens my reputation or my health.",
+        "I'll do absolutely anything to win.",
+        "I ignore anyone who doesn't compete and anyone who loses to me.",
+        "I have lingering pain from old injuries.",
+        "Any defeat or failure on my part is because my opponent cheated.",
+        "I must be the captain of any group I join.",
+    ],
+    languageProfs: [1],
+    toolProfs: ["Vehicles (land)"],
+};
+
+BackgroundFeatureList["echoes of victory"] = {
+    description: "I have attracted admiration among spectators, fellow athletes, and trainers in the region that hosted my past athletic victories. When visiting any settlement within 100 miles of where I grew up, there is a 50 percent change that I can find someone there who admires me and is willing to provide information or temporary shelter.",
+    source: [["MOT", 31]]
+};
+
+// MOT Magic Items
+MagicItemsList["flying chariot"] = {
+	name : "Flying Chariot",
+	source : ["MOT", 196],
+	type : "wondrous item",
+	rarity : "rare",
+	notLegalAL : true,
+	allowDuplicates : true,
+	description : "I gain +1 AC while riding this chariot, as do any passengers and the creatures pulling it. If this chariot is pulled by one or more flying creatures, it too can fly.",
+	descriptionFull : "The chariot's riders and creatures pulling the chariot gain a + 1 bonus to their AC. " + "\n   " + "If this magic chariot is pulled by one or more flying creatures, it too can fly. "
+};
+
+var helmOfTheGodsFullDescription = [
+	"While wearing this helm, you know whether there is a celestial or fiend within 30 feet of you, as well as where the creature is located, provided the creature isn't behind total cover.",
+	"Whenever you finish a long rest while wearing the helm, you can pray to one of the gods listed on the Helm of the Gods table and store the listed spell in the helm, replacing any spell that is already stored there. The save DC for the spell is 13.",
+	"The helm has 3 charges. To cast a spell from the helm, you must expend 1 charge, and the helm regains ld3 charges daily at dawn.",
+	">>God\t\tSpell<<",
+	"  Athreos!!\tprotection from evil and good",
+	"  Ephara\t\tsanctuary",
+	"  Erebos\t\tinflict wounds",
+	"  Heliod\t\tguiding bolt",
+	"  Iroas\t\theroism",
+	"  Karametra\tgoodberry",
+	"  Keranos!!\tthunderous smite",
+	"  Klothys\t\tentagle",
+	"  Kruphix!!\tdissonant whispers",
+	"  Mogis\t\thellish rebuke",
+	"  Nylea\t\tfaerie fire",
+	"  Pharika\t\tlesser restoration",
+	"  Phenax\t\tcharm person",
+	"  Purphoros\tsearing smite",
+	"  Thassa\t\tidentify"
+];
+
+MagicItemsList["helm of the gods"] = {
+	name : "Helm of the Gods",
+	source : ["MOT", 196],
+	type : "wondrous item",
+	rarity : "rare",
+	notLegalAL : true,
+	attunement : true,
+	allowDuplicates : true,
+	description : "While wearing this helm, I know the location of any celestials or fiends within 30ft, provided they aren't behind total cover. The helm has 3 charges, regaining 1d3 charges at dawn. I can use a charge to cast a spell stored in the helm, with a DC of 13. After a long rest, I can pray to a god to store a spell. See Notes.",
+	descriptionFull : helmOfTheGodsFullDescription.join("\n   ").replace("!!", "").replace(/>>(.*?)<</g, function(a, match) { return toUni(match); }),
+	fixedDC : 13,
+	usages : 3,
+	recovery : "dawn",
+	spellFirstColTitle : "Ch",
+	spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["protection from evil and good"],
+		selection : ["protection from evil and good"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["sanctuary"],
+		selection : ["sanctuary"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["inflict wounds"],
+		selection : ["inflict wounds"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["guiding bolt"],
+		selection : ["guiding bolt"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["heroism"],
+		selection : ["heroism"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["goodberry"],
+		selection : ["goodberry"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["thunderous smite"],
+		selection : ["thunderous smite"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["entangle"],
+		selection : ["entangle"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["dissonant whispers"],
+		selection : ["dissonant whispers"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["hellish rebuke"],
+		selection : ["hellish rebuke"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["faerie fire"],
+		selection : ["faerie fire"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["lesser restoration"],
+		selection : ["lesser restoration"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["charm person"],
+		selection : ["charm person"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["searing smite"],
+		selection : ["searing smite"],
+		firstCol : 1
+	}, {
+		name : "1 charge",
+		spells : ["identify"],
+		selection : ["identify"],
+		firstCol : 1
+	}],
+	spellChanges : {
+		"protection from evil and good" : {
+			changes : "I can cast this spell if I prayed to Athreos after a long rest and expend 1 charge."
+		},
+		"sanctuary" : {
+			changes : "I can cast this spell if I prayed to Ephara after a long rest and expend 1 charge."
+		},
+		"inflict wounds" : {
+			changes : "I can cast this spell if I prayed to Erebos after a long rest and expend 1 charge."
+		},
+		"guiding bolt" : {
+			changes : "I can cast this spell if I prayed to Heliod after a long rest and expend 1 charge."
+		},
+		"heroism" : {
+			changes : "I can cast this spell if I prayed to Iroas after a long rest and expend 1 charge."
+		},
+		"goodberry" : {
+			changes : "I can cast this spell if I prayed to Karametra after a long rest and expend 1 charge."
+		},
+		"thunderous smite" : {
+			changes : "I can cast this spell if I prayed to Keranos after a long rest and expend 1 charge."
+		},
+		"entangle" : {
+			changes : "I can cast this spell if I prayed to Klothys after a long rest and expend 1 charge."
+		},
+		"dissonant whispers" : {
+			changes : "I can cast this spell if I prayed to Kruphix after a long rest and expend 1 charge."
+		},
+		"hellish rebuke" : {
+			changes : "I can cast this spell if I prayed to Mogis after a long rest and expend 1 charge."
+		},
+		"faerie fire" : {
+			changes : "I can cast this spell if I prayed to Nylea after a long rest and expend 1 charge."
+		},
+		"lesser restoration" : {
+			changes : "I can cast this spell if I prayed to Pharika after a long rest and expend 1 charge."
+		},
+		"charm person" : {
+			changes : "I can cast this spell if I prayed to Phenax after a long rest and expend 1 charge."
+		},
+		"searing smite" : {
+			changes : "I can cast this spell if I prayed to Purphoros after a long rest and expend 1 charge."
+		},
+		"identify" : {
+			changes : "I can cast this spell if I prayed to Thassa after a long rest and expend 1 charge."
+		}
+	},
+	toNotesPage : [{
+		name : "Helm of the Gods Spells Table",
+		source : ["MOT", 196],
+		popupName : "Helm of the Gods Spells Table",
+		note : desc(helmOfTheGodsFullDescription.slice(3)).replace("!!", "\t").replace(/>>(.*?)<</g, function(a, match) { return match.toUpperCase(); })
+	}]
 };
