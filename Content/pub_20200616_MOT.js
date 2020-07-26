@@ -644,3 +644,22 @@ MagicItemsList["helm of the gods"] = {
 		note : desc(helmOfTheGodsFullDescription.slice(3)).replace("!!", "\t").replace(/>>(.*?)<</g, function(a, match) { return match.toUpperCase(); })
 	}]
 };
+
+MagicItemsList["molten bronze skin"] = {
+	name : "Molten Bronze Skin",
+	source : ["MOT", 197],
+	type : "armor (breastplate, half plate, or plate)",
+	rarity : "rare",
+	description : "This armor appears as a jug of molten bronze. When I attune to it, it adheres and contours to my skin. It can be worn under clothes and doesn't impede bodily functions. This armor can't be removed unless I choose to do so, grants resistance to fire damage, and doesn't impose disadv. on Dex (Stealth) checks.",
+	attunement : true,
+	allowDuplicates : true,
+	dmgres : ["Fire"],
+	chooseGear : {
+		type : "armor",
+		prefixOrSuffix : "brackets",
+		excludeCheck : function (inObjKey, inObj) {
+			var testRegex = /breastplate|half plate armor|plate armor/i;
+			return !(testRegex).test(inObjKey);
+		}
+	}
+};
