@@ -651,15 +651,209 @@ MagicItemsList["molten bronze skin"] = {
 	type : "armor (breastplate, half plate, or plate)",
 	rarity : "rare",
 	description : "This armor appears as a jug of molten bronze. When I attune to it, it adheres and contours to my skin. It can be worn under clothes and doesn't impede bodily functions. This armor can't be removed unless I choose to do so, grants resistance to fire damage, and doesn't impose disadv. on Dex (Stealth) checks.",
+	descriptionFull : "This magical armor appears as a jug of molten bronze. When you attune to it, the bronze adheres and contours to your skin. The armor can be worn under normal clothes, but it doesn't impede bodily functions. Once you put it on, it can't be removed unless you choose to do so." + "\n" + "While wearing the armor, you have resistance to fire damage. The armor also doesn't impose disadvantage on Dexterity (Stealth) checks.",
 	attunement : true,
 	allowDuplicates : true,
 	dmgres : ["Fire"],
 	chooseGear : {
 		type : "armor",
-		prefixOrSuffix : "brackets",
+		descriptionChange : ["replace", "armor"],
 		excludeCheck : function (inObjKey, inObj) {
-			var testRegex = /breastplate|half plate armor|plate armor/i;
+			var testRegex = /breastplate|half plate|plate/i;
 			return !(testRegex).test(inObjKey);
 		}
+	}
+};
+
+MagicItemsList["potion of aqueous form"] = {
+	name : "Potion of Aqueous Form",
+	source : ["MOT", 197],
+	type : "potion",
+	rarity : "rare",
+	description : "Once as an action, I can drink this potion or administer it to another. The consumer of the potion turns into a pool of water and reverts back to their true form after 10 minutes, becoming incapacitated, or dying. This form grants several benefits and limitations. See Notes.",
+	descriptionFull : "When you drink this potion, you transform into a pool of water. You return to your true form after 10 minutes or if you are incapacitated or die." + "\n" + "You're under the following effects while in this form:" + "\n\n" + toUni("Liquid Movement") + ". You have a swimming speed of 30 feet. You can move over or through other liquids. You can enter and occupy the space of another creature. You can rise up to your normal height, and you can pass through even Tiny openings. You extinguish nonmagical flames in any space you enter." + "\n\n" + toUni("Watery Resilience") + ". You have resistance to nonmagical damage. You also have advantage on Strength, Dexterity, and Constitution saving throws." + "\n\n" + toUni("Limitations") + ". You can't talk, attack, cast spells, or activate magic items. Any objects you were carrying or wearing meld into your new form and are inaccessible, though you continue to be affected by anything you're wearing, such as armor.",
+	allowDuplicates : true,
+	toNotesPage : [{
+		name : "Effects",
+		popupName : "Potion of Aqueous Form Effects",
+		note : "\n  " + "The consumer of the potion is under the following effects:" + desc([
+			"\u2022 They have a swimming speed of 30ft",
+			"\u2022 They can move over or through other liquids",
+			"\u2022 They can enter and occupy the space of another creature",
+			"\u2022 They can rise up to their normal height and pass through tiny openings",
+			"\u2022 They extinguish nonmagical flames in any space they enter",
+			"\u2022 They have resistance to nonmagical damage",
+			"\u2022 They have advantage on Strength, Dexterity, and Constitution saving throws",
+			"\u2022 They can't talk, attack, cast spells, or activate magic items",
+			"\u2022 Their equipment merges into their new form, but still gain their benefits"
+		])
+	}]
+};
+
+var pyxisOfPandemoniumDescription = [
+	"A creature that touches this ornate wooden vessel for 1 minute gains the benefits of a short rest. That creature also gains the effects of the bless spell until the creature finishes a short or long rest. The creature can't gain these benefits again until it finishes a long rest.",
+	"If the vessel is opened, roll on the Pyxis of Pandemonium table to determine what happens. Any spells cast by the vessel have a spell save DC of 17. One minute after the vessel is opened, it disappears. It reappears, sealed, in a random location on the same plane of existence 24 hours later.",
+	toUni("Curse") + ". Any creature that gains the benefit of a short rest from the vessel hears cloying telepathic whispers emanating it. That creature must make a DC 17 Wisdom saving throw. On a failed save, the creature is charmed by the vessel for 1 hour. The charmed creature does everything it can to open the vessel as soon as possible. On a successful save, the creature is immune to the vessel's whispers for 24 hours.",
+	">>d8  Calamity<<",
+	"1   >>Androphagia<<. Each creature within 60 feet of the vessel must succeed on a DC 17 Wisdom saving throw or go berserk for l minute. The berserk creature must begin its turn using the Attack action to make one melee or ranged attack (its choice) against the creature nearest to it. The berserk creature can repeat the save at the end of its turn, ending the effect on itself on a success.",
+	"2   >>Bile Blight<<. The vessel casts the harm spell on each creature within 30 feet of it.",
+	"3   >>Flood<<. The vessel casts the tsunami spell at a point of the DM's choice within 120 feet of it.",
+	"4   >>Medusa's Gaze<<. The vessel casts the flesh to stone spell on each creature within 30 feet of it.",
+	"5   >>Labyrinth<<. The vessel casts the maze spell on each creature within 30 feet of it.",
+	"6   >>Nightmare<<. Tendrils of shadow seep from the vessel and form into ld4 shadow demons (see the Monster Manual for their stat block), which appear in unoccupied spaces within 30 feet of it and are hostile.",
+	"7   >>Swarming Insects<<. The vessel casts the insect plague spell, centered on itself and with a radius of 30 feet.",
+	"8   >>Unbridled Revel<<. The vessel casts the Otto's irresistible dance spell on each creature within 30 feet of it."
+];
+
+var pyxisOfPandemoniumNote = [
+	"A creature who benefits from this vessel makes a DC 17 Wisdom save", 
+	"On a success, that creature is immune to the vessel's charm for 24 hours",
+	"On a failure, that creature is charmed by the vessel for 1 hour",
+	"A charmed creature does everything it can to open the vessel",
+	"Once opened, roll a d8 to determine the effect on the table below",
+	"Each spell cast by the vessel has a DC of 17",
+	"It then teleports, resealed, somewhere else on the same plane after 1 min"
+];
+
+MagicItemsList["pyxis of pandemonium"] = {
+	name : "Pyxis of Pandemonium",
+	source : ["MOT", 197],
+	type : "wondrous item",
+	rarity : "legendary",
+	description : "Once per long rest, I gain the benefits of a short rest after touching this vessel for 1 minute. I also gain the benefit of the bless spell until my next rest. After benefiting from this vessel I make a DC 17 Wis save or become charmed by the vessel for 1 hour. If charmed, I only focus on opening it. See Notes.",
+	descriptionLong : "Once per long rest, I can touch this vessel for 1 minute to gain the benefits of a short rest. I also gain the benefit of the bless spell until my next rest. After benefiting from a short rest from this vessel, I must make a DC 17 Wisdom saving throw or become charmed by the vessel for 1 hour. On a success, I am immune to the vessel's charm for 24 hours. On a failure I am charmed and I will do everything I can to open the vessel as soon as possible. Once opened, the vessel causes a random effect to occur, then it disappears after 1 minute. It reappears, sealed, in random location on the same plane. See Notes.",
+	descriptionFull : pyxisOfPandemoniumDescription.join("\n   ").replace(/>>(.*?)<</g, function(a, match) { return toUni(match); }),
+	allowDuplicates : true,
+	toNotesPage : [{
+		name : "Pyxis of Pandemonium Effects",
+		source : ["MOT", 197],
+		popupName : "Pyxis of Pandemonium Effects",
+		note : desc(pyxisOfPandemoniumNote) + desc(
+			pyxisOfPandemoniumDescription.slice(3)).replace(/>>(.*?)<</g, function(a, match) { return match.toUpperCase(); })
+	}],
+	usages : 1,
+	recovery : "long rest"
+};
+
+MagicItemsList["siren song lyre"] = {
+	name : "Siren Song Lyre",
+	source : ["MOT", 198],
+	type : "wondrous item",
+	rarity : "rare",
+	allowDuplicates : true,
+	description : "As an action, I can play this lyre and cast one of the following spells from it: animal friendship, charm person, enthrall, suggestion. The DC for these spells is 13. Once I cast a spell, it can't be cast again until the next dawn.",
+	descriptionFull : "",
+	allowDuplicates : true,
+	fixedDC : 13,
+	extraLimitedFeatures : [{
+		name : "Siren's Song Lyre [Animal Friendship]",
+		usages : 1,
+		recovery : "dawn"
+	}, {
+		name : "Siren's Song Lyre [Charm Person]",
+		usages : 1,
+		recovery : "dawn"
+	}, {
+		name : "Siren's Song Lyre [Enthrall]",
+		usages : 1,
+		recovery : "dawn"
+	}, {
+		name : "Siren's Song Lyre [Suggestion]",
+		usages : 1,
+		recovery : "dawn"
+	}],
+	spellcastingBonus : [{
+		name : "Once per dawn",
+		spells : ["animal friendship"],
+		selection : ["animal friendship"],
+		firstCol : "oncelr"
+	}, {
+		name : "Once per dawn",
+		spells : ["charm person"],
+		selection : ["charm person"],
+		firstCol : "oncelr"
+	}, {
+		name : "Once per dawn",
+		spells : ["enthrall"],
+		selection : ["enthrall"],
+		firstCol : "oncelr"
+	}, {
+		name : "Once per dawn",
+		spells : ["suggestion"],
+		selection : ["suggestion"],
+		firstCol : "oncelr"
+	}],
+	action : ["action", "Siren Song Lyre (cast spell)"]
+};
+
+var slingBulletsOfAlthemoneDescription = [
+	"The sling bullets come in a pouch, which contains ld4 + 4 bullets. Roll on the Magic Sling Bullets table for each bullet to determine its magical property.",
+	"You have a +2 bonus to attack and damage rolls made with each of these bullets. If a bullet misses its target, the bullet teleports back into the pouch. Once a bullet hits a target, the bullet loses its magic.",
+	">>d4  Bullet<<",
+	"1   >>Banishment<<. A creature that takes damage from this bullet must succeed on a DC 15 Charisma saving throw or be banished as though affected by the banishment spell.",
+	"2   >>Fulguration<<. On a hit, this bullet deals an extra 2d8 lightning damage to its target. All other creatures within 10 feet of the target must each succeed on a DC 15 Constitution saving throw or take ld8 thunder damage.",
+	"3   >>Stunning<<. On a hit, this bullet deals an extra ldlO force damage, and the target is stunned until the end of your next turn.",
+	"4   >>Tracking<<. A creature that takes damage from this bullet is marked with a glowing rune where the bullet hit. The mark lasts 24 hours. While the creature is marked, you always know the direction to it.",
+];
+
+MagicItemsList["sling bullets of althemone"] = {
+	name : "Sling Bullets of Althemone",
+	source : ["MOT", 198],
+	type : "weapon (sling bullet)",
+	rarity : "very rare",
+	description : "These bullets come in a pouch containing 1d4 + 4 bullets. Attacks made with these sling bullets add +2 to hit and damage. If a bullet misses, it teleports to its pouch. On a hit, the bullet's effect happens and the bullet loses its magic. I roll on the table to determine each bullet's magical effect. See Notes.",
+	descriptionFull : slingBulletsOfAlthemoneDescription.join("\n   ").replace(/>>(.*?)<</g, function(a, match) { return toUni(match); }),
+	allowDuplicates : true,
+	calcChanges : {
+		atkCalc : [
+			function (fields, v, output) {
+				if (!v.isDC) output.extraHit += 2;
+			},
+			"I add a +2 bonus on the To Hit of all my attack rolls."
+		]
+	},
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (!v.isMeleeWeapon && !v.isSpell && (/sling/i).test(v.WeaponText) && (/althemone/i).test(v.WeaponText)) {
+					v.theWea.isMagicWeapon = true;
+					fields.Description += (fields.Description ? '; ' : '') + 'Ammunition returns on a miss; Magical effect on hit';
+				}
+			},'If I include the word "Althemone" in the name of a sling, it will be treated as using the Sling Bullets of Althemone. It has +2 to hit and damage, bullets return on a miss, and cause a magical effect on a hit.'
+		],
+		atkCalc : [
+			function (fields, v, output) {
+				if (!v.isMeleeWeapon && !v.isSpell && (/sling/i).test(v.WeaponText) && (/althemone/i).test(v.WeaponText)) {
+					output.magic = v.thisWeapon[1] + 2;
+				}
+			}
+		]
+	},
+	toNotesPage : [{
+		name : "Sling Bullets of Althemone Table",
+		source : ["MOT", 198],
+		popupName : "Sling Bullets of Althemone Table",
+		note : desc(
+			slingBulletsOfAlthemoneDescription.slice(2)).replace(/>>(.*?)<</g, function(a, match) { return match.toUpperCase(); })
+	}]
+};
+
+MagicItemsList["two-birds sling"] = {
+	name : "Two-Birds Sling",
+	source : ["MOT", 198],
+	type : "weapon (sling)",
+	rarity : "rare",
+	description : "This sling adds +1 to hit and damage. On a hit, I can cause the ammunition to ricochet towards a second target within 10 ft of the first, rolling a ranged attack against the second target.",
+	descriptionFull : "You have a +l bonus to attack and damage rolls made with this weapon." + "\n" + "When you make a ranged attack with this sling and hit a target, you can cause the ammunition to ricochet toward a second target within 10 feet of the first, and then make a ranged attack against the second target.",
+	weight : 0.001,
+	weaponsAdd : ["Two-Birds Sling"],
+	weaponOptions : {
+		baseWeapon : "sling",
+		regExpSearch : /two-birds sling/i,
+		name : "Two-Birds Sling",
+		source : ["MOT", 198],
+		range : "30/120 ft",
+		description : "Ammunition; On hit ricochet to another target within 10ft",
+		modifiers : [1,1]
 	}
 };
