@@ -216,7 +216,7 @@ MagicItemsList["eldritch claw tattoo"] = {
 				if (v.baseWeaponName == "unarmed strike") {
 					output.magic += 1;
 				}
-			}, ''
+			},
 		]
 	},
 	action : ["bonus action", ""],
@@ -235,8 +235,8 @@ MagicItemsList["blood fury tattoo"] = {
 	descriptionFull : "This tattoo evokes fury in its form and colors. While this tattoo is on your skin, you gain the following benefits:\n \u2022Your attack rolls score a critical hit on a d20 roll of 19 or 20.\n \u2022When you score a critical hit against a creature, that target takes an extra 4d6 necrotic damage, and you gain a number of temporary hit points equal to the necrotic damage dealt.\n \u2022When a creature you can see damages you, you can use your reaction to make a melee attack against that creature, with advantage on your attack roll.\n" + toUni("Tattoo Attunement.") + "  To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin. If you have multiple magic tattoos, they count as a single magic item with regard to the number of magic items you can attune to.\n If your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in the closest unoccupied space to you.",
 	action : ["reaction", " (Attack)"]
 }
-MagicItemsList["Illuminator's Tattoo"] = {
-	name : "illuminator's tattoo",
+MagicItemsList["illuminator's tattoo"] = {
+	name : "Illuminator's Tattoo",
 	source : [["UA:SMT", 10]],
 	type : "wonderous item",
 	rarity : "common",
