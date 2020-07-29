@@ -14,7 +14,7 @@ SourceList["UA:SMT"] = {
 MagicItemsList["absorbing tattoo"] = {
 	name : "Absorbing Tattoo",
 	source : [["UA:SMT", 8]],
-	type : "wonderous item",
+	type : "wondrous item",
 	rarity : "very rare",
 	attunement : true,
 	description : "This tattoo incorporates designs that emphasize a color. When I take damage of a type associated with the color, I can use my reaction to gain immunity against that instance of the damage, and I regain a number of hit points equal to half the damage I would have taken. I can use this reaction once per dawn.",
@@ -26,7 +26,7 @@ MagicItemsList["absorbing tattoo"] = {
 		dmgres : ["Acid"],
 		limfeaname : "Absorb Acid Damage",
 		additional : "Absorbing Tattoo",
-		action : ["reaction", ""],
+		action : [["reaction", ""]],
 		usages : 1, 
 		recovery : "dawn"
 	},
@@ -36,7 +36,7 @@ MagicItemsList["absorbing tattoo"] = {
 		dmgres : ["Cold"],
 		limfeaname : "Absorb Cold Damage",
 		additional : "Absorbing Tattoo",
-		action : ["reaction", ""],
+		action : [["reaction", ""]],
 		usages : 1, 
 		recovery : "dawn"
 	},
@@ -46,7 +46,7 @@ MagicItemsList["absorbing tattoo"] = {
 		dmgres : ["Fire"],
 		limfeaname : "Absorb Fire Damage",
 		additional : "Absorbing Tattoo",
-		action : ["reaction", ""],
+		action : [["reaction", ""]],
 		usages : 1, 
 		recovery : "dawn"
 	},
@@ -56,7 +56,7 @@ MagicItemsList["absorbing tattoo"] = {
 		dmgres : ["Force"],
 		limfeaname : "Absorb Force Damage",
 		additional : "Absorbing Tattoo",
-		action : ["reaction", ""],
+		action : [["reaction", ""]],
 		usages : 1, 
 		recovery : "dawn"
 	},
@@ -66,7 +66,7 @@ MagicItemsList["absorbing tattoo"] = {
 		dmgres : ["Lightning"],
 		limfeaname : "Absorb Lightning Damage",
 		additional : "Absorbing Tattoo",
-		action : ["reaction", ""],
+		action : [["reaction", ""]],
 		usages : 1, 
 		recovery : "dawn"
 	},
@@ -76,7 +76,7 @@ MagicItemsList["absorbing tattoo"] = {
 		dmgres : ["Necrotic"],
 		limfeaname : "Absorb Necrotic Damage",
 		additional : "Absorbing Tattoo",
-		action : ["reaction", ""],
+		action : [["reaction", ""]],
 		usages : 1, 
 		recovery : "dawn"
 	},
@@ -86,7 +86,7 @@ MagicItemsList["absorbing tattoo"] = {
 		dmgres : ["Poison"],
 		limfeaname : "Absorb Poison Damage",
 		additional : "Absorbing Tattoo",
-		action : ["reaction", ""],
+		action : [["reaction", ""]],
 		usages : 1, 
 		recovery : "dawn"
 	},
@@ -96,7 +96,7 @@ MagicItemsList["absorbing tattoo"] = {
 		dmgres : ["Psychic"],
 		limfeaname : "Absorb Psychic Damage",
 		additional : "Absorbing Tattoo",
-		action : ["reaction", ""],
+		action : [["reaction", ""]],
 		usages : 1, 
 		recovery : "dawn"
 	},
@@ -106,7 +106,7 @@ MagicItemsList["absorbing tattoo"] = {
 		dmgres : ["Radiant"],
 		limfeaname : "Absorb Radiant Damage",
 		additional : "Absorbing Tattoo",
-		action : ["reaction", ""],
+		action : [["reaction", ""]],
 		usages : 1, 
 		recovery : "dawn"
 	},
@@ -116,7 +116,7 @@ MagicItemsList["absorbing tattoo"] = {
 		dmgres : ["Thunder"],
 		limfeaname : "Absorb Thunder Damage",
 		additional : "Absorbing Tattoo",
-		action : ["reaction", ""],
+		action : [["reaction", ""]],
 		usages : 1, 
 		recovery : "dawn"
 	},
@@ -124,7 +124,7 @@ MagicItemsList["absorbing tattoo"] = {
 MagicItemsList["barrier tattoo"] = {
 	name : "Barrier Tattoo",
 	source : [["UA:SMT", 9]],
-	type : "wonderous item",
+	type : "wondrous item",
 	rarity : "",
 	attunement : true,
 	description : "",
@@ -172,16 +172,16 @@ MagicItemsList["barrier tattoo"] = {
 MagicItemsList["coiling grasp tattoo"] = {
 	name : "Coiling Grasp Tattoo",
 	source : [["UA:SMT", 9]],
-	type : "wonderous item",
+	type : "wondrous item",
 	rarity : "uncommon",
 	attunement : true,
 	description : "I can use the tattoo to grapple a creature within 15 feet. It must succeed on a DC 14 Strength saving throw or take 3d6 force dmg and be grappled by me. It can make a DC 14 Athletics or Acrobatics check to escape. If the creature is more than 15 ft away or I use the tattoo on a different creature the grapple ends.",
 	descriptionLong: "This tattoo has long intertwining designs. While the tattoo is on my skin, I can, as an action, cause the tattoo to extrude into inky tendrils, which reach for a creature I can see within 15 feet of me. The creature must succeed on a DC 14 Strength saving throw or take 3d6 force damage and be grappled by me. As an action, the creature can escape the grapple by succeeding on a DC 14 Strength (Athletics) or Dexterity (Acrobatics) check. The grapple also ends if I halt it (no action required), if the creature is ever more than 15 feet away from me, or if I use this tattoo on a different creature.",
 	descriptionFull : "This tattoo has long intertwining designs. While the tattoo is on your skin, you can, as an action, cause the tattoo to extrude into inky tendrils, which reach for a creature you can see within 15 feet of you. The creature must succeed on a DC 14 Strength saving throw or take 3d6 force damage and be grappled by you. As an action, the creature can escape the grapple by succeeding on a DC 14 Strength (Athletics) or Dexterity (Acrobatics) check. The grapple also ends if you halt it (no action required), if the creature is ever more than 15 feet away from you, or if you use this tattoo on a different creature.\n" + toUni("Tattoo Attunement.") + "  To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin. If you have multiple magic tattoos, they count as a single magic item with regard to the number of magic items you can attune to.\n If your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in the closest unoccupied space to you.",
-	action : ["action", ""],
+	action : [["action", ""]],
 	fixedDC : 14,
 	weaponsAdd : ["Coiling Grasp Tattoo"],
-	weaponOptions : {
+	weaponOptions : [{
 		regExpSearch : /^(?=.*coiling)(?=.*grasp)(?=.*tattoo).*$/i,
 		name : "Coiling Grasp Tattoo",
 		source : [["UA:SMT", 9]],
@@ -192,12 +192,12 @@ MagicItemsList["coiling grasp tattoo"] = {
 		description : "Grapples crature; DC 14 Strength check to break out",
 		abilitytodamage : false,
 		dc : true,
-	}
+	}]
 }
 MagicItemsList["eldritch claw tattoo"] = {
 	name : "Eldritch Claw Tattoo",
 	source : [["UA:SMT", 9]],
-	type : "wonderous item",
+	type : "wondrous item",
 	rarity : "uncommon",
 	attunement : true,
 	description : "My unarmed strikes are magical and gain a +1 bonus to attack and damage rolls. As a bonus action, I can empower the tattoo for 1 minute. For the duration, each of my melee weapon attacks can reach a target up to 30 feet away from me and deal an extra 1d6 force damage. I can use this bonus action once per dawn",
@@ -219,7 +219,7 @@ MagicItemsList["eldritch claw tattoo"] = {
 			},
 		]
 	},
-	action : ["bonus action", ""],
+	action : [["bonus action", ""]],
 	usages : 1,
 	recovery : "dawn",
 	limfeaname : "Eldritch Maul",
@@ -227,18 +227,18 @@ MagicItemsList["eldritch claw tattoo"] = {
 MagicItemsList["blood fury tattoo"] = {
 	name : "Blood Fury Tattoo",
 	source : [["UA:SMT", 10]],
-	type : "wonderous item",
+	type : "wondrous item",
 	rarity : "legendary",
 	attunement : true,
 	description : "My attack rolls score a critical hit on a 19 or 20. When I score a critical hit against a creature, it takes an extra 4d6 necrotic damage, and I gain temporary HP equal to the damage dealt. When a creature I can see damages me, I can use my reaction to make a melee attack against that creature with advantage.",
 	descriptionLong : "This tattoo evokes fury in its form and colors. While this tattoo is on my skin, I gain the following benefits: My attack rolls score a critical hit on a d20 roll of 19 or 20. When I score a critical hit against a creature, that target takes an extra 4d6 necrotic damage, and I gain a number of temporary hit points equal to the necrotic damage dealt. When a creature I can see damages me, I can use my reaction to make a melee attack against that creature, with advantage on my attack roll.",
 	descriptionFull : "This tattoo evokes fury in its form and colors. While this tattoo is on your skin, you gain the following benefits:\n \u2022Your attack rolls score a critical hit on a d20 roll of 19 or 20.\n \u2022When you score a critical hit against a creature, that target takes an extra 4d6 necrotic damage, and you gain a number of temporary hit points equal to the necrotic damage dealt.\n \u2022When a creature you can see damages you, you can use your reaction to make a melee attack against that creature, with advantage on your attack roll.\n" + toUni("Tattoo Attunement.") + "  To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin. If you have multiple magic tattoos, they count as a single magic item with regard to the number of magic items you can attune to.\n If your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in the closest unoccupied space to you.",
-	action : ["reaction", " (Attack)"]
+	action : [["reaction", " (Attack)"]]
 }
 MagicItemsList["illuminator's tattoo"] = {
 	name : "Illuminator's Tattoo",
 	source : [["UA:SMT", 10]],
-	type : "wonderous item",
+	type : "wondrous item",
 	rarity : "common",
 	attunement : true,
 	description : "I can write with my fingertip as if it were an ink pen that never runs out of ink. Once per dawn, I can touch a piece of writing up to one page in length and make the writing invisible to everyone other than me and one named creature for the next 24 hours. Either of us can dismiss the invisibility by touching the script",
@@ -250,7 +250,7 @@ MagicItemsList["illuminator's tattoo"] = {
 MagicItemsList["lifewell tattoo"] = {
 	name : "Lifewell Tattoo",
 	source : [["UA:SMT", 10]],
-	type : "wonderous item",
+	type : "wondrous item",
 	rarity : "rare",
 	attunement : true,
 	description : "This tattoo comprises symbols of life and rebirth. While this tattoo is on my skin, I have resistance to necrotic damage. When I would be reduced to 0 hit points, I drop to 1 hit point instead. Once used, this benefit can’t be used again until the next dawn.",
@@ -262,7 +262,7 @@ MagicItemsList["lifewell tattoo"] = {
 MagicItemsList["ghost step tattoo"] = {
 	name : "Ghost Step Tattoo",
 	source : [["UA:SMT", 11]],
-	type : "wonderous item",
+	type : "wondrous item",
 	rarity : "rare",
 	attunement : true,
 	description : "3 charges regained at dawn. As bonus action, use 1 to become incorporeal until end of my next turn with these benefits: Gain resistance to nonmagical bludgeoning, piercing, and slashing dmg. Can’t be grappled or restrained. Can move through creatures and solid objects as difficult terrain.",
@@ -270,12 +270,12 @@ MagicItemsList["ghost step tattoo"] = {
 	descriptionFull : "This tattoo shifts and wavers on the skin, parts of it appearing blurred. The tattoo has 3 charges, and it regains all expended charges daily at dawn.\nAs a bonus action while the tattoo is on your skin, you can expend 1 of the tattoo’s charges to become incor poreal until the end of your next turn. For the duration, you gain the following benefits:\n \u2022You have resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.\n \u2022You can’t be grappled or restrained.\n \u2022You can move through creatures and solid objects as if they were difficult terrain. If you end your turn in a solid object, you take 1d10 force damage. If the effect ends while you are inside a solid object, you instead are shunted to the nearest unoccupied space, and you take 1d10 force damage for every 5 feet traveled." + toUni("Tattoo Attunement.") + "  To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin. If you have multiple magic tattoos, they count as a single magic item with regard to the number of magic items you can attune to.\n If your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in the closest unoccupied space to you.",
 	usages : 3, 
 	recovery : "dawn",
-	action : ["bonus action", ""]
+	action : [["bonus action", ""]]
 }
 MagicItemsList["masquerade tattoo"] = {
 	name : "Masquerade Tattoo",
 	source : [["UA:SMT", 11]],
-	type : "wonderous item",
+	type : "wondrous item",
 	rarity : "common",
 	attunement : true,
 	description : "This tattoo appears on my skin as whatever I desire. As a bonus action, I can shape the tattoo into any color or pattern or size and move it to any area of my skin. It is always obviously a tattoo. As an action, I can use the tattoo to cast the disguise self spell once per dawn.",
@@ -294,7 +294,7 @@ MagicItemsList["masquerade tattoo"] = {
 MagicItemsList["spellwrought tattoo"] = {
 	name : "Spellwrought Tattoo",
 	source : [["UA:SMT", 11]],
-	type : "wonderous item",
+	type : "wondrous item",
 	description : "This tattoo contains a single spell of up to 5th level, wrought on my skin by a magic needle. Once the tattoo is on my skin, I can cast its spell, requiring no material components. The tattoo glows faintly while I cast the spell and for the spell’s duration. Once the spell ends, the tattoo vanishes from my skin.",
 	descriptionFull : "This tattoo contains a single spell of up to 5th level, wrought on your skin by a magic needle. To use the tattoo, you must hold the needle against your skin where you want the tattoo to appear and speak the command word. The needle turns into the ink that becomes the tattoo, which appears on your skin. Once the tattoo is on your skin, you can cast its spell, requiring no material components. The tattoo glows faintly while you cast the spell and for the spell’s duration. Once the spell ends, the tattoo vanishes from your skin.\n The level of the spell in the tattoo determines the spell’s saving throw DC, attack bonus, spellcasting ability modifier, and the tattoo’s rarity, as shown in the Spellwrought Tattoo table.\n" + toUni("Spell Level\t\tRarity\tSpellcasting Ability Modifier\tSave DC\tAttack Bonus") + "\nCantrip \t\tCommon\t+3\t13\t+5\n1st \tCommon\t+3\t13\+5\n2nd \tUncommon\t+3\t13\t+5\n3rd \tUncommon\t+3\t13\t+5\n4th \tRare\t+4\t15\t+7\n5th \tRare\t+5\t17\t+9",
 	choices : ["Cantrip", "1st Level", "2nd Level", "3rd Level", "4th Level", "5th Level"],
@@ -380,7 +380,7 @@ MagicItemsList["spellwrought tattoo"] = {
 MagicItemsList["shadowfell brand tattoo"] = {
 	name : "Shadowfell Brand Tattoo",
 	source : [["UA:SMT", 12]],
-	type : "wonderous item",
+	type : "wondrous item",
 	rarity : "very rare",
 	attunement : true,
 	description : "This tattoo is dark in color and abstract. While it’s on my skin, I have advantage on Dexterity (Stealth) checks. Once per dawn, when I take damage, I can use my reaction to become shadowy and insubstantial for a moment, reducing the damage I take by half.",
