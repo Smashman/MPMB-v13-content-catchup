@@ -244,7 +244,7 @@ FeatsList["metamagic adept"] = {
 	},
 };
 FeatsList["piercer"] = {
-	name: "piercer",
+	name: "Piercer",
 	source: [["UA:F20", 2]],
 	descriptionFull : "You have achieved a penetrating precision in combat, granting you the following benefits:\n \u2022Increase your Strength or Dexterity by 1, to a maximum of 20.\n \u2022Once per turn, when you hit a creature with an attack that deals piercing damage, you can reroll one of the attack’s damage dice, and you must use the new roll.\n \u2022When you score a critical hit that deals piercing damage to a creature, you can roll one additional damage die when determining the extra piercing damage the target takes.",
 	description: "Once per turn when I deal piercing damage to a target, I can reroll one of the damage die and use the new roll. If I deal piercing damage on a critical hit to a target I can roll one additional damage die. [+1 Strength or Dexterity]",
