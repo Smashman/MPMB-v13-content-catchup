@@ -120,12 +120,17 @@ AddSubClass("warlock","the undead",{
 			source : [["UA:SP4", 3]],
 			minlevel : 1,
 			description : desc([
-				"",
+				"As a bonus action, I transform for 1 minute and gain the following benefits:",
+                "\u2022 I gain temporary hit points equal to 1d10 + my warlock level.",
+                "\u2022 Once during each of my turns, when I hit a creature with an attack, I can force it to",
+                "   make a Wisdom saving throw, and if the saving throw fails, the target is frightened of me",
+                "   until the end of my next turn.",
+                "\u2022 I am immune to the frightened condition.",
             ]),
             additional : levels.map(function (n) {
-				return "1d10 + " + n + "Temp HP";
+				return "1d10+" + n + " Temp HP";
             }),
-            usages : "Proficiency bonus per ",
+            usages : "proficiency bonus per ",
             usagescalc : "event.value = What('Proficiency Bonus');",
             recovery : "long rest",
             action : ["bonus action", ""],
@@ -136,7 +141,9 @@ AddSubClass("warlock","the undead",{
 			source : [["UA:SP4", 3]],
 			minlevel : 3,
 			description : desc([
-				"I no longer need to eat, drink, or breathe;",
+				"I no longer need to eat, drink, or breathe; when I hit a creature with an attack and roll", 
+                "damage, I can replace the damage type with necrotic damage. While I am using my Form of",
+                "Dread, I can roll one additional damage die of necrotic damage.",
 			]),
 		},
 		"subclassfeature10" : {
@@ -144,7 +151,9 @@ AddSubClass("warlock","the undead",{
 			source : [["UA:SP4", 4]],
 			minlevel : 10,
 			description : desc([
-				"",
+				"When reduced to 0 hit points, I can cause each creature within 30 feet of me to take necrotic", 
+                "damage equal to 2d10 + my warlock level. I revive with 1 hit point in your previous space,", 
+                "and you gain 1 level of exhaustion. I must complete 1d4 long rests to do this again.",
 			]),
             dmgres : ["Necrotic"],
             savetxt : { immune : ["necrotic (Form of Dread)"] }
@@ -154,9 +163,19 @@ AddSubClass("warlock","the undead",{
 			source : [["UA:SP4", 4]],
 			minlevel : 14,
 			description : desc([
-				"",
+				"I can project my spirit from my body, leaving it unconscious and in a state of suspension",
+                "I can do this for 1 hour, or until my concentration is broken. When ended, I can return to",
+                "my body of have my body teleport to me. While projecting I gain the following benefits:",
+                "\u2022 My spirit and body gain resistance to bludgeoning, piercing, and slashing damage.",
+                "\u2022 When casting a conjuration or necromancy spell, it doesn’t require verbal, somatic, or", 
+                "   material components that lack a gold cost.",
+                "\u2022 I have a flying speed equal to your walking speed and can hover. I can move through",
+                "   creatures and objects as if they were difficult terrain, but I take 1d10 force damage if I end",
+                "   my turn inside a creature or an object.",
+                "\u2022 While using my Form of Dread, once during each of my turns when I deal necrotic damage",
+                "   to a creature, I regain hit points equal to half the amount of necrotic damage dealt.",
 			]),
-			usages : 1,
+			usages : "1 hour per ",
             recovery: "long rest",
 		},
 	}
