@@ -155,7 +155,7 @@ AddSubClass("warlock","the undead",{
                 "damage equal to 2d10 + my warlock level. I revive with 1 hit point in your previous space,", 
                 "and you gain 1 level of exhaustion. I must complete 1d4 long rests to do this again.",
 			]),
-            dmgres : ["Necrotic"],
+            dmgres : [["Necrotic"]],
             savetxt : { immune : ["necrotic (Form of Dread)"] }
 		},
 		"subclassfeature14" : {
@@ -177,6 +177,7 @@ AddSubClass("warlock","the undead",{
 			]),
 			usages : "1 hour per ",
             recovery: "long rest",
+            action : [["action",""]]
 		},
 	}
 });
