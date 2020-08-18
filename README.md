@@ -12,9 +12,10 @@ Please join the mpmb Discord to help out: https://discord.gg/Qjq9Z5Q
 
 ### Unearthed Arcana
 * Spells and Magic Tattoos (`ua_20200326_Spells-and-Magic-Tattoos.js`)
-* Psionic Options Revisited (`ua_20200326_Spells-and-Magic-Tattoos.js`)
+* Psionic Options Revisited (`ua_20200414_Psionic-Options-Revisited.js`)
 * Subclasses Revisited (`ua_20200512_Subclasses-Revisited.js`)
 * Feats 2020 (`ua_20200713_Feats-2020.js`)
+* Subclasses: Part 4 (`ua_20200805_Subclasses-Part-4.js`)
 
 ## Contributing
 
