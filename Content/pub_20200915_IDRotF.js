@@ -1,4 +1,4 @@
-var iFileName = "pub_20200915_IDRotF.js";
+var iFileName = "pub_20220915_IDRotF.js";
 RequiredSheetVersion(13);
 
 // Define the source
@@ -7,7 +7,7 @@ SourceList.I={
 	abbreviation : "IDRotF",
 	group : "Primary Sources",
 	url : "https://dnd.wizards.com/products/tabletop-games/rpg-products/icewind-dale-rime-frostmaiden",
-	date : "2020/09/15"
+	date : "2022/09/15"
 };
 
 // Creatures
@@ -391,7 +391,7 @@ MagicItemsList["abracadabrus"] = {
 	usages : 20,
 	recovery : "dawn",
 	action : [["action", " (create objects)"]]
-}
+};
 
 MagicItemsList["cauldron of plenty"] = {
 	name : "Cauldron of Plenty",
@@ -406,7 +406,7 @@ MagicItemsList["cauldron of plenty"] = {
 	allowDuplicates : true,
 	usages : 3,
 	recovery : "dawn"
-}
+};
 
 var hookOfFishersDelightDescription = [
 	"This tiny silver fishhook has a little gold feather attached to it. For it to function, the feathered hook must be tied to the end of a fishing line and immersed in enough water to fill at least a 10-foot cube. At the end of each uninterrupted hour of immersion, roll a d6. On a 6, a floppy, 6-inch-long magical fish appears on the end of the hook. The color and properties of the conjured fish are determined by rolling on the Hook of Fisher's Delight table. Once the hook conjures a fish, it can't do so again until the next dawn.",
@@ -433,7 +433,7 @@ MagicItemsList["hook of fisher's delight"] = {
 	allowDuplicates : true,
 	usages : 1,
 	recovery : "dawn"
-}
+};
 
 var laternOfTrackingFullDescription = [
 	"This hooded lantern burns for 6 hours on 1 pint of oil, shedding bright light in a 30-foot radius and dim light for an additional 30 feet." + "\n" + "Each lantern of tracking is designed to track down a certain type of creature, which is determined by rolling on the Lantern of Tracking table. Once determined, this creature type can't be changed. While the lantern is within 300 feet of any creature of that type, its flame turns bright green. The lantern doesn't pinpoint the creature's exact location, however.",
@@ -504,7 +504,7 @@ MagicItemsList["lantern of tracking"] = {
 		name : "Lantern of Tracking (Undead)",
 		description : laternOfTrackingDescription.replace("!!", "Undead")
 	}
-}
+};
 
 MagicItemsList["professor orb"] = { // contains contributions by Pengsloth
 	name : "Professor Orb",
@@ -513,4 +513,94 @@ MagicItemsList["professor orb"] = { // contains contributions by Pengsloth
 	rarity : "rare",
 	description : "This orb is sentient with the personality of a scholar, but no will of its own. It has Int 18, Wis and Cha of 3d6 each. It knows and reads 4 languages, can see/hear as a human out to 60 ft, and has extensive knowledge of 4 narrow academic subjects (+9 on checks). It knows Mage Hand, which it uses to move around.",
 	descriptionFull : "Each professor orb takes the form of a smooth, solid, 5-pound sphere of smoky gray quartz about the size of a grapefruit. Close examination reveals two or more pinpricks of silver light deep inside the sphere.\n   A Professor Orb is sentient and has the personality of a scholar. Its alignment is determined by rolling on the alignment table in the \"Sentient Magic Items\" section in chapter 7 of the Dungeon Master's Guide. Regardless of its disposition, the orb has an Intelligence of 18, and Wisdom and Charisma scores determined by rolling 3d6 for each ability. The orb speaks, reads, and understands four languages, and can see and hear normally out to a range of 60 feet. Unlike most sentient items, the orb has no will of its own and can't initiate a conflict with the creature in possession of it.\n   A Professor Orb has extensive knowledge of four narrow academic subjects. When making an Intelligence check to recall lore from any of its areas of expertise, the orb has a +9 bonus to its roll (including its Intelligence modifier).\n   In addition to the knowledge it possesses, a professor orb can cast the Mage Hand cantrip at will. It uses the spell only to transport itself. Its spellcasting ability is Intelligence."
-}
+};
+
+MagicItemsList["professor skant"] = { // contains contributions by Pengsloth
+	name : "Professor Skant",
+	source : ["IDRotF", 0],
+	type : "wondrous item",
+	rarity : "rare",
+	description : "This orb is sentient with the personality of a scholar, but no will of its own. It has Int 18, Wis 11, and Cha 9. It knows and reads 4 languages, can see/hear as a human out to 60 ft, and has expertise in 4 academic subjects (+9 on checks). It knows Mage Hand, which it uses to move around. See Notes Page.",
+	descriptionLong: "This sentient orb, which calls itself Professor Skant, has the personality of a scholar, but no will of its own. It's alignment is lawful good and has Int 18, Wis 11, and Cha 9. It knows and reads Common, Draconic, Elvish, and Loross. It has expertise in the following academic topics: history of Netheril, vampirism and the traits of vampires, rituals surrounding the making, bottling, and drinking of Elverquisst, and the tarrasque (+9 on checks).",
+	descriptionFull : "The professor orb owned by Vellynne Harpell and stolen by Nass Lantomir calls itself Professor Skant. It is lawful good, and it has a Wisdom of 11 and a Charisma of 9. It speaks and reads Common, Draconic, Elvish, and Loross (the dead language of the Empire of Netheril). Professor Skant is a chatterbox and assumes all humanoids are dunderheads. When elaborating on its areas of expertise, it adopts an unintentionally patronizing tone. It has the following four areas of expertise:" + "\n" + "\u2022 The history of Netheril (see the \"Fate of Netheril\" sidebar)" + "\n" + "\u2022 Vampirism and the traits of vampires" + "\n" + "\u2022 Rituals surrounding the making, bottling, and drinking of Elverquisst (a rare, ruby-colored elven liquor distilled from sunshine and rare summer fruits)" + "\n" + "\u2022 The tarrasque (see the Monster Manual)",
+	toNotesPage : [{
+		name : "Traits",
+		popupName : "Professor Skant Traits",
+		note : [
+			"Professor Skant is a sentient, lawful good orb with the following traits:",
+			" \u2022 Knows and reads Common, Draconic, Elvish, and Loross",
+			" \u2022 Has expertise on 4 academic topics, which are:",
+			"    \u2022 History of Netheril",
+			"    \u2022 Vampirism and the traits of vampires",
+			"    \u2022 Rituals surrounding the making, bottling, and drinking of Elverquisst",
+			"    \u2022 The tarrasque",
+		]
+	}]
+};
+
+var psiCrystalFullDescription = [
+	"This crystal grants you telepathy for as long as you remain attuned to it. See the introduction of the Monster Manual for rules on how this telepathy works.",
+	"The crystal also glows with a purplish inner light while you are attuned to it.",
+	"The higher your intelligence, the greater the light's intensity and the greater the range of the telepathy (see the Psi Crystal Properties table).",
+	">>Intelligence Score    Range of Telepathy    Light Intensity<<",
+	" 3-7\t\t    15 feet\t\t       !!Dim light out to a range of 5 feet",
+	" 8-11\t\t    30 feet\t\t       @@Bright light in a 5-foot radius and dim light for an additional 5 feet",
+	" 12-15\t\t    60 feet\t\t       ##Bright light in a 10-foot radius and dim light for an additional 10 feet",
+	" 16 or higher\t   120 feet\t\t       $$Bright light in a 15-foot radius and dim light for an additional 15 feet"
+];
+
+MagicItemsList["psi crystal"] = {
+	name : "Psi Crystal",
+	source : ["IDRotF", 0],
+	type : "wondrous item",
+	rarity : "uncommon",
+	attunement : true,
+	prerequisite : "Requires attunement by a creature with an intelligence score of 3 or higher",
+	prereqeval : function(v) { return Number(What("Int")) >= 3; },
+	description : "While attuned to this orb, it glows with an inner purplish light and gives me telepathy. The range of telepathy and intensity of light are determined by my Intelligence score. See Notes page.",
+	descriptionFull : psiCrystalFullDescription.join("\n   ").replace("!!", "  ").replace("@@", "  ").replace("##", "  ").replace("$$", "  ").replace(/>>(.*?)<</g, function(a, match) { return toUni(match); }),
+	toNotesPage : [{
+		name : "Psi Crystal Properties Table",
+		popupName : "Psi Crystal Properties Table",
+		note : desc(psiCrystalFullDescription.slice(3)).replace("!!", "").replace("@@", "").replace("##", "").replace("$$", "").replace(/>>(.*?)<</g, function(a, match) { return match.toUpperCase(); })
+	}],
+};
+
+MagicItemsList["scroll of tarrasque summoning"] = {
+	name : "Scroll of Tarrasque Summoning",
+	source : ["IDRotF", 0],
+	type : "scroll",
+	rarity : "legendary",
+	description : "Once as an action, I can use this to cause the tarrasque to appear in an unoccupied space I can see within 1 mile. The tarrasque disappears when it drops to 0 hit points and is hostile toward all creatures other than itself.",
+	descriptionFull : "Using an action to read the scroll causes the tarrasque (see the creature's entry in the Monster Manual) to appear in an unoccupied space you can see within 1 mile of you. The tarrasque disappears when it drops to 0 hit points and is hostile toward all creatures other than itself."
+};
+
+MagicItemsList["scroll of the comet"] = {
+	name : "Scroll of the Comet",
+	source : ["IDRotF", 0],
+	type : "scroll",
+	rarity : "legendary",
+	description : "Once as an action outdoors, I can use this to cause a comet to fall on a point I can see within 1 mile, which creates a 50 ft deep, 500 ft radius crater. Any creature in the radius makes a DC 20 Dex save, taking 30d10 force damage on a failure, or half as much on a success. Destroys nonmagical objects within the area.",
+	descriptionFull : "By using an action to read the scroll, you cause a comet to fall from the sky and crash to the ground at a point you can see up to 1 mile away from you. You must be outdoors when you use the scroll, or nothing happens and the scroll is wasted." + "\n" + "The comet creates a 50-foot-deep, 500-foot-radius crater on impact. Any creature in that radius must make a DC 20 Dexterity saving throw, taking 30d10 force damage on a failed saving throw, or half as much damage on a successful one. All structures in the crater are destroyed, as are all nonmagical objects that aren't being worn or held."
+};
+
+MagicItemsList["thermal cube"] = {
+	name : "Thermal Cube",
+	source : ["IDRotF", 0],
+	type : "wondrous item",
+	rarity : "common",
+	description : "This 3-inch cube of solid brimstone generates enough dry heat to keep the temperature within 15 feet of it at 95 degrees Fahrenheit (35 degrees Celsius).",
+	descriptionFull : "This 3-inch cube of solid brimstone generates enough dry heat to keep the temperature within 15 feet of it at 95 degrees Fahrenheit (35 degrees Celsius)."
+};
+
+MagicItemsList["ythryn mythallar"] = {
+	name : "Ythryn Mythallar",
+	source : ["IDRotF", 0],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	prerequisite : "Requires attunement by a spellcaster",
+	prereqeval : function(v) { return v.isSpellcaster; },
+	description : "",
+	descriptionFull : "A mythallar looks like an enormous crystal ball held in an ornate cradle. The globe sheds bright light in a 300-foot radius and dim light for an additional 300 feet. The globe draws magic from the Weave that can be harnessed for various purposes. For example, Netherese mages used mythallars to keep their cities aloft and empower their magic items. The bigger the mythallar, the more magic it can hold. The largest mythallars are 150 feet in diameter." + "\n" + "The Ythryn mythallar is a relatively small device—a mere 50 feet in diameter. To attune to this mythallar, a creature must finish a short rest within 30 feet of it, meditating on the mythallar. Up to eight creatures can be attuned to it at one time; otherwise, the Ythryn mythallar follows the attunement rules in the Dungeon Master's Guide. If a ninth creature tries to attune to the mythallar, nothing happens." + "\n" + "All creatures attuned to the Ythryn mythallar can sense when the device is being used. A creature attuned to the device can use any of its properties, but only if all other creatures attuned to the device agree to allow it. The Ythryn mythallar's properties are as follows:" + "\n" + " \u2022 While you're on the same plane of existence as the Ythryn mythallar, you can use an action to cause it to fly in any direction you choose at a speed of 30 feet. All matter within 500 feet of the device moves with it. The Ythryn mythallar and all structures held aloft by it hover in place when not in motion." + "\n" + "\u2022 As an action, you can cause one magic item you are holding within 30 feet of the Ythryn mythallar to immediately regain all its expended charges or uses. A magic item recharged in this manner can't be recharged by the Ythryn mythallar again until after the item regains expended charges or uses on its own." + "\n" + "\u2022 You can use the Ythryn mythallar to cast the control weather spell without requiring any components and without the need for you to be outdoors. This casting of the spell has a 50-mile radius. For the duration of the spell's casting time, you must be within 30 feet of the Ythryn mythallar or the spell fails." + "\n" + toUni("Touching the Mythallar") + ". Any creature that touches the globe of the mythallar must make a DC 22 Constitution saving throw, taking 180 (20d10 + 70) radiant damage on a failed save, or half as much damage on a successful one. Undead have disadvantage on this saving throw. Any object that touches the globe, other than an artifact or the mythallar's cradle, is disintegrated instantly (no save)."
+};
