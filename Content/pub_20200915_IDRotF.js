@@ -11,55 +11,276 @@ SourceList.I={
 };
 
 // Creatures
-CreatureList["crag cat"] = {
-	name : "Crag Cat",
-	source : ["IDRotF", 0],
+CreatureList["awakened white moose"] = {
+	name : "Awakened White Moose",
+	source : ["IDRotF", 82],
 	size : 2, //Large
+	type : "Beast",
+	subtype : "",
+	alignment : "Neutral Evil",
+	ac : 11,
+	hp : 68,
+	hd : [8, 10], //[#, die]
+	speed : "40 ft",
+	scores : [19, 11, 16, 10, 12, 6], //[Str, Dex, Con, Int, Wis, Cha]
+	saves : ["", "", "", "", "", ""], //[Str, Dex, Con, Int, Wis, Cha]
+	senses : "",
+	passivePerception : 14,
+	languages : "Druidic",
+	challengeRating : "3",
+	proficiencyBonus : 2,
+	attacksAction : 2,
+	attacks : [{
+			name : "Antlers",
+			ability : 1,
+			damage : [2, 8, "piercing"], //[#, die, type] "" for die is allowed
+			range : "Melee (5 ft)",
+			description : "One antlers and one hooves as one Attack action; If used after moving 20 ft straight in the same round, see Charge trait"
+		}, {
+			name : "Hooves",
+			ability : 1,
+			damage : [2, 4, "bludgeoning"], //[#, die, type] "" for die is allowed
+			range : "Melee (5 ft)",
+			description : "One antlers and one hooves as one Attack action"
+		}
+	],
+	traits : [{
+		name : "Charge",
+		description : "If the moose moves at least 20 feet straight toward a target and then hits it with an antlers attack on the same turn, the target takes an extra 9 (2d8) bludgeoning damage. If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone."
+	}, {
+		name : "Sure-Footed",
+		description : "The moose has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
+	}]
+};
+
+CreatureList["chimeric baboon"] = {
+	name : "Chimeric Baboon",
+	source : ["IDRotF", 246],
+	size : 4, //Small
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 3,
+	hd : [1, 6], //[#, die]
+	speed : "30 ft,\nclimb 30 ft",
+	scores : [8, 14, 11, 4, 12, 6], //[Str, Dex, Con, Int, Wis, Cha]
+	saves : ["", "", "", "", "", ""], //[Str, Dex, Con, Int, Wis, Cha]
+	senses : "",
+	passivePerception : 11,
+	languages : "",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+			name : "Bite",
+			ability : 1,
+			damage : [1, 4, "piercing"], //[#, die, type] "" for die is allowed
+			range : "Melee (5 ft)",
+			description : "Deals an additional 1d6 poison damage"
+		}
+	],
+	traits : [{
+			name : "Pack Tactics",
+			description : "The baboon has advantage on an attack roll against a creature if at least one of the baboon's allies is within 5 ft of the creature and the ally isn't incapacitated."
+		}
+	]
+};
+
+CreatureList["chimeric cat"] = {
+	name : "Chimeric Cat",
+	source : ["IDRotF", 246],
+	size : 5, //Tiny
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 2,
+	hd : [1, 4], //[#, die]
+	speed : "40 ft,\nclimb 30 ft",
+	scores : [3, 15, 10, 3, 12, 7], //[Str, Dex, Con, Int, Wis, Cha]
+	saves : ["", "", "", "", "", ""], //[Str, Dex, Con, Int, Wis, Cha]
+	skills : {
+		"perception" : 3,
+		"stealth" : 4
+	},
+	senses : "Darkvision 60 ft; Tremorsense 60 ft",
+	passivePerception : 13,
+	languages : "",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+			name : "Claws",
+			ability : 1,
+			damage : [1, "", "slashing"], //[#, die, type] "" for die is allowed
+			range : "Melee (5 ft)",
+			description : "",
+			modifiers : [2, "", false]
+		}
+	],
+	traits : [{
+			name : "Keen Smell",
+			description : "The cat has advantage on Wisdom (Perception) checks that rely on smell."
+		}
+	],
+};
+
+CreatureList["chimeric fox"] = {
+	name : "Chimeric Fox",
+	source : ["IDRotF", 246],
+	size : 5, //Tiny
 	type : "Beast",
 	subtype : "",
 	alignment : "Unaligned",
 	ac : 13,
-	hp : 34,
-	hd : [4, 10], //[#, die]
-	speed : "40 ft",
-	scores : [16, 17, 16, 4, 14, 8], //[Str, Dex, Con, Int, Wis, Cha]
+	hp : 2,
+	hd : [1, 4], //[#, die]
+	speed : "30 ft,\nburrow 5 ft",
+	scores : [2, 16, 11, 3, 12, 6], //[Str, Dex, Con, Int, Wis, Cha]
 	saves : ["", "", "", "", "", ""], //[Str, Dex, Con, Int, Wis, Cha]
 	skills : {
-		"perception" : 4,
-		"stealth" : 7
+		"perception" : 3,
+		"stealth" : 5
 	},
-	senses : "Darkvision 60 ft",
-	passivePerception : 14,
+	senses : "",
+	passivePerception : 13,
 	languages : "",
-	challengeRating : "1",
+	challengeRating : "0",
 	proficiencyBonus : 2,
 	attacksAction : 1,
 	attacks : [{
-			name : "Claw",
-			ability : 1,
-			damage : [1, 8, "slashing"], //[#, die, type] "" for die is allowed
-			range : "Melee (5 ft)",
-			description : "If used after moving 20 ft straight in the same round, see Pounce trait"
-		}, {
 			name : "Bite",
-			ability : 1,
-			damage : [1, 10, "piercing"], //[#, die, type] "" for die is allowed
+			ability : 2,
+			damage : [1, "", "piercing"], //[#, die, type] "" for die is allowed
 			range : "Melee (5 ft)",
-			description : "Can be used in combination with claw while pouncing (see Pounce trait)"
+			description : "",
+			modifiers : ["", "", false]
 		}
 	],
 	traits : [{
-			name : "Nondetection",
-			description : "The crag cat can't be targeted or detected by any divination magic or perceived through magical scrying sensors."
+			name : "Chimeric Creation",
+			description : "The fox has fur that changes color to match its surroundings, giving it advantage on Dexterity (Stealth) checks."
 		}, {
-			name : "Pounce",
-			description : "If the crag cat moves at least 20 ft straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the crag cat can make one bite attack against it as a bonus action."
-		}, {
-			name : "Spell Turning",
-			description : "The crag cat has advantage on saving throws against any spell that targets only the cat (not an area). If the crag cat's saving throw succeeds and the spell is of 7th level or lower, the spell has no effect on the crag cat and instead targets the caster."
+			name : "Keen Hearing",
+			description : "The fox has advantage on Wisdom (Perception) checks that rely on hearing."
+		}
+	]
+};
+
+CreatureList["chimeric hare"] = {
+	name : "Chimeric Hare",
+	source : ["IDRotF", 246],
+	size : 5, //Tiny
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 1,
+	hd : [1, 4], //[#, die]
+	speed : "20 ft,\nburrow 5 ft,\nfly 30 ft",
+	scores : [1, 17, 9, 2, 11, 4], //[Str, Dex, Con, Int, Wis, Cha]
+	saves : ["", "", "", "", "", ""], //[Str, Dex, Con, Int, Wis, Cha]
+	skills : {
+		"perception" : 2,
+		"stealth" : 5
+	},
+	senses : "",
+	passivePerception : 12,
+	languages : "",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 0,
+	attacks : [],
+	traits : [{
+			name : "Escape",
+			description : "The hare can take the Dash, Disengage, or Hide action as a bonus action on each of its turns."
+		}
+	]
+};
+
+CreatureList["chimeric rat"] = {
+	name : "Chimeric Rat",
+	source : ["IDRotF", 246],
+	size : 5, //Tiny
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 10,
+	hp : 1,
+	hd : [1, 4], //[#, die]
+	speed : "40 ft,\nclimb 30 ft",
+	scores : [2, 11, 9, 2, 10, 4], //[Str, Dex, Con, Int, Wis, Cha]
+	saves : ["", "", "", "", "", ""], //[Str, Dex, Con, Int, Wis, Cha]
+	skills : {
+		"perception" : 3,
+		"stealth" : 4
+	},
+	senses : "Darkvision 60 ft; Tremorsense 60 ft",
+	passivePerception : 10,
+	languages : "",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+			name : "Bite",
+			ability : 1,
+			damage : [1, "", "piercing"], //[#, die, type] "" for die is allowed
+			range : "Melee (5 ft)",
+			description : "",
+			modifiers : [2, "", false]
 		}
 	],
-	wildshapeString : "Darkvision 60 ft| Nondetection: can't be targeted or detected by divination magic or scrying| Pounce: if target is hit with a claw attack after moving 20 ft straight on the same turn, DC 13 Str save or knocked prone and can make one bite attack against it as a bonus action| Spell Turning: adv. on saves vs. spells that targets only me (not area). If successful and spell is 7th level or lower, no effect and instead targets the caster"
+	traits : [{
+			name : "Chimeric Creation",
+			description : "The rat has gills, iridescent scales, and the ability to breathe air and water."
+		}, {
+			name : "Keen Smell",
+			description : "The rat has advantage on Wisdom (Perception) checks that rely on smell."
+		}
+	]
+};
+
+CreatureList["chimeric weasel"] = {
+	name : "Chimeric Weasel",
+	source : ["IDRotF", 246],
+	size : 5, //Tiny
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 1,
+	hd : [1, 4], //[#, die]
+	speed : "30 ft",
+	scores : [3, 16, 8, 2, 12, 3], //[Str, Dex, Con, Int, Wis, Cha]
+	saves : ["", "", "", "", "", ""], //[Str, Dex, Con, Int, Wis, Cha]
+	skills : {
+		"perception" : 3,
+		"stealth" : 5
+	},
+	senses : "",
+	passivePerception : 13,
+	languages : "",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+			name : "Bite",
+			ability : 2,
+			damage : [1, "", "piercing"], //[#, die, type] "" for die is allowed
+			range : "Melee (5 ft)",
+			description : "",
+			modifiers : ["", "", false]
+		}
+	],
+	traits : [{
+			name : "Chimeric Creation",
+			description : "The weasel has glowing eyes that emit bright light out in a 20-foot radius and dim light for an additional 20 feet."
+		}, {
+			name : "Keen Hearing and Smell",
+			description : "The rat has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+		}
+	]
 };
 
 CreatureList["fox"] = {
@@ -364,6 +585,45 @@ CreatureList["mountain goat"] = {
 	}, {
 		name : "Sure-Footed",
 		description : "The goat has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
+	}]
+};
+
+CreatureList["reindeer"] = {
+	name : "Reindeer",
+	source : ["IDRotF", 0],
+	size : 2, //Large
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 10,
+	hp : 13,
+	hd : [2, 10], //[#, die]
+	speed : "50 ft",
+	scores : [16, 10, 12, 2, 10, 6], //[Str, Dex, Con, Int, Wis, Cha]
+	saves : ["", "", "", "", "", ""], //[Str, Dex, Con, Int, Wis, Cha]
+	senses : "",
+	passivePerception : 10,
+	languages : "",
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+			name : "Ram",
+			ability : 1,
+			damage : [1, 6, "bludgeoning"], //[#, die, type] "" for die is allowed
+			range : "Melee (5 ft)",
+			description : "If used after moving 20 ft straight in the same round, see Charge trait"
+		}, {
+			name : "Hooves",
+			ability : 1,
+			damage : [2, 4, "bludgeoning"], //[#, die, type] "" for die is allowed
+			range : "Melee (5 ft)",
+			description : "Can only be used against a prone creature"
+		}
+	],
+	traits : [{
+		name : "Charge",
+		description : "If the reindeer moves at least 20 feet straight toward a target and then hits it with a ram attack on the same turn, the target takes an extra 7 (2d6) damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
 	}]
 };
 
