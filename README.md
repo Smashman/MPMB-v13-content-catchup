@@ -1,6 +1,6 @@
 # MPMB v13 content catchup
 
-A community effort to _unofficially_ transcribe all content missing while v13 is in a content frozen state.
+A community effort to **_unofficially_** transcribe all content missing while v13 is in a content frozen state.
 
 **If you plan on writing additional code for the following sources, PLEASE submit a pull request here when you are ready, so that it can be integrated in with the work everyone else has already done**
 
