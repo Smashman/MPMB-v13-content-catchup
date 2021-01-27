@@ -1,13 +1,13 @@
-var iFileName = "pub_20220915_IDRotF.js";
+var iFileName = "pub_20200915_IDRotF.js";
 RequiredSheetVersion(13);
 
 // Define the source
 SourceList.I={
 	name : "Icewind Dale: Rime of the Frostmaiden",
 	abbreviation : "IDRotF",
-	group : "Primary Sources",
+	group : "Adventure Books",
 	url : "https://dnd.wizards.com/products/tabletop-games/rpg-products/icewind-dale-rime-frostmaiden",
-	date : "2022/09/15"
+	date : "2020/09/15"
 };
 
 // Creatures
