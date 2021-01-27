@@ -9,6 +9,7 @@ Please join the mpmb Discord to help out: https://discord.gg/Qjq9Z5Q
 ### Main books
 * Explorer's Guide to Wildemount (`pub_20200317_EGtW.js`)
 * Mythic Odysseys of Theros (`pub_20200616_MOT.js`)
+* Tasha's Cauldron of Everything (`pub_20201117_TCoE-WIP_3P.js`)
 
 ### Unearthed Arcana
 * Spells and Magic Tattoos (`ua_20200326_Spells-and-Magic-Tattoos.js`)
@@ -16,10 +17,11 @@ Please join the mpmb Discord to help out: https://discord.gg/Qjq9Z5Q
 * Subclasses Revisited (`ua_20200512_Subclasses-Revisited.js`)
 * Feats 2020 (`ua_20200713_Feats-2020.js`)
 * Subclasses: Part 4 (`ua_20200805_Subclasses-Part-4.js`)
+* Subclasses: Part 5 (`ua_20201026_Subclasses-Part-5.js`)
 
 ## Contributing
 
-Please ensure that there are no existing [pull requests](https://github.com/Smashman/MPMB-v13-content-catchup/pulls) or reservations for the content that you'd like to work on.
+Please ensure that there are no existing [pull requests](https://github.com/Metacomet10/MPMB-v13-content-catchup/pulls) or reservations for the content that you'd like to work on.
 
 Please use v13 syntax for any contributions.
 
