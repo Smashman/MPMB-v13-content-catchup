@@ -1,3 +1,26 @@
+/*
+NOT the official MPMB release, just content gathered from reddit and discord. All work is third party and not endorsed by MPMB.
+Work was originally gathered and compiled by Nod_Hero#2046 on Discord
+-----
+Most recent update : 2021/01/21 - Various bits edited to play better with the sheet, some Optional Class Features added or updated
+Previous updates - Updateded Artificer infusions, Added Rogue Soulknife, Added Optional Class Features
+-----
+Missing stuff:
+Ranger Beast Master Companions
+Bard College of Creation's Dancing Item statblock
+Magic Items
+Sidekicks
+Patrons
+-----
+Has code but Incomplete or Needs Fixing stuff:
+Artificer Steel Defender - updated, needs review
+Artificer Homunculous Servant
+Artificer Eldritch Cannon
+Feats
+Sorcerer subclasses
+Optional Class Features
+*/
+
 var iFileName = "pub_20201117_TCoE.js";
 RequiredSheetVersion(13);
 // Define the source
@@ -7,10 +30,6 @@ SourceList["TCoE"] = {
 	group : "Primary Sources",
 	date : "2020/11/17",
 };
-
-// NOT the official MPMB release, just content gathered from reddit and discord. All work is third party and not endorsed by MPMB.
-// Most recent update : 2021/01/21 - Various bits edited to play better with the sheet, some Optional Class Features added or updated
-// Previous updates - Updateded Artificer infusions, Added Rogue Soulknife, Added Optional Class Features
 
 // Add Custom Lineage
 RaceList["custom lineage"] = {
