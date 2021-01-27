@@ -147,7 +147,7 @@ FeatsList["gunner"] = {
 		]
 	}
 };
-// This feals wrong //
+// This feels wrong //
 FeatsList["metamagic adept"] = {
 	name: "Metamagic Adept",
 	source: [["UA:F20", 1]],

@@ -107,7 +107,7 @@ AddSubClass("warlock", "the genie", {
 			"djinni" : {
 				name : "Djinni",
 				source : ["UA:SR", 2],
-				spellcastingExtra : ["detect good and evil", "thunderwave", "phantasmal force", "spike growth", "gust of wind", "create food and water", "wind wall", "phantasmal killer", "greater invisibility", "creation", "seeming", "wish"],
+				spellcastingExtra : ["detect evil and good", "thunderwave", "phantasmal force", "gust of wind", "create food and water", "wind wall", "phantasmal killer", "greater invisibility", "creation", "seeming", "wish"],
 				description : "\n   " + "My Genie patron is a Djinni, associated with Air"
 			},
 			"efreeti" : {

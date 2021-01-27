@@ -180,4 +180,4 @@ AddSubClass("warlock","the undead",{
             action : [["action",""]]
 		},
 	}
-});
+}); 
