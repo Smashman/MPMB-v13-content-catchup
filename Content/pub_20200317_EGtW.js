@@ -840,6 +840,63 @@ RaceList["pallid elf"] = {
 	}
 };
 
+// Lotusden Halfling
+RaceList["lotusden halfling"] = {
+	regExpSearch : /^(?=.*\b(halflings?|hobbits?)\b)(?=.*lotusden).*$/i,
+	name : "Lotusden halfling",
+	sortname : "Halfling, Lotusden",
+	plural : "Lotusden halflings",
+	source : ["S", 110],
+	size : 4,
+	speed : {
+		walk : { spd : 25, enc : 15 }
+	},
+	languageProfs : ["Common", "Halfling"],
+	savetxt : { adv_vs : ["frightened"] },
+	age : " reach adulthood at age 20 and live around 150 years",
+	height : " average about 3 feet tall (2'7\" + 2d4\")",
+	weight : " weigh around 40 lb (35 + 2d4 lb)",
+	heightMetric : " average about 90 cm tall (80 + 5d4)",
+	weightMetric : " weigh around 18 kg (16 + 5d4 / 10 kg)",
+	scores : [0, 2, 0, 0, 1, 0],
+	spellcastingAbility : 5,
+	spellcastingBonus : {
+		name : "Child of the Wood (level 1)",
+		spells : ["druidcraft"],
+		selection : ["druidcraft"],
+		firstCol : "atwill"
+	},
+	features : {
+		"entangle" : {
+			name : "Child of the Wood (level 3)",
+			limfeaname : "Entangle",
+			minlevel : 3,
+			usages : 1,
+			recovery : "long rest",
+			spellcastingBonus : {
+				name : "Child of the Wood (level 3)",
+				spells : ["entangle"],
+				selection : ["entangle"],
+				firstCol : "oncelr"
+			}
+		},
+		"darkness" : {
+			name : "Child of the Wood (level 5)",
+			limfeaname : "Spike Growth",
+			minlevel : 5,
+			usages : 1,
+			recovery : "long rest",
+			spellcastingBonus : {
+				name : "Child of the Wood (level 5)",
+				spells : ["spike growth"],
+				selection : ["spike growth"],
+				firstCol : "oncelr"
+			}
+		}
+	},
+	trait : "Lotusden Halfling (+2 Dexterity, +1 Wisdom)\n Lucky: When I roll a 1 on an attack roll, ability check, or saving throw, I can reroll the die and must use the new roll.\n Halfling Nimbleness: I can move through the space of any creature that is of a size larger than me.\n Timberwalk: Ability checks made to track me have disadvantage, and nonmagical plants and undergrowth don't slow my movement.",
+};
+
 // Add Spells (entries by Biggoron144)
 SpellsList["sapping sting"] = { 
 	name : "Sapping Sting",
