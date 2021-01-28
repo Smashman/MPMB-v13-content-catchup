@@ -45,6 +45,35 @@ RaceList["dhampir"] = {
 		
 };
 
+AddRacialVariant("dhampir", "medium", {
+	regExpSearch : /dhampir medium/i,
+	name : "Dhampir (medium)",
+	source : ["UA:GL", 2],
+	size : 3,
+	trait : "Dhampir (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
+	"Size: I am Medium",
+	"Spider Climb: I have a climb speed equal to my walking speed. Starting from third level, I can move up, down and across vertical surfaces and upside down along ceilings, while leaving my hands free.",
+	"Vampiric Bite: My fanged bite is a natural weapon which counts as a simple melee weapon for me. I can add my Con modifier to attack and damage rolls.",
+	"When I hit a creature that isn't a construct or undead with my bite, I can empower myself and either gain hit points equal to half the damage dealt or gain a bonus equal to the damage dealt",
+	"to the next attack roll or ability check I make. I can do this a number of times equal to my proficency bonus per long rest",
+		]),
+});
+
+AddRacialVariant("dhampir", "small", {
+	regExpSearch : /dhampir small/i,
+	name : "Dhampir (small)",
+	source : ["UA:GL", 2],
+	size : 4,
+	trait : "Dhampir (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
+	"Size: I am Small",
+	"Spider Climb: I have a climb speed equal to my walking speed. Starting from third level, I can move up, down and across vertical surfaces and upside down along ceilings, while leaving my hands free.",
+	"Vampiric Bite: My fanged bite is a natural weapon which counts as a simple melee weapon for me. I can add my Con modifier to attack and damage rolls.",
+	"When I hit a creature that isn't a construct or undead with my bite, I can empower myself and either gain hit points equal to half the damage dealt or gain a bonus equal to the damage dealt",
+	"to the next attack roll or ability check I make. I can do this a number of times equal to my proficency bonus per long rest",
+		]),
+});
+
+
 WeaponsList["dhampir bite"] = {
 	regExpSearch : /^(?=.*dhampir)(?=.*bite).*$/i,
 	name : "Dhampire Bite",
