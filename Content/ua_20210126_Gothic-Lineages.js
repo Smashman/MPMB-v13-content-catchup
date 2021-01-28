@@ -85,6 +85,7 @@ WeaponsList["dhampir bite"] = {
 	description : "Advantage when at or under half hit points, Can empower myself on hit",
 	abilitytodamage : true,
 	monkweapon : true
+	
 };
 
 // Hexblood race written by "Slitherin' Sneakin' Snek#0616" on Discord (also known as MarvinTheParanoidAndroid)
