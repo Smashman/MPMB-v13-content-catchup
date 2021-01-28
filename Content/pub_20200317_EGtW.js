@@ -742,6 +742,71 @@ AddRacialVariant("ravenite", "white", {
 	breathDmgType : "cold"
 });
 
+//Lotusden Halfling
+RaceList["lotusden"] = {
+	regExpSearch : /^(?=.*\b(halflings?|hobbits?)\b)(?=.*lotusden).*$/i,
+	name : "Halfling (Lotusden)",
+	sortname : "Halfling, Lotusden",
+	source : [["W", 164]],
+	plural : "Halflings (Lotusden)",
+	size : 4,
+	speed : {
+		walk : { spd : 25, enc : 15 }
+	},
+	languageProfs : ["Common", "Halfling"],
+	savetxt : { adv_vs : ["frightened"] },
+	age : " reach adulthood at age 20 and live around 150 years",
+	height : " average about 3 feet tall (2'7\" + 2d4\")",
+	weight : " weigh around 40 lb (35 + 2d4 lb)",
+	heightMetric : " average about 90 cm tall (80 + 5d4)",
+	weightMetric : " weigh around 18 kg (16 + 5d4 / 10 kg)",
+	scores : [0, 2, 0, 0, 1, 0],
+	//trait is probably too long, I will need to edit it down
+	trait : "Lotusden Halfling (+2 Dexterity, +1 Wisdom)" + (typePF ? "\n" : " ") + "Lucky: When I roll a 1 on an attack roll, ability check, or saving throw, I can reroll the die and must use the new roll." + (typePF ? "\n" : " ") + "Halfling Nimbleness: I can move through the space of any creature that is of a size larger than me." + (typePF ? "\n" : " ") + "Child of the Wood: I know the Druidcraft cantrip. At 3rd level, I can cast Entangle once per long rest. At 5th level, I can also cast Spike Growth once per long rest. Wisdom is my spellcasting ability for these." + (typePF ? "\n" : " ") + "Timberwalk: Ability checks to track me have disadv. I can move across difficult terrain made of nonmagical plants without spending extra movement.",
+	spellcastingAbility : 5,
+	spellcastingBonus : {
+		name : "Child of the Wood (1)",
+		spells : ["druidcraft"],
+		selection : ["druidcraft"],
+		firstCol : 'atwill'
+	},
+	features : {
+		"entangle" : {
+			name : "Child of the Wood (level 3)",
+			limfeaname : "Entangle",
+			minlevel : 3,
+			usages : 1,
+			recovery : "long rest",
+			spellcastingBonus : {
+				name : "Child of the Wood (3)",
+				spells : ["entangle"],
+				selection : ["entangle"],
+				firstCol : 'oncelr'
+			}
+		},
+		"spike growth" : {
+			name : "Child of the Wood (level 5)",
+			limfeaname : "Spike Growth",
+			minlevel : 5,
+			usages : 1,
+			recovery : "long rest",
+			spellcastingBonus : {
+				name : "Child of the Wood (5)",
+				spells : ["spike growth"],
+				selection : ["spike growth"],
+				firstCol : 'oncelr'
+			},
+			spellChanges : {
+				"spike growth" : {
+					components : "V,S",
+					compMaterial : "",
+					changes : "Using Child of the Wood, I can cast Spike Growth once per long rest without requiring material components."
+				}
+			}
+		}
+	}
+};
+
 // Sea Elf
 RaceList["sea elf"] = { 
 	regExpSearch : /^(?!.*half)((?=.*\b(elfs?|elves|elvish|elven)\b)(?=.*\b(seas?|oceans?|water)\b)).*$/i,
