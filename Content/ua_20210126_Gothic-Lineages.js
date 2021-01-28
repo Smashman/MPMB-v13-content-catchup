@@ -35,14 +35,7 @@ RaceList["dhampir"] = {
 			recovery: "long rest",
 			},
 	},
-	trait : "Dhampir (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
-	"Size: I am Small or Medium (my choice)",
-	"Spider Climb: I have a climb speed equal to my walking speed. Starting from third level, I can move up, down and across vertical surfaces and upside down along ceilings, while leaving my hands free.",
-	"Vampiric Bite: My fanged bite is a natural weapon which counts as a simple melee weapon for me. I can add my Con modifier to attack and damage rolls.",
-	"When I hit a creature that isn't a construct or undead with my bite, I can empower myself and either gain hit points equal to half the damage dealt or gain a bonus equal to the damage dealt",
-	"to the next attack roll or ability check I make. I can do this a number of times equal to my proficency bonus per long rest",
-		]),
-		
+	trait : "Dhampir (+2 to one ability score of my choice, and +1 to a different score of my choice)\n  Size: I am Small or Medium (my choice)\n Type: I am both Humanoid and Undead.\nSpider Climb: I have a climb speed equal to my walking speed. Starting from third level, I can move up, down and across vertical surfaces and upside down along ceilings, while leaving my hands free.\n When I hit a creature that isn't a construct or undead with my bite, I can either gain hit points or bonus to my next attack roll/ability check equal to the damage deal.",
 };
 
 AddRacialVariant("dhampir", "medium", {
@@ -50,13 +43,7 @@ AddRacialVariant("dhampir", "medium", {
 	name : "Dhampir (medium)",
 	source : ["UA:GL", 2],
 	size : 3,
-	trait : "Dhampir (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
-	"Size: I am Medium",
-	"Spider Climb: I have a climb speed equal to my walking speed. Starting from third level, I can move up, down and across vertical surfaces and upside down along ceilings, while leaving my hands free.",
-	"Vampiric Bite: My fanged bite is a natural weapon which counts as a simple melee weapon for me. I can add my Con modifier to attack and damage rolls.",
-	"When I hit a creature that isn't a construct or undead with my bite, I can empower myself and either gain hit points equal to half the damage dealt or gain a bonus equal to the damage dealt",
-	"to the next attack roll or ability check I make. I can do this a number of times equal to my proficency bonus per long rest",
-		]),
+	trait : "Dhampir (+2 to one ability score of my choice, and +1 to a different score of my choice)\n Type: I am both Humanoid and Undead.\nSpider Climb: I have a climb speed equal to my walking speed. Starting from third level, I can move up, down and across vertical surfaces and upside down along ceilings, while leaving my hands free.\n When I hit a creature that isn't a construct or undead with my bite, I can either gain hit points or bonus to my next attack roll/ability check equal to the damage deal.",
 });
 
 AddRacialVariant("dhampir", "small", {
@@ -64,13 +51,7 @@ AddRacialVariant("dhampir", "small", {
 	name : "Dhampir (small)",
 	source : ["UA:GL", 2],
 	size : 4,
-	trait : "Dhampir (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
-	"Size: I am Small",
-	"Spider Climb: I have a climb speed equal to my walking speed. Starting from third level, I can move up, down and across vertical surfaces and upside down along ceilings, while leaving my hands free.",
-	"Vampiric Bite: My fanged bite is a natural weapon which counts as a simple melee weapon for me. I can add my Con modifier to attack and damage rolls.",
-	"When I hit a creature that isn't a construct or undead with my bite, I can empower myself and either gain hit points equal to half the damage dealt or gain a bonus equal to the damage dealt",
-	"to the next attack roll or ability check I make. I can do this a number of times equal to my proficency bonus per long rest",
-		]),
+	trait : "Dhampir (+2 to one ability score of my choice, and +1 to a different score of my choice)\n Type: I am both Humanoid and Undead.\n Spider Climb: I have a climb speed equal to my walking speed. Starting from third level, I can move up, down and across vertical surfaces and upside down along ceilings, while leaving my hands free.\n When I hit a creature that isn't a construct or undead with my bite, I can either gain hit points or bonus to my next attack roll/ability check equal to the damage deal.",
 });
 
 
@@ -131,17 +112,7 @@ RaceList["hexblood"] = {
 		},
 	},
 	
-	trait : "Hexblood (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
-	"Size: I am Small or Medium (my choice)",
-	"Type: I am both Humanoid and Fey",
-	"Hex Magic: Once per long rest, I can cast the Disguise Self and Hex spells. Intelligence, Wisdom or Charisma is my spellcasting ability for these spells. I can also cast these spells using any spell slots I have",
-	"Magic Token: As an action, I can harmlessly pull out one of my nails, a tooth, or a lock of hair. This token is imbued with magic until I finish a long rest.",
-	"While the token is imbued with magic, I can use an action to send a telepathic message (up to 25 words) to the creature holding or carrying the token, as long as I am on the same plane and within 10 miles",
-	"In addition, while I am within 10 mils of the token, I can use an action to enter a trance for 1 minute, during which I see and hear from the token as if I were located where it is",
-	"When doing this I am blinded and defeaned in regard to my own surroundings. Afterwards, the token is harmlessly destroyed. Once I create a token using this feature, I cant do so again until",
-	"I finish a long rest, at which point my missing part regrows.",
-		]),
-		
+	trait : "Hexblood (+2 to one ability score of my choice, and +1 to a different score of my choice)\n Size: I am Small or Medium (my choice)\n Type: I am both Humanoid and Fey\n As an action, I can imbue a token with magic until I finish a long rest. If I am within 10 miles, I can use an action to either send a telepathic message (up to 25 words) to the creature holding or carrying the token or enter a trance for 1 minute, during which I see and hear from the token as if I were located where it is. When doing this I am blinded and deafened in regard to my own surroundings, which destroys the token.",
 };
 
 AddRacialVariant("hexblood", "medium", {
@@ -149,16 +120,7 @@ AddRacialVariant("hexblood", "medium", {
 	name : "Hexblood (medium)",
 	source : ["UA:GL", 4],
 	size : 3,
-	trait : "Hexblood (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
-	"Size: I am Medium",
-	"Type: I am both Humanoid and Fey",
-	"Hex Magic: Once per long rest, I can cast the Disguise Self and Hex spells. Intelligence, Wisdom or Charisma is my spellcasting ability for these spells. I can also cast these spells using any spell slots I have",
-	"Magic Token: As an action, I can harmlessly pull out one of my nails, a tooth, or a lock of hair. This token is imbued with magic until I finish a long rest.",
-	"While the token is imbued with magic, I can use an action to send a telepathic message (up to 25 words) to the creature holding or carrying the token, as long as I am on the same plane and within 10 miles",
-	"In addition, while I am within 10 mils of the token, I can use an action to enter a trance for 1 minute, during which I see and hear from the token as if I were located where it is",
-	"When doing this I am blinded and defeaned in regard to my own surroundings. Afterwards, the token is harmlessly destroyed. Once I create a token using this feature, I cant do so again until",
-	"I finish a long rest, at which point my missing part regrows.",
-		]),
+	trait : "Hexblood (+2 to one ability score of my choice, and +1 to a different score of my choice)\n Type: I am both Humanoid and Fey\n As an action, I can imbue a token with magic until I finish a long rest. If I am within 10 miles, I can use an action to either send a telepathic message (up to 25 words) to the creature holding or carrying the token or enter a trance for 1 minute, during which I see and hear from the token as if I were located where it is. When doing this I am blinded and deafened in regard to my own surroundings, which destroys the token.",
 });
 
 AddRacialVariant("hexblood", "small", {
@@ -166,16 +128,7 @@ AddRacialVariant("hexblood", "small", {
 	name : "Hexblood (small)",
 	source : ["UA:GL", 4],
 	size : 4,
-	trait : "Hexblood (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
-	"Size: I am Small",
-	"Type: I am both Humanoid and Fey",
-	"Hex Magic: Once per long rest, I can cast the Disguise Self and Hex spells. Intelligence, Wisdom or Charisma is my spellcasting ability for these spells. I can also cast these spells using any spell slots I have",
-	"Magic Token: As an action, I can harmlessly pull out one of my nails, a tooth, or a lock of hair. This token is imbued with magic until I finish a long rest.",
-	"While the token is imbued with magic, I can use an action to send a telepathic message (up to 25 words) to the creature holding or carrying the token, as long as I am on the same plane and within 10 miles",
-	"In addition, while I am within 10 mils of the token, I can use an action to enter a trance for 1 minute, during which I see and hear from the token as if I were located where it is",
-	"When doing this I am blinded and defeaned in regard to my own surroundings. Afterwards, the token is harmlessly destroyed. Once I create a token using this feature, I cant do so again until",
-	"I finish a long rest, at which point my missing part regrows.",
-		]),
+	trait : "Hexblood (+2 to one ability score of my choice, and +1 to a different score of my choice)\n Type: I am both Humanoid and Fey\n As an action, I can imbue a token with magic until I finish a long rest. If I am within 10 miles, I can use an action to either send a telepathic message (up to 25 words) to the creature holding or carrying the token or enter a trance for 1 minute, during which I see and hear from the token as if I were located where it is. When doing this I am blinded and deafened in regard to my own surroundings, which destroys the token.",
 });
 
 // Reborn race written by "Slitherin' Sneakin' Snek#0616" on Discord (also known as MarvinTheParanoidAndroid)
@@ -206,13 +159,7 @@ RaceList["reborn"] = {
 			},
 	},
 	
-	trait : "Reborn (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
-	"Size: I am Small or Medium (my choice)",
-	"Type: I am Humanoid and either Construct or Undead (my choice)",
-	"Deathless Nature: I don't need to eat, drink, or breathe. I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours if I spend those hours in an inactive, motionless state, during which I retain conciousness",
-	"Knowledge from a past life: When I make an ability check that uses a skill, I can roll a d6 and add the number rolled to the check. I can do this a number of times equal to my proficency bonus per long rest",
-		]),
-		
+	trait : "Reborn (+2 to one ability score of my choice, and +1 to a different score of my choice)\n Size: I am Small or Medium (my choice)\n Type: I am Humanoid and either Construct or Undead (my choice)\n Deathless Nature: I don't need to eat, drink, or breathe. I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours, during which I remain conscious\n Knowledge from a past Life: When I make an ability check that uses a skill, I can roll a d6 and add the number rolled to the check. I can do this a number of times equal to my proficency bonus per long rest",
 };
 
 AddRacialVariant("reborn", "medium construct",{
@@ -220,12 +167,7 @@ AddRacialVariant("reborn", "medium construct",{
 	name : "Construct Reborn (medium)",
 	source : ["UA:GL", 5],
 	size : 3,
-	trait : "Reborn (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
-	"Size: I am Medium",
-	"Type: I am Humanoid and Construct",
-	"Deathless Nature: I don't need to eat, drink, or breathe. I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours if I spend those hours in an inactive, motionless state, during which I retain conciousness",
-	"Knowledge from a past life: When I make an ability check that uses a skill, I can roll a d6 and add the number rolled to the check. I can do this a number of times equal to my proficency bonus per long rest",
-		]),
+	trait : "Reborn (+2 to one ability score of my choice, and +1 to a different score of my choice)\n Type: I am Humanoid and Construct\n Deathless Nature: I don't need to eat, drink, or breathe. I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours, during which I remain conscious\n Knowledge from a past Life: When I make an ability check that uses a skill, I can roll a d6 and add the number rolled to the check. I can do this a number of times equal to my proficency bonus per long rest",
 });
 
 AddRacialVariant("reborn", "medium undead",{
@@ -233,12 +175,7 @@ AddRacialVariant("reborn", "medium undead",{
 	name : "Undead Reborn (medium)",
 	source : ["UA:GL", 5],
 	size : 3,
-	trait : "Reborn (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
-	"Size: I am Medium",
-	"Type: I am Humanoid and Undead",
-	"Deathless Nature: I don't need to eat, drink, or breathe. I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours if I spend those hours in an inactive, motionless state, during which I retain conciousness",
-	"Knowledge from a past life: When I make an ability check that uses a skill, I can roll a d6 and add the number rolled to the check. I can do this a number of times equal to my proficency bonus per long rest",
-		]),
+	trait : "Reborn (+2 to one ability score of my choice, and +1 to a different score of my choice)\n Type: I am Humanoid and Undead\n Deathless Nature: I don't need to eat, drink, or breathe. I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours, during which I remain conscious\n Knowledge from a past Life: When I make an ability check that uses a skill, I can roll a d6 and add the number rolled to the check. I can do this a number of times equal to my proficency bonus per long rest",
 });
 
 AddRacialVariant("reborn", "small construct",{
@@ -246,12 +183,7 @@ AddRacialVariant("reborn", "small construct",{
 	name : "Construct Reborn (small)",
 	source : ["UA:GL", 5],
 	size : 3,
-	trait : "Reborn (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
-	"Size: I am Medium",
-	"Type: I am Humanoid and Construct",
-	"Deathless Nature: I don't need to eat, drink, or breathe. I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours if I spend those hours in an inactive, motionless state, during which I retain conciousness",
-	"Knowledge from a past life: When I make an ability check that uses a skill, I can roll a d6 and add the number rolled to the check. I can do this a number of times equal to my proficency bonus per long rest",
-		]),
+	trait : "Reborn (+2 to one ability score of my choice, and +1 to a different score of my choice)\n Type: I am Humanoid and Construct\n Deathless Nature: I don't need to eat, drink, or breathe. I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours, during which I remain conscious\n Knowledge from a past Life: When I make an ability check that uses a skill, I can roll a d6 and add the number rolled to the check. I can do this a number of times equal to my proficency bonus per long rest",
 });
 
 AddRacialVariant("reborn", "small undead",{
@@ -259,10 +191,5 @@ AddRacialVariant("reborn", "small undead",{
 	name : "Undead Reborn (small)",
 	source : ["UA:GL", 5],
 	size : 3,
-	trait : "Reborn (+2 to one ability score of my choice, and +1 to a different score of my choice)" + desc([
-	"Size: I am Medium",
-	"Type: I am Humanoid and Undead",
-	"Deathless Nature: I don't need to eat, drink, or breathe. I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours if I spend those hours in an inactive, motionless state, during which I retain conciousness",
-	"Knowledge from a past life: When I make an ability check that uses a skill, I can roll a d6 and add the number rolled to the check. I can do this a number of times equal to my proficency bonus per long rest",
-		]),
+	trait : "Reborn (+2 to one ability score of my choice, and +1 to a different score of my choice)\n Type: I am Humanoid and Undead\n Deathless Nature: I don't need to eat, drink, or breathe. I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours, during which I remain conscious\n Knowledge from a past Life: When I make an ability check that uses a skill, I can roll a d6 and add the number rolled to the check. I can do this a number of times equal to my proficency bonus per long rest",
 });
