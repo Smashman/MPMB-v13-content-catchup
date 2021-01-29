@@ -14,7 +14,7 @@ The last MPMB content release was February 2020, which was UA Subclasses Part 3.
 
 Please join the mpmb Discord to help out, or if you have questions: https://discord.gg/Qjq9Z5Q
 
-## Currently Missing content
+## Content currently being worked on
 
 ### Main Books
 * Explorer's Guide to Wildemount (`pub_20200317_EGtW.js`)
