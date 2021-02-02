@@ -4634,6 +4634,9 @@ CreatureList["beast of the sky"] = {
 	traits : [{
 		name : "Flyby",
 		description : "The beast doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+	}, {
+		name : "Primal Bond",
+		description : "I can add my proficiency bonus to any ability check or saving throw that the beast makes."
 	}],
 	eval : function(prefix) {
 		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5);");
@@ -4678,6 +4681,9 @@ CreatureList["beast of the land"] = {
 	traits : [{
 		name : "Charge",
 		description : "If the beast moves at least 20 ft straight toward a target and then hits it with a maul attack on the same turn, the target takes an extra 1d6 slashing damage. If the target is a creature, it must succeed on a Strength saving throw against my spell save DC or be knocked prone."
+	}, {
+		name : "Primal Bond",
+		description : "I can add my proficiency bonus to any ability check or saving throw that the beast makes."
 	}],
 	eval : function(prefix) {
 		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5);");
@@ -4722,6 +4728,9 @@ CreatureList["beast of the sea"] = {
 	traits : [{
         name : "Amphibious",
         description : "The beast can breathe both air and water."
+	}, {
+		name : "Primal Bond",
+		description : "I can add my proficiency bonus to any ability check or saving throw that the beast makes."
 	}],
 	eval : function(prefix) {
 		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5);");
