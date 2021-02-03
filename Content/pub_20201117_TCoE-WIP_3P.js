@@ -1768,10 +1768,10 @@ AddSubClass("ranger", "fey wanderer", {
 				description : "\n   " + "My fey qualities let me add my wisdom modifier (min. +1) to any charisma check." + "\n   " + "I also gain proficiency in Deception, Performance, or Persuasion.",
 				skillstxt : "Choose Deception, Performance, or Persuasion.",
 				addMod : [
-                    			{type : "skill", field : ["Persuasion"], mod : "max(Wis|0)", text : "I can add my Wisdom modifier to any Charisma checks"},
-                   			{type : "skill", field : ["Deception"], mod : "max(Wis|0)", text : "I can add my Wisdom modifier to any Charisma checks"},
-                    			{type : "skill", field : ["Performance"], mod : "max(Wis|0)", text : "I can add my Wisdom modifier to any Charisma checks"},
-                    			{type : "skill", field : ["Intimidation"], mod : "max(Wis|0)", text : "I can add my Wisdom modifier to any Charisma checks"},            
+                    			{type : "skill", field : ["Persuasion"], mod : "max(Wis|1)", text : "I can add my Wisdom modifier to any Charisma checks"},
+                   			{type : "skill", field : ["Deception"], mod : "max(Wis|1)", text : "I can add my Wisdom modifier to any Charisma checks"},
+                    			{type : "skill", field : ["Performance"], mod : "max(Wis|1)", text : "I can add my Wisdom modifier to any Charisma checks"},
+                    			{type : "skill", field : ["Intimidation"], mod : "max(Wis|1)", text : "I can add my Wisdom modifier to any Charisma checks"},            
                 			],
 				},
 			"subclassfeature7" : {
