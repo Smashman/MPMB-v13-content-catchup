@@ -1767,8 +1767,13 @@ AddSubClass("ranger", "fey wanderer", {
 				minlevel : 3,
 				description : "\n   " + "My fey qualities let me add my wisdom modifier (min. +1) to any charisma check." + "\n   " + "I also gain proficiency in Deception, Performance, or Persuasion.",
 				skillstxt : "Choose Deception, Performance, or Persuasion.",
-				addMod : { type : "skill", field : ["Persuasion", "Deception", "Performance", "Intimidation"], mod : "max(Wis|0)", text : "I can add my Wisdom modifier to any Charisma checks" },
-			},
+				addMod : [
+                    			{type : "skill", field : ["Persuasion"], mod : "max(Wis|1)", text : "I can add my Wisdom modifier to any Charisma checks"},
+                   			{type : "skill", field : ["Deception"], mod : "max(Wis|1)", text : "I can add my Wisdom modifier to any Charisma checks"},
+                    			{type : "skill", field : ["Performance"], mod : "max(Wis|1)", text : "I can add my Wisdom modifier to any Charisma checks"},
+                    			{type : "skill", field : ["Intimidation"], mod : "max(Wis|1)", text : "I can add my Wisdom modifier to any Charisma checks"},            
+                			],
+				},
 			"subclassfeature7" : {
 				name : "Beguiling Twist",
 				source : ["TCoE", 59],
