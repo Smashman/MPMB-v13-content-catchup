@@ -2177,10 +2177,10 @@ AddSubClass("sorcerer", "aberrant mind", { //incomplete - psionic spells needs w
 			]),
 			spellcastingBonus : { // Need to find a way to add the base psionic spells to the spells from the class and school list
 				name : "Psionic Spells",
-				spells : ["mind sliver", "arms of hadar", "dissonant whispers", "calm emotions", "detect thoughts", "hunger of hadar", "sending", "evard's black tentacles", "summon aberration", "rary's telepathic bond", "telekinesis"],
-				//"class" : ["sorcerer", "warlock", "wizard"],
-				//school : ["Ench", "Div"],
-				selection : ["mind sliver", "arms of hadar", "dissonant whispers", "calm emotions", "detect thoughts", "hunger of hadar", "sending", "evard's black tentacles", "summon aberration", "rary's telepathic bond", "telekinesis"],
+				extraspells : ["mind sliver", "arms of hadar", "dissonant whispers", "calm emotions", "detect thoughts", "hunger of hadar", "sending", "evard's black tentacles", "summon abberation", "rary's telepathic bond", "telekinesis"],
+				"class" : ["sorcerer", "warlock", "wizard"],
+				school : ["Ench", "Div"],
+				selection : ["mind sliver", "arms of hadar", "dissonant whispers", "calm emotions", "detect thoughts", "hunger of hadar", "sending", "evard's black tentacles", "summon abberation", "rary's telepathic bond", "telekinesis"],
 				firstCol : "SP",
 				level : [0,5],
 				times : [3,3,5,5,7,7,9,9,11,11,11,11,11,11,11,11,11,11,11,11]
@@ -2242,9 +2242,6 @@ AddSubClass("sorcerer", "clockwork soul", { //incomplete - clockwork magic needs
 	subname : "Clockwork Soul",
 	source : [["TCoE", 4]],
 	fullname : "Clockwork Soul",
-
-	//spellcastingExtra : ["alarm", "protection from evil and good", "aid", "lesser restoration", "dispel magic", "protection from energy", "freedom of movement", "summon construct", "greater restoration", "wall of force"],
-	//spellcastingExtraApplyNonconform : true,
 	features : {
 		"subclassfeature1" : {
 			name : "Clockwork Magic",
@@ -2257,9 +2254,9 @@ AddSubClass("sorcerer", "clockwork soul", { //incomplete - clockwork magic needs
 			]),
 			spellcastingBonus : { // Need to find a way to add the base clockwork spells to the spells from the class and school list
 				name : "Clockwork Magic",
-				spells : ["alarm", "protection from evil and good", "aid", "lesser restoration", "dispel magic", "protection from energy", "freedom of movement", "summon construct", "greater restoration", "wall of force"],
-				//"class" : ["sorcerer", "warlock", "wizard"],
-				//school : ["Abjur", "Trans"],
+				extraspells : ["alarm", "protection from evil and good", "aid", "lesser restoration", "dispel magic", "protection from energy", "freedom of movement", "summon construct", "greater restoration", "wall of force"],
+				"class" : ["sorcerer", "warlock", "wizard"],
+				school : ["Abjur", "Trans"],
 				selection : ["alarm", "protection from evil and good", "aid", "lesser restoration", "dispel magic", "protection from energy", "freedom of movement", "summon construct", "greater restoration", "wall of force"],
 				firstCol : "markedbox",
 				level : [1,5],
@@ -4606,6 +4603,147 @@ CreatureList["steel defender"] = {
 		if (!ClassList.artificer || ClassList.artificer.artificerCompFunc.find("steel defender").length < (prefix ? 2 : 1)) processActions(false, "Steel Defender", [["bonus action", " (command)"], ["action", " (restore)"]], "Steel Defender");
 	}
 };
+//Add special Beastmaster companions, Beast of Land, Sea, and Sky
+CreatureList["beast of the sky"] = {
+	name : "Beast of the Sky",
+	source : ["TCoE", 61],
+	size : 4,
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 5,
+	hd : [1, 6],
+	speed : "10 ft, fly 60 ft",
+	scores : [6, 16, 13, 8, 14, 11],
+	saves : ["", "", "", "", "", ""],
+	senses : "Darkvision 60 ft",
+	passivePerception : 12,
+	languages : "understands the languages of its master (me)",
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Shred",
+		ability : 2,
+		damage : [1, 6, "slashing"],
+        range : "Melee (5 ft)"
+	}],
+	features : [{
+		name : "Primal Rebirth",
+		description : "If the beast has died within the last hour, I can use my action to touch it and expend a spell slot of 1st level or higher. The beast returns to life after 1 minute with all its hit points restored."
+	}],
+	traits : [{
+		name : "Flyby",
+		description : "The beast doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+	}, {
+		name : "Primal Bond",
+		description : "I can add my proficiency bonus to any ability check or saving throw that the beast makes."
+	}],
+	eval : function(prefix) {
+		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5;");
+		tDoc.getField(prefix + "Comp.Use.HD.Level").setAction("Calculate", "event.value = classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1;");
+	},
+	removeeval : function(prefix) {
+		if (!prefix) return;
+		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "");
+		tDoc.getField(prefix + "Comp.Use.HD.Level").setAction("Calculate", "");
+	}
+};
+CreatureList["beast of the land"] = {
+	name : "Beast of the Land",
+	source : ["TCoE", 61],
+	size : 3,
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 5,
+	hd : [1, 8],
+	speed : "40 ft, climb 40 ft",
+	scores : [14, 14, 15, 8, 14, 11],
+	saves : ["", "", "", "", "", ""],
+	senses : "Darkvision 60 ft",
+	passivePerception : 14,
+	languages : "understands the languages of its master (me)",
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Maul",
+		ability : 1,
+		damage : [1, 6, "slashing"],
+		range : "Melee (5 ft)",
+		description : "If used after moving 20 ft straight in the same round, see Charge trait"
+	}],
+	features : [{
+		name : "Primal Rebirth",
+		description : "If the beast has died within the last hour, I can use my action to touch it and expend a spell slot of 1st level or higher. The beast returns to life after 1 minute with all its hit points restored."
+	}],
+	traits : [{
+		name : "Charge",
+		description : "If the beast moves at least 20 ft straight toward a target and then hits it with a maul attack on the same turn, the target takes an extra 1d6 slashing damage. If the target is a creature, it must succeed on a Strength saving throw against my spell save DC or be knocked prone."
+	}, {
+		name : "Primal Bond",
+		description : "I can add my proficiency bonus to any ability check or saving throw that the beast makes."
+	}],
+	eval : function(prefix) {
+		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5;");
+		tDoc.getField(prefix + "Comp.Use.HD.Level").setAction("Calculate", "event.value = classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1;");
+	},
+	removeeval : function(prefix) {
+		if (!prefix) return;
+		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "");
+		tDoc.getField(prefix + "Comp.Use.HD.Level").setAction("Calculate", "");
+	}
+};
+CreatureList["beast of the sea"] = {
+	name : "Beast of the Sea",
+	source : ["TCoE", 61],
+	size : 3,
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 5,
+	hd : [1, 8],
+	speed : "5 ft, swim 60 ft",
+	scores : [14, 14, 15, 8, 14, 11],
+	saves : ["", "", "", "", "", ""],
+	senses : "Darkvision 60 ft",
+	passivePerception : 12,
+	languages : "understands the languages of its master (me)",
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Binding Strike",
+		ability : 1,
+		damage : [1, 6, "pierc./bludgeon"],
+		range : "Melee (5 ft)",
+		description : "On hit, target is grappled (escape DC is spell DC) and beast can't use attack on other target"
+	}],
+	features : [{
+		name : "Primal Rebirth",
+		description : "If the beast has died within the last hour, I can use my action to touch it and expend a spell slot of 1st level or higher. The beast returns to life after 1 minute with all its hit points restored."
+	}],
+	traits : [{
+        name : "Amphibious",
+        description : "The beast can breathe both air and water."
+	}, {
+		name : "Primal Bond",
+		description : "I can add my proficiency bonus to any ability check or saving throw that the beast makes."
+	}],
+	eval : function(prefix) {
+		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5;");
+		tDoc.getField(prefix + "Comp.Use.HD.Level").setAction("Calculate", "event.value = classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1;");
+	},
+	removeeval : function(prefix) {
+		if (!prefix) return;
+		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "");
+		tDoc.getField(prefix + "Comp.Use.HD.Level").setAction("Calculate", "");
+	}
+};
 
 // Add Optional Class Features
 // Barbarian Optional Class Features
@@ -5551,7 +5689,7 @@ AddFeatureChoice(ClassList.warlock.features["pact magic"], true, "Additional War
 			function(spList, spName, spType) {
 				// Stop this is not the class' spell list or if this is for a bonus spell entry
 				if (spName !== "warlock" || (spType.indexOf("bonus") !== -1 && (!spList["class"] || spList["class"] !== "warlock"))) return;
-				spList.extraspells = spList.extraspells.concat(["booming blade","green-flame blade","lightning lure","mind sliver","sword burst","intellect fortress", "spirit shroud", "summon fey", "summon shadowspawn", "summon undead", "summon aberration", "mislead", "planar binding", "teleportation circle", "summon fiend","tasha's otherwordly guise", "dream of the blue veil", "blade of disaster", "gate", "weird"]);
+				spList.extraspells = spList.extraspells.concat(["booming blade","green-flame blade","lightning lure","mind sliver","sword burst","intellect fortress", "spirit shroud", "summon fey", "summon shadowspawn", "summon undead", "summon abberation", "mislead", "planar binding", "teleportation circle", "summon fiend","tasha's otherwordly guise", "dream of the blue veil", "blade of disaster", "gate", "weird"]);
 			},
 			"This optional class feature expands the spells list of the warlock class." ] } },
 		"Optional Class Features");
@@ -5725,7 +5863,7 @@ AddFeatureChoice(ClassList.wizard.features.spellcasting, true, "Additional Wizar
 			function(spList, spName, spType) {
 				// Stop this is not the class' spell list or if this is for a bonus spell entry
 				if (spName !== "wizard" || spType.indexOf("bonus") !== -1) return;
-				spList.extraspells = spList.extraspells.concat(["booming blade","green-flame blade","lightning lure","mind sliver","sword burst","augury", "enhance ability", "tasha's mind whip", "intelect fortress", "speak with dead", "spirit shroud", "summon fey", "summon shadowspawn", "summon undead", "divination", "summon aberration", "summon construct", "summon elemental", "summon fiend", "tasha's otherwordly guise", "dream of the blue veil", "blade of disaster"]);
+				spList.extraspells = spList.extraspells.concat(["booming blade","green-flame blade","lightning lure","mind sliver","sword burst","augury", "enhance ability", "tasha's mind whip", "intelect fortress", "speak with dead", "spirit shroud", "summon fey", "summon shadowspawn", "summon undead", "divination", "summon abberation", "summon construct", "summon elemental", "summon fiend", "tasha's otherwordly guise", "dream of the blue veil", "blade of disaster"]);
 			},
 			"This optional class feature expands the spells list of the wizard class."
 		]
