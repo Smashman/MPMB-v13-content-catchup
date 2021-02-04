@@ -2172,10 +2172,10 @@ AddSubClass("sorcerer", "aberrant mind", { //incomplete - psionic spells needs w
 			]),
 			spellcastingBonus : { // Need to find a way to add the base psionic spells to the spells from the class and school list
 				name : "Psionic Spells",
-				spells : ["mind sliver", "arms of hadar", "dissonant whispers", "calm emotions", "detect thoughts", "hunger of hadar", "sending", "evard's black tentacles", "summon aberration", "rary's telepathic bond", "telekinesis"],
-				//"class" : ["sorcerer", "warlock", "wizard"],
-				//school : ["Ench", "Div"],
-				selection : ["mind sliver", "arms of hadar", "dissonant whispers", "calm emotions", "detect thoughts", "hunger of hadar", "sending", "evard's black tentacles", "summon aberration", "rary's telepathic bond", "telekinesis"],
+				extraspells : ["mind sliver", "arms of hadar", "dissonant whispers", "calm emotions", "detect thoughts", "hunger of hadar", "sending", "evard's black tentacles", "summon abberation", "rary's telepathic bond", "telekinesis"],
+				"class" : ["sorcerer", "warlock", "wizard"],
+				school : ["Ench", "Div"],
+				selection : ["mind sliver", "arms of hadar", "dissonant whispers", "calm emotions", "detect thoughts", "hunger of hadar", "sending", "evard's black tentacles", "summon abberation", "rary's telepathic bond", "telekinesis"],
 				firstCol : "SP",
 				level : [0,5],
 				times : [3,3,5,5,7,7,9,9,11,11,11,11,11,11,11,11,11,11,11,11]
@@ -2237,9 +2237,6 @@ AddSubClass("sorcerer", "clockwork soul", { //incomplete - clockwork magic needs
 	subname : "Clockwork Soul",
 	source : [["TCoE", 4]],
 	fullname : "Clockwork Soul",
-
-	//spellcastingExtra : ["alarm", "protection from evil and good", "aid", "lesser restoration", "dispel magic", "protection from energy", "freedom of movement", "summon construct", "greater restoration", "wall of force"],
-	//spellcastingExtraApplyNonconform : true,
 	features : {
 		"subclassfeature1" : {
 			name : "Clockwork Magic",
@@ -2252,9 +2249,9 @@ AddSubClass("sorcerer", "clockwork soul", { //incomplete - clockwork magic needs
 			]),
 			spellcastingBonus : { // Need to find a way to add the base clockwork spells to the spells from the class and school list
 				name : "Clockwork Magic",
-				spells : ["alarm", "protection from evil and good", "aid", "lesser restoration", "dispel magic", "protection from energy", "freedom of movement", "summon construct", "greater restoration", "wall of force"],
-				//"class" : ["sorcerer", "warlock", "wizard"],
-				//school : ["Abjur", "Trans"],
+				extraspells : ["alarm", "protection from evil and good", "aid", "lesser restoration", "dispel magic", "protection from energy", "freedom of movement", "summon construct", "greater restoration", "wall of force"],
+				"class" : ["sorcerer", "warlock", "wizard"],
+				school : ["Abjur", "Trans"],
 				selection : ["alarm", "protection from evil and good", "aid", "lesser restoration", "dispel magic", "protection from energy", "freedom of movement", "summon construct", "greater restoration", "wall of force"],
 				firstCol : "markedbox",
 				level : [1,5],
@@ -4639,7 +4636,7 @@ CreatureList["beast of the sky"] = {
 		description : "I can add my proficiency bonus to any ability check or saving throw that the beast makes."
 	}],
 	eval : function(prefix) {
-		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5);");
+		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5;");
 		tDoc.getField(prefix + "Comp.Use.HD.Level").setAction("Calculate", "event.value = classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1;");
 	},
 	removeeval : function(prefix) {
@@ -4686,7 +4683,7 @@ CreatureList["beast of the land"] = {
 		description : "I can add my proficiency bonus to any ability check or saving throw that the beast makes."
 	}],
 	eval : function(prefix) {
-		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5);");
+		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5;");
 		tDoc.getField(prefix + "Comp.Use.HD.Level").setAction("Calculate", "event.value = classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1;");
 	},
 	removeeval : function(prefix) {
@@ -4733,7 +4730,7 @@ CreatureList["beast of the sea"] = {
 		description : "I can add my proficiency bonus to any ability check or saving throw that the beast makes."
 	}],
 	eval : function(prefix) {
-		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5);");
+		tDoc.getField(prefix + "Comp.Use.HP.Max").setAction("Calculate", "event.value = (classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1) * 5 + 5;");
 		tDoc.getField(prefix + "Comp.Use.HD.Level").setAction("Calculate", "event.value = classes.known.ranger ? classes.known.ranger.level : classes.known.rangerua ? classes.known.rangerua.level : 1;");
 	},
 	removeeval : function(prefix) {
@@ -5687,7 +5684,7 @@ AddFeatureChoice(ClassList.warlock.features["pact magic"], true, "Additional War
 			function(spList, spName, spType) {
 				// Stop this is not the class' spell list or if this is for a bonus spell entry
 				if (spName !== "warlock" || (spType.indexOf("bonus") !== -1 && (!spList["class"] || spList["class"] !== "warlock"))) return;
-				spList.extraspells = spList.extraspells.concat(["booming blade","green-flame blade","lightning lure","mind sliver","sword burst","intellect fortress", "spirit shroud", "summon fey", "summon shadowspawn", "summon undead", "summon aberration", "mislead", "planar binding", "teleportation circle", "summon fiend","tasha's otherwordly guise", "dream of the blue veil", "blade of disaster", "gate", "weird"]);
+				spList.extraspells = spList.extraspells.concat(["booming blade","green-flame blade","lightning lure","mind sliver","sword burst","intellect fortress", "spirit shroud", "summon fey", "summon shadowspawn", "summon undead", "summon abberation", "mislead", "planar binding", "teleportation circle", "summon fiend","tasha's otherwordly guise", "dream of the blue veil", "blade of disaster", "gate", "weird"]);
 			},
 			"This optional class feature expands the spells list of the warlock class." ] } },
 		"Optional Class Features");
@@ -5861,7 +5858,7 @@ AddFeatureChoice(ClassList.wizard.features.spellcasting, true, "Additional Wizar
 			function(spList, spName, spType) {
 				// Stop this is not the class' spell list or if this is for a bonus spell entry
 				if (spName !== "wizard" || spType.indexOf("bonus") !== -1) return;
-				spList.extraspells = spList.extraspells.concat(["booming blade","green-flame blade","lightning lure","mind sliver","sword burst","augury", "enhance ability", "tasha's mind whip", "intelect fortress", "speak with dead", "spirit shroud", "summon fey", "summon shadowspawn", "summon undead", "divination", "summon aberration", "summon construct", "summon elemental", "summon fiend", "tasha's otherwordly guise", "dream of the blue veil", "blade of disaster"]);
+				spList.extraspells = spList.extraspells.concat(["booming blade","green-flame blade","lightning lure","mind sliver","sword burst","augury", "enhance ability", "tasha's mind whip", "intelect fortress", "speak with dead", "spirit shroud", "summon fey", "summon shadowspawn", "summon undead", "divination", "summon abberation", "summon construct", "summon elemental", "summon fiend", "tasha's otherwordly guise", "dream of the blue veil", "blade of disaster"]);
 			},
 			"This optional class feature expands the spells list of the wizard class."
 		]
