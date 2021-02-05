@@ -15,5 +15,6 @@ Added the following features for Psionic Options Revisited:
 - Metabollic Control feat
 
 ### Checklist
-- [+] Correctly formatted on Printer-Friendly sheet
-- [+] Correctly formatted on Colourful sheet
+- [x] This box is checked
+- [ ] Correctly formatted on Printer-Friendly sheet
+- [ ] Correctly formatted on Colourful sheet
