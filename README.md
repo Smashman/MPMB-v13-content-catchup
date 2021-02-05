@@ -6,6 +6,8 @@ A community effort to **_unofficially_** transcribe all content missing while v1
 
 PLEASE NOTE: THESE REQUIRE VERSION 13 STABLE OF THE SHEET.
 
+Instructions on how to download and import these files can be found here: https://www.flapkan.com/how-to/add-more-content
+
 The files contained here are **fan-made** js files of the following WotC content, collected from various githubs, reddit posts, and discord. 
 
 This collection is based on the previous compiling efforts of [@smashman](https://github.com/Smashman) and @Nod_Hero#2046. All I (Metacomet10) did was collect the stuff that they had collected together. The hard part, the coding, was done by a bunch of other folks. They deserve all the credit.
