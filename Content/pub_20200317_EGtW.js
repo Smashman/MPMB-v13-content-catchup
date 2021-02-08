@@ -1132,3 +1132,301 @@ SpellsList["time ravage"] = {
 	descriptionMetric : "Crea take 10d12 Necro Dmg and aged; save half dmg and not aged", 	
 	descriptionFull : "You target a creature you can see within range, putting its physical form through the devastation of rapid aging. The target must make a Constitution saving throw, taking 10d12 necrotic damage on a failed save, or half as much damage on a successful one. If the save fails, the target also ages to the point where it has only 30 days left before it dies of old age. In this aged state, the target has disadvantage on attack rolls, ability checks, and saving throws, and its walking speed is halved. Only the wish spell or the greater restoration cast with a 9th-level spell slot can end these effects and restore the target to its previous age.",
 };
+
+//Add Magic Items (contributed by kat9137 [discord] aka sophiechiabatta [github])
+
+//Vestiges of Divergence
+MagicItemsList["danoth's visor"] = {
+	name : "Danoth's Visor",
+	source : ["W", 270],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	description : "These mithral-frame goggles with clear diamond lenses were used by the evoker Danoth Oro to spot invisible enemies and scout areas from afar. See notes page for more information.",
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Danoth's Visor: Dormant",
+		vision : [["Danoth's Visor", "fixed 60"]],
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Danoth's Visor",
+			note : "\n  \u2022 Dormant State (EGtW 270)" + desc([
+				"The wearer can see normally in darkness, both magical and nonmagical, to a distance of 60 feet.",
+				"The wearer has advantage on Intelligence (Investigation) and Wisdom (Perception) checks that rely on sight.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Danoth's Visor: Awakened",
+		vision : [["Danoth's Visor", "fixed 60"]],
+		action : [["bonus action", " (see thru matter)"], ["bonus action", " (spyglass mode)"]], 
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Danoth's Visor",
+			note : "\n  \u2022 Dormant State (EGtW 270)" + desc([
+				"The wearer can see normally in darkness, both magical and nonmagical, to a distance of 60 feet.",
+				"The wearer has advantage on Intelligence (Investigation) and Wisdom (Perception) checks that rely on sight.",
+			]) + "\n  \u2022 Awakened State (EGtW 270)" + desc([
+				"The wearer sees invisible creatures and objects within 60 feet as if they were visible, and they can see into the Ethereal Plane.",
+				"Using a bonus action, the wearer can speak a command word and use the goggles to see into and through solid matter. This vision has a radius of 60 feet and lasts for 1 minute. The vision can penetrate 1 foot of stone, 1 inch of common metal, or up to 3 feet of wood or dirt. Thicker substances block the vision, as does a thin sheet of lead. This property can't be used again until the next dawn.",	
+				"As a bonus action, the wearer can speak a command word to switch the goggles into spyglass mode. While in this mode, creatures and objects viewed through the goggles are magnified to twice their size.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Danoth's Visor: Exaulted",
+		vision : [["Danoth's Visor", "fixed 60"]],
+		action : [["bonus action", " (see thru matter)"], ["bonus action", " (spyglass mode)"]], 
+		spellcastingAbility : "class",
+		spellcastingBonus : {
+			name : "Once per dawn",
+			spells : ["antimagic field"],
+			selection : ["antimagic field"],
+			firstCol : 'oncelr',
+			times : 1
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Danoth's Visor",
+			note : "\n  \u2022 Dormant State (EGtW 270)" + desc([
+				"The wearer can see normally in darkness, both magical and nonmagical, to a distance of 60 feet.",
+				"The wearer has advantage on Intelligence (Investigation) and Wisdom (Perception) checks that rely on sight.",
+			]) + "\n  \u2022 Awakened State (EGtW 270)" + desc([
+				"The wearer sees invisible creatures and objects within 60 feet as if they were visible, and they can see into the Ethereal Plane.",
+				"Using a bonus action, the wearer can speak a command word and use the goggles to see into and through solid matter. This vision has a radius of 60 feet and lasts for 1 minute. The vision can penetrate 1 foot of stone, 1 inch of common metal, or up to 3 feet of wood or dirt. Thicker substances block the vision, as does a thin sheet of lead. This property can't be used again until the next dawn.",	
+				"As a bonus action, the wearer can speak a command word to switch the goggles into spyglass mode. While in this mode, creatures and objects viewed through the goggles are magnified to twice their size.",
+			]) + "\n  \u2022 Exaulted State (EGtW 270)" + desc([
+				"The wearer automatically detects illusions he or she can see and automatically succeeds on saving throws against them. In addition, they see a bright aura around any creature that isn't in its true form.",
+				"As an action, the wearer can cast the antimagic field spell from the visor. This property can't be used again until the next dawn.",
+			]) 
+		}]
+	}
+};
+
+MagicItemsList["hide of the feral guardian"] = {
+	name : "Hide of the Feral Guardian",
+	source : ["W", 271],
+	type : "armor (studded leather)",
+	rarity : "legendary",
+	attunement : true,
+	description : "It is believed that this polished and beautifully detailed leather armor was a gift from Melora, bestowed on a long-forgotten archdruid and champion of the natural world before the terrors of the Calamity. See notes page for more info.",
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Hide of the Feral Guardian: Dormant",
+		armorAdd : "Hide of the Feral Guardian",
+		armorOptions : {
+			regExpSearch : /^(?=.*hide)(?=.*feral)(?=.*guardian).*$/i,
+			name : "Hide of the Feral Guardian",
+			source : ["W", 271],
+			type : "light",
+			ac : 13,
+			weight : 13,
+		},
+		action : [["action", " (polymorph)"]],
+		spellcastingBonus : [{
+			name : "1/LR no spell slot",
+			spells : ["polymorph"],
+			selection : ["polymorph"],
+			firstCol : "oncelr",
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a giant owl, but I keep my Int, Wis, Cha.",
+				changes : "Using my Hide of the Feral Guardian, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a giant owl. I keep my Int, Wis, Cha."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Hide of the Feral Guardian",
+			note : "\n  \u2022 Dormant State (EGtW 271)" + desc([
+				"The armor grants you a +1 bonus to AC.",
+				"While you are transformed by an effect that replaces any of your game statistics with those of another creature, you have a +1 bonus to melee attack and damage rolls, and you retain the benefits of this armor.",
+				"As an action, you can use the armor to cast polymorph on yourself, transforming into a giant owl while retaining your Intelligence, Wisdom, and Charisma scores. This property can’t be used again until the next dawn.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Hide of the Feral Guardian: Awakened",
+		armorAdd : "Hide of the Feral Guardian: Awakened",
+		armorOptions : {
+			regExpSearch : /^(?=.*hide)(?=.*feral)(?=.*guardian).*$/i,
+			name : "Hide of the Feral Guardian: Awakened",
+			source : ["W", 271],
+			type : "light",
+			ac : 14,
+			weight : 13,
+		},
+		action : [["action", " (polymorph)"]],
+		spellcastingBonus : [{
+			name : "1/LR no spell slot",
+			spells : ["polymorph"],
+			selection : ["polymorph"],
+			firstCol : "oncelr",
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a giant owl/cave bear (polar bear), but I keep my Int, Wis, Cha.",
+				changes : "Using my Hide of the Feral Guardian, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a giant owl or a cave bear (polar bear). I keep my Int, Wis, Cha."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Hide of the Feral Guardian",
+			note : "\n  \u2022 Awakened State (EGtW 271)" + desc([
+				"The armor grants you a +2 bonus to AC.",
+				"While you are transformed by an effect that replaces any of your game statistics with those of another creature, you have a +2 bonus to melee attack and damage rolls, and you retain the benefits of this armor.",
+				"As an action, you can use the armor to cast polymorph on yourself, transforming into a giant owl or a cave bear (polar bear) while retaining your Intelligence, Wisdom, and Charisma scores. This property can’t be used again until the next dawn.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Hide of the Feral Guardian: Exaulted",
+		armorAdd : "Hide of the Feral Guardian: Exaulted",
+		armorOptions : {
+			regExpSearch : /^(?=.*hide)(?=.*feral)(?=.*guardian).*$/i,
+			name : "Hide of the Feral Guardian: Exaulted",
+			source : ["W", 271],
+			type : "light",
+			ac : 15,
+			weight : 13,
+		},
+		action : [["action", " (polymorph)"]],
+		spellcastingBonus : [{
+			name : "1/LR no spell slot",
+			spells : ["polymorph"],
+			selection : ["polymorph"],
+			firstCol : "oncelr",
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a giant owl/cave bear (polar bear)/guardian wolf, but I keep my Int, Wis, Cha.",
+				changes : "Using my Hide of the Feral Guardian, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a giant owl, cave bear (polar bear), or guardian wolf. I keep my Int, Wis, Cha."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Hide of the Feral Guardian",
+			note : "\n  \u2022 Exaulted State (EGtW 271)" + desc([
+				"The armor grants you a +3 bonus to AC.",
+				"While you are transformed by an effect that replaces any of your game statistics with those of another creature, you have a +3 bonus to melee attack and damage rolls, and you retain the benefits of this armor.",
+				"As an action, you can use the armor to cast polymorph on yourself, transforming into a giant owl, cave bear (polar bear), or guardian wolf while retaining your Intelligence, Wisdom, and Charisma scores. This property can’t be used again until the next dawn.",
+			]) 
+		}]
+	}
+};
+
+MagicItemsList["infiltrator's key"] = {
+	name : "Infiltrator's Key",
+	source : ["W", 273],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	description : "This mithral skeleton key was forged using the blood of twelve master thieves executed for trying to steal magic items during the Age of Arcanum. See notes page for more information.",
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Infiltrator's Key: Dormant",
+		toolProfs : [["Thieves' tools", "Dex"]],
+		eval : function () {
+			if (CurrentMagicItems.known.indexOf("boots of elvenkind") !== -1) {
+				SetProf("advantage", true, ["Stealth", true], "Infiltrator's Key (magic items)");
+			}
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Infiltrator's Key",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"The key can be used as thieves’ tools for the purpose of opening locks. When using the key, you are considered proficient in thieves’ tools and you have advantage on ability checks made to open locks.",
+				"While holding the key, your steps are muffled, giving you advantage on Dexterity (Stealth) checks made to move silently.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Infiltrator's Key: Awakened",
+		toolProfs : [["Thieves' tools", "Dex"]],
+		eval : function () {
+			if (CurrentMagicItems.known.indexOf("boots of elvenkind") !== -1) {
+				SetProf("advantage", true, ["Stealth", true], "Infiltrator's Key (magic items)");
+			}
+		},
+		action : [["bonus action", " (transform dagger)"], ["bonus action", " (create opening)"]], 
+		weaponsAdd : ["Infiltrator's Key"],
+		weaponOptions : {
+			baseWeapon : "dagger",
+			regExpSearch : /^(?=.*infiltrators)(?=.*key).*$/i,
+			name : "Infiltrator's Key",
+			source : ["W", 273],
+			range : "20/60 ft",
+			damage : [1, 4, "piercing"],
+			description : "Finesse, light, thrown",
+			modifiers : [1, 1]
+		},
+		spellcastingAbility : "class",
+		spellcastingBonus : {
+			name : "Once per dawn",
+			spells : ["alter self", "invisibility", "knock", "pass without trace"],
+			selection : ["alter self", "invisibility", "knock", "pass without trace"],
+			firstCol : 'oncelr',
+			times : 4
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Infiltrator's Key",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"The key can be used as thieves’ tools for the purpose of opening locks. When using the key, you are considered proficient in thieves’ tools and you have advantage on ability checks made to open locks.",
+				"While holding the key, your steps are muffled, giving you advantage on Dexterity (Stealth) checks made to move silently.",
+			]) + "\n  \u2022 Awakened State (EGtW 273)" + desc([
+				"While holding the key, you can use a bonus action to transform the key into a magic dagger or back into a key. While the key is in the form of a dagger, you gain a +1 bonus to attack and damage rolls made with it, and it returns to your hand immediately after it is used to make a ranged attack.",
+				"While holding the key, you can use an action to cast one of the following spells from it: alter self, invisibility, knock, or pass without trace. Once a spell has been cast using the key, it can’t be used to cast that spell again until the next dawn.",		
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Infiltrator's Key: Exaulted",
+		toolProfs : [["Thieves' tools", "Dex"]],
+		eval : function () {
+			if (CurrentMagicItems.known.indexOf("boots of elvenkind") !== -1) {
+				SetProf("advantage", true, ["Stealth", true], "Infiltrator's Key (magic items)");
+			}
+		},
+		action : [["bonus action", " (transform dagger)"], ["bonus action", " (create opening)"]], 
+		weaponsAdd : ["Infiltrator's Key"],
+		weaponOptions : {
+			baseWeapon : "dagger",
+			regExpSearch : /^(?=.*infiltrator)(?=.*key).*$/i,
+			name : "Infiltrator's Key",
+			source : ["W", 273],
+			range : "20/60 ft",
+			damage : [1, 4, "piercing"],
+			description : "Finesse, light, thrown",
+			modifiers : [1, 1]
+		},
+		spellcastingAbility : "class",
+		spellcastingBonus : {
+			name : "Once per dawn",
+			spells : ["alter self", "invisibility", "knock", "pass without trace", "dimension door", "gaseous form", "mislead"],
+			selection : ["alter self", "invisibility", "knock", "pass without trace", "dimension door", "gaseous form", "mislead"],
+			firstCol : 'oncelr',
+			times : 7
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Infiltrator's Key",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"The key can be used as thieves’ tools for the purpose of opening locks. When using the key, you are considered proficient in thieves’ tools and you have advantage on ability checks made to open locks.",
+				"While holding the key, your steps are muffled, giving you advantage on Dexterity (Stealth) checks made to move silently.",
+			]) + "\n  \u2022 Awakened State (EGtW 273)" + desc([
+				"While holding the key, you can use a bonus action to transform the key into a magic dagger or back into a key. While the key is in the form of a dagger, you gain a +1 bonus to attack and damage rolls made with it, and it returns to your hand immediately after it is used to make a ranged attack.",
+				"While holding the key, you can use an action to cast one of the following spells from it: alter self, invisibility, knock, or pass without trace. Once a spell has been cast using the key, it can’t be used to cast that spell again until the next dawn.",		
+			]) + "\n  \u2022 Exaulted State (EGtW 273)" + desc([
+				"As a bonus action, you can touch the key to a floor, wall, or ceiling that is no more than 5 feet thick and cause a magical opening to appear in the surface. When you create the opening, you choose its length and width, up to 10 feet for each dimension. The opening lasts until the key passes through it to the other side, at which point it disappears (if a creature is in the opening when the doorway closes, the creature is safely shunted to the nearest unoccupied space). The key can’t be used to create another opening until the next dawn.",
+				"While holding the key, you can use an action to cast one of the following spells from it: dimension door, gaseous form, or mislead. Once a spell has been cast using the key, it can’t be used to cast that spell again until the next dawn.",
+			]) 
+		}]
+	}
+};
