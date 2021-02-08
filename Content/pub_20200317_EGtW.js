@@ -1582,3 +1582,131 @@ MagicItemsList["stormgirdle"] = {
 		}]
 	}
 };
+
+MagicItemsList["verminshroud"] = {
+	name : "Verminshroud",
+	source : ["W", 273],
+	type : "wondrous item",
+	rarity : "legendary",
+	description : "This patchy cloak was pieced together from the pelts of rats found feasting on the dead in Blightshore and is dotted with the bloated corpses of magically preserved insects along its seams. See notes page for more info.",
+	attunement : true,
+	savetxt : { immune : ["disease"] },
+	vision : [["Darkvision", "fixed 60"], ["Darkvision", "+60"]],
+	extraLimitedFeatures : [{
+			name : "Verminshroud (Polymorph)",
+			usages : 1,
+			recovery : "dawn"
+		}, {
+			name : "Verminshroud (Insect Plague)",
+			usages : 1,
+			recovery : "dawn"
+		}],
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Verminshroud: Dormant",
+		action : [["action", " (polymorph)"]],
+		spellcastingBonus : [{
+			name : "1/LR no spell slot",
+			spells : ["polymorph"],
+			selection : ["polymorph"],
+			firstCol : "oncelr",
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a rat or giant rat, but I keep my Int, Wis, Cha.",
+				changes : "Using Verminshroud, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a rat or giant rat. I keep my Int, Wis, Cha."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Verminshroud",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"You have advantage on Wisdom (Perception) checks that rely on smell, you are immune to disease, and you have darkvision out to a range of 60 feet. If you already have darkvision, wearing the cloak increases the range of your darkvision by 60 feet.",
+				"As an action, you can use the verminshroud to cast polymorph on yourself, transforming into a giant rat or rat while retaining your Intelligence, Wisdom, and Charisma scores, as well as the properties of the cloak. This property can’t be used again until the next dawn.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Verminshroud: Awakened",
+		action : [["action", " (polymorph)"], ["action", " (insect plague)"]],
+		dmgres : [["Poison"]],
+		fixedDC : 15,
+		action : [["action", " (insect plague)"]],
+		spellcastingBonus : [{
+			name : "Once per dawn",
+			spells : ["polymorph", "insect plague"],
+			selection : ["polymorph", "insect plague"],
+			firstCol : "oncelr",
+			times : 2
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a rat, giant rat, or giant wasp, but I keep my Int, Wis, Cha.",
+				changes : "Using Verminshroud, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a rat, giant rat, or giant wasp. I keep my Int, Wis, Cha."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Verminshroud",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"You have advantage on Wisdom (Perception) checks that rely on smell, you are immune to disease, and you have darkvision out to a range of 60 feet. If you already have darkvision, wearing the cloak increases the range of your darkvision by 60 feet.",
+				"As an action, you can use the verminshroud to cast polymorph on yourself, transforming into a giant rat or rat while retaining your Intelligence, Wisdom, and Charisma scores, as well as the properties of the cloak. This property can’t be used again until the next dawn.",
+			]) + "\n  \u2022 Awakened State (EGtW 273)" + desc([
+				"You have resistance to poison damage.",
+				"You can use an action to cast the insect plague spell (save DC 15) from the verminshroud, requiring no material components. This property can’t be used again until the next dawn.",		
+				"When you cast the polymorph spell using the verminshroud, you can transform into a giant wasp.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Verminshroud: Exaulted",
+		action : [["action", " (polymorph)"], ["action", " (insect plague)"]],
+		dmgres : [["Poison"]],
+		fixedDC : 15,
+		speed : { climb : { spd : "walk", enc : "walk" } },
+		spellcastingBonus : [{
+			name : "Once per dawn",
+			spells : ["polymorph", "insect plague"],
+			selection : ["polymorph", "insect plague"],
+			firstCol : "oncelr",
+			times : 2
+		}],
+		spellChanges : {
+			"polymorph" : {
+				name : "Polymorph (special)",
+				range : "Self",
+				description : "I transform into a rat, giant rat, giant wasp, or giant scorpion, but I keep my Int, Wis, Cha.",
+				changes : "Using Verminshroud, I can cast Polymorph once per dawn without using a spell slot, but when I do so I can only cast it on myself and transform into a rat, giant rat, giant wasp, or giant scorpion. I keep my Int, Wis, Cha."
+			},
+		},
+		weaponsAdd : ["Verminshroud: Bite"],
+		weaponOptions : {
+			baseWeapon : "unarmed strike",
+			regExpSearch : /^(?=.*verminshroud)(?=.*bite).*$/i,
+			name : "Verminshroud: Bite",
+			source : ["W", 273],
+			damage : [1, 6, "piercing"],
+			description : "Bonus action; DC17 Con save, failure - poisoned 1 min; repeat save end of their turn",
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Verminshroud",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"You have advantage on Wisdom (Perception) checks that rely on smell, you are immune to disease, and you have darkvision out to a range of 60 feet. If you already have darkvision, wearing the cloak increases the range of your darkvision by 60 feet.",
+				"As an action, you can use the verminshroud to cast polymorph on yourself, transforming into a giant rat or rat while retaining your Intelligence, Wisdom, and Charisma scores, as well as the properties of the cloak. This property can’t be used again until the next dawn.",
+			]) + "\n  \u2022 Awakened State (EGtW 273)" + desc([
+				"You have resistance to poison damage.",
+				"You can use an action to cast the insect plague spell (save DC 15) from the verminshroud, requiring no material components. This property can’t be used again until the next dawn.",		
+				"When you cast the polymorph spell using the verminshroud, you can transform into a giant wasp.",
+			]) + "\n  \u2022 Exaulted State (EGtW 273)" + desc([
+				"You gain a climbing speed equal to your walking speed.",
+				"Your teeth become razor-sharp natural weapons, which you can use to make unarmed strikes. If you hit with them, you deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike. You can make this attack as a bonus action. When you bite a creature and deal damage to it, the creature must succeed on a DC 17 Constitution saving throw or be poisoned for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the condition on itself on a success.",		
+				"When you cast the polymorph spell using the verminshroud, you can transform into a giant scorpion.",
+			])
+		}]
+	}
+};
