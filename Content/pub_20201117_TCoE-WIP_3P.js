@@ -1071,8 +1071,7 @@ regExpSearch: /^(?=.*(fighter))(?=.*(psi))(?=.*(warrior)).*$/i,
 			Source : ["TCoE",43],
 			minlevel : 3,
 			description : desc([
-				"Once per",
-				"short rest, I can regain one expended PsiD as a bonus action"
+				"Once per short rest, I can regain one expended PsiD as a bonus action"
 			]),
 			action : ["bonus acttion","regain 1 Psionic Energy die"],
 			usages : 1,
