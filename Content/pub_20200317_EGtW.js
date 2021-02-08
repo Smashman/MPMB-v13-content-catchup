@@ -1160,6 +1160,11 @@ MagicItemsList["danoth's visor"] = {
 		name : "Danoth's Visor: Awakened",
 		vision : [["Danoth's Visor", "fixed 60"]],
 		action : [["bonus action", " (see thru matter)"], ["bonus action", " (spyglass mode)"]], 
+		extraLimitedFeatures : [{
+			name : "Danoth's Visor (see thru matter)",
+			usages : 1,
+			recovery : "dawn"
+		}],
 		toNotesPage : [{
 			name : "Features",
 			popupName : "Features of Danoth's Visor",
@@ -1176,7 +1181,16 @@ MagicItemsList["danoth's visor"] = {
 	"exaulted state" : {
 		name : "Danoth's Visor: Exaulted",
 		vision : [["Danoth's Visor", "fixed 60"]],
-		action : [["bonus action", " (see thru matter)"], ["bonus action", " (spyglass mode)"]], 
+		action : [["action", " (Antimagic Field)"], ["bonus action", " (see thru matter)"], ["bonus action", " (spyglass mode)"]],
+		extraLimitedFeatures : [{
+			name : "Danoth's Visor (see thru matter)",
+			usages : 1,
+			recovery : "dawn"
+		}, {
+			name : "Danoth's Visor (Antimagic Field)",
+			usages : 1,
+			recovery : "dawn"
+		}],
 		spellcastingAbility : "class",
 		spellcastingBonus : {
 			name : "Once per dawn",
@@ -1210,6 +1224,11 @@ MagicItemsList["hide of the feral guardian"] = {
 	rarity : "legendary",
 	attunement : true,
 	description : "It is believed that this polished and beautifully detailed leather armor was a gift from Melora, bestowed on a long-forgotten archdruid and champion of the natural world before the terrors of the Calamity. See notes page for more info.",
+	extraLimitedFeatures : [{
+			name : "Hide of the Feral Guardian (Polymorph)",
+			usages : 1,
+			recovery : "dawn"
+		}],
 	choices : ["dormant state", "awakened state", "exaulted state"],
 	"dormant state" : {
 		name : "Hide of the Feral Guardian: Dormant",
@@ -1414,6 +1433,11 @@ MagicItemsList["infiltrator's key"] = {
 			firstCol : 'oncelr',
 			times : 7
 		},
+		extraLimitedFeatures : [{
+			name : "Infiltrator's Key (create opening)",
+			usages : 1,
+			recovery : "dawn"
+		}],
 		toNotesPage : [{
 			name : "Features",
 			popupName : "Features of Infiltrator's Key",
@@ -1427,6 +1451,134 @@ MagicItemsList["infiltrator's key"] = {
 				"As a bonus action, you can touch the key to a floor, wall, or ceiling that is no more than 5 feet thick and cause a magical opening to appear in the surface. When you create the opening, you choose its length and width, up to 10 feet for each dimension. The opening lasts until the key passes through it to the other side, at which point it disappears (if a creature is in the opening when the doorway closes, the creature is safely shunted to the nearest unoccupied space). The key can’t be used to create another opening until the next dawn.",
 				"While holding the key, you can use an action to cast one of the following spells from it: dimension door, gaseous form, or mislead. Once a spell has been cast using the key, it can’t be used to cast that spell again until the next dawn.",
 			]) 
+		}]
+	}
+};
+
+MagicItemsList["stormgirdle"] = {
+	name : "Stormgirdle",
+	source : ["W", 273],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Stormgirdle: Dormant",
+		description : "A wide belt of leather branded with the symbol of Kord. While attuned to and wearing this belt, I am resistant to lightning and thunder damage. My Strength score becomes 21, provided my Strength is not already 21 or higher. As an action, I can become a Storm Avatar for 1 minute. See notes page for more info.",
+		scoresOverride : [21, 0, 0, 0, 0, 0],
+		dmgres : [["Lightning"], ["Thunder"]],
+		action : [["action", " (Storm Avatar)"], ["bonus action", " (Lightning Strike)"]],
+		extraLimitedFeatures : [{
+			name : "Storm Girdle (Storm Avatar)",
+			usages : 1,
+			recovery : "dawn"
+		}],	
+		weaponsAdd : ["Stormgirdle: Lightning Strike"],
+		weaponOptions : {
+			regExpSearch : /^(?=.*stormgirdle)(?=.*lightning)(?=.*strike).*$/i,
+			name : "Stormgirdle: Lightning Strike",
+			source : [["W", 273]],
+			ability : 0,
+			type : "Magic Item",
+			damage : [3, 6, "lightning"],
+			range : '30 ft',
+			description : "Bonus action; Dex save, success - half damage",
+			abilitytodamage : true,
+			modifiers : ["dc+7", ""]
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Stormgirdle",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"You have resistance to lightning damage and thunder damage, and your Strength score becomes 21 if it isn’t already 21 or higher.",
+				"You can use an action to become a Storm Avatar for 1 minute, gaining the following benefits for the duration. Once you use the girdle’s Storm Avatar property, that property can’t be used again until the next dawn.",
+				"\u2022 You have immunity to lightning damage and thunder damage.",
+				"\u2022 When you hit with a weapon attack that normally deals bludgeoning damage, it deals thunder damage instead. When you hit with a weapon attack that normally deals piercing or slashing damage, it deals lightning damage instead.",
+				"\u2022 As a bonus action, you can choose one creature you can see within 30 feet of you to be struck by lightning. The target must make a DC 15 Dexterity saving throw, taking 3d6 lightning damage on a failed save, or half as much damage on a successful one.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Stormgirdle: Awakened",
+		description : "A wide belt of leather branded with the symbol of Kord. While attuned to and wearing this belt, I am resistant to lightning and thunder damage. My Strength score becomes 23, provided my Strength is not already 23 or higher. As an action, I can become a Storm Avatar for 1 minute. See notes page for more info.",
+		scoresOverride : [23, 0, 0, 0, 0, 0],
+		dmgres : [["Lightning"], ["Thunder"]],
+		action : [["action", " (Storm Avatar)"], ["bonus action", " (Lightning Strike)"]],
+		extraLimitedFeatures : [{
+			name : "Storm Girdle (Storm Avatar)",
+			usages : 1,
+			recovery : "dawn"
+		}],	
+		weaponsAdd : ["Stormgirdle: Lightning Strike"],
+		weaponOptions : {
+			regExpSearch : /^(?=.*stormgirdle)(?=.*lightning)(?=.*strike).*$/i,
+			name : "Stormgirdle: Lightning Strike",
+			source : [["W", 273]],
+			ability : 0,
+			type : "Magic Item",
+			damage : [4, 6, "lightning"],
+			range : '30 ft',
+			description : "Bonus action; Dex save, success - half damage",
+			abilitytodamage : true,
+			modifiers : ["dc+7", ""]
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Stormgirdle",
+			note : "\n  \u2022 Awakened State (EGtW 273)" + desc([
+				"You have resistance to lightning damage and thunder damage, and your Strength score becomes 23 if it isn’t already 23 or higher.",
+				"You can use an action to become a Storm Avatar for 1 minute, gaining the following benefits for the duration. Once you use the girdle’s Storm Avatar property, that property can’t be used again until the next dawn.",
+				"\u2022 You have immunity to lightning damage and thunder damage.",
+				"\u2022 When you hit with a weapon attack that normally deals bludgeoning damage, it deals thunder damage instead. When you hit with a weapon attack that normally deals piercing or slashing damage, it deals lightning damage instead.",
+				"\u2022 As a bonus action, you can choose one creature you can see within 30 feet of you to be struck by lightning. The target must make a DC 15 Dexterity saving throw, taking 4d6 lightning damage on a failed save, or half as much damage on a successful one.",
+				"\u2022 While transformed into a Storm Avatar, you gain a flying speed of 30 feet and can hover.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Stormgirdle: Exaulted",
+		description : "A wide belt of leather branded with the symbol of Kord. While attuned to and wearing this belt, I am resistant to lightning and thunder damage. My Strength score becomes 25, provided my Strength is not already 25 or higher. As an action, I can become a Storm Avatar for 1 minute. See notes page for more info.",
+		scoresOverride : [25, 0, 0, 0, 0, 0],
+		dmgres : [["Lightning"], ["Thunder"]],
+		action : [["action", " (Storm Avatar)"], ["bonus action", " (Lightning Strike)"]],
+		extraLimitedFeatures : [{
+			name : "Storm Girdle (Storm Avatar)",
+			usages : 1,
+			recovery : "dawn"
+		}],	
+		weaponsAdd : ["Stormgirdle: Lightning Strike"],
+		weaponOptions : {
+			regExpSearch : /^(?=.*stormgirdle)(?=.*lightning)(?=.*strike).*$/i,
+			name : "Stormgirdle: Lightning Strike",
+			source : [["W", 273]],
+			ability : 0,
+			type : "Magic Item",
+			damage : [5, 6, "lightning"],
+			range : '30 ft',
+			description : "Bonus action; Dex save, success - half damage",
+			abilitytodamage : true,
+			modifiers : ["dc+7", ""]
+		},
+		spellcastingAbility : "class",
+		spellcastingBonus : {
+			name : "Once per dawn",
+			spells : ["control weather"],
+			selection : ["control weather"],
+			firstCol : 'oncelr',
+			times : 1
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Stormgirdle",
+			note : "\n  \u2022 Dormant State (EGtW 273)" + desc([
+				"You have resistance to lightning damage and thunder damage, and your Strength score becomes 25 if it isn’t already 25 or higher.",
+				"You can use an action to become a Storm Avatar for 1 minute, gaining the following benefits for the duration. Once you use the girdle’s Storm Avatar property, that property can’t be used again until the next dawn.",
+				"\u2022 You have immunity to lightning damage and thunder damage.",
+				"\u2022 When you hit with a weapon attack that normally deals bludgeoning damage, it deals thunder damage instead. When you hit with a weapon attack that normally deals piercing or slashing damage, it deals lightning damage instead.",
+				"\u2022 As a bonus action, you can choose one creature you can see within 30 feet of you to be struck by lightning. The target must make a DC 15 Dexterity saving throw, taking 5d6 lightning damage on a failed save, or half as much damage on a successful one.",
+				"\u2022 While transformed into a Storm Avatar, you gain a flying speed of 30 feet and can hover.",
+				"You can cast the control weather spell from the girdle. This property can’t be used again until the next dawn.",
+			])
 		}]
 	}
 };
