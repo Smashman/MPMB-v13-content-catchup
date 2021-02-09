@@ -1593,14 +1593,10 @@ MagicItemsList["verminshroud"] = {
 	savetxt : { immune : ["disease"] },
 	vision : [["Darkvision", "fixed 60"], ["Darkvision", "+60"]],
 	extraLimitedFeatures : [{
-			name : "Verminshroud (Polymorph)",
-			usages : 1,
-			recovery : "dawn"
-		}, {
-			name : "Verminshroud (Insect Plague)",
-			usages : 1,
-			recovery : "dawn"
-		}],
+		name : "Verminshroud (Polymorph)",
+		usages : 1,
+		recovery : "dawn"
+	}],
 	choices : ["dormant state", "awakened state", "exaulted state"],
 	"dormant state" : {
 		name : "Verminshroud: Dormant",
@@ -1634,6 +1630,11 @@ MagicItemsList["verminshroud"] = {
 		dmgres : [["Poison"]],
 		fixedDC : 15,
 		action : [["action", " (insect plague)"]],
+		extraLimitedFeatures : [{
+			name : "Verminshroud (Insect Plague)",
+			usages : 1,
+			recovery : "dawn"
+		}],
 		spellcastingBonus : [{
 			name : "Once per dawn",
 			spells : ["polymorph", "insect plague"],
@@ -1668,6 +1669,11 @@ MagicItemsList["verminshroud"] = {
 		dmgres : [["Poison"]],
 		fixedDC : 15,
 		speed : { climb : { spd : "walk", enc : "walk" } },
+		extraLimitedFeatures : [{
+			name : "Verminshroud (Insect Plague)",
+			usages : 1,
+			recovery : "dawn"
+		}],
 		spellcastingBonus : [{
 			name : "Once per dawn",
 			spells : ["polymorph", "insect plague"],
@@ -1707,6 +1713,91 @@ MagicItemsList["verminshroud"] = {
 				"Your teeth become razor-sharp natural weapons, which you can use to make unarmed strikes. If you hit with them, you deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike. You can make this attack as a bonus action. When you bite a creature and deal damage to it, the creature must succeed on a DC 17 Constitution saving throw or be poisoned for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the condition on itself on a success.",		
 				"When you cast the polymorph spell using the verminshroud, you can transform into a giant scorpion.",
 			])
+		}]
+	}
+};
+
+MagicItemsList["wreath of the Prism"] = {
+	name : "Wreath of the Prism",
+	source : ["W", 274],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	vision : [["Darkvision", "fixed 60"], ["Darkvision", "+60"]],
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Wreath of the Prism: Dormant",
+		description : "This loop of golden thorns is inset with dozens of gems representing the five colors of Tiamat. I gain darkvision to 60 ft, or extend my darkvision by 60 ft. When I hit a beast, dragon, or monstrosity of CR 5 or lower with an attack, I can cast dominate monster on that creature (save DC 13). See notes page for info.",
+		fixedDC : 13,
+		spellcastingBonus : [{
+			name : "CR 5 or lower, DC 13",
+			spells : ["dominate monster"],
+			selection : ["dominate monster"],
+		}],
+		spellChanges : {
+			"dominate monster" : {
+				name : "Dominate Monster (special)",
+				description : "Beast, dragon, or monstrosity, CR =<5, on attack hit (DC 13).",
+				changes : "I can cast dominate monster on a beast, dragon, or monstrosity of CR 5 when I hit it with an attack (save DC 13). If I use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by me."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Wreath of the Prism",
+			note : "\n  \u2022 Dormant State (EGtW 274)" + desc([
+				"You have darkvision out to a range of 60 feet. If you already have darkvision, wearing the wreath increases the range of your darkvision by 60 feet.",
+				"When you hit a beast, dragon, or monstrosity of challenge rating 5 or lower with an attack, or when you grapple it, you can use the wreath to cast dominate monster on the creature (save DC 13). On a successful save, the target is immune to the power of the wreath for 24 hours. On a failure, a shimmering, golden image of the wreath appears as a collar around the target’s neck or as a crown on its head (your choice) until it is no longer charmed by the spell. If you use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by you.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Wreath of the Prism: Awakened",
+		description : "This loop of golden thorns is inset with dozens of gems representing the five colors of Tiamat. I gain darkvision to 60 ft, or extend my darkvision by 60 ft. When I hit a beast, dragon, or monstrosity of CR 10 or lower with an attack, I can cast dominate monster on that creature (save DC 15). See notes page for info.",
+		fixedDC : 15,
+		spellcastingBonus : [{
+			name : "CR 10 or lower, DC 15",
+			spells : ["dominate monster"],
+			selection : ["dominate monster"],
+		}],
+		spellChanges : {
+			"dominate monster" : {
+				name : "Dominate Monster (special)",
+				description : "Beast, dragon, or monstrosity, CR =<10, on attack hit (DC 15).",
+				changes : "I can cast dominate monster on a beast, dragon, or monstrosity of CR 10 when I hit it with an attack (save DC 15). If I use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by me."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Wreath of the Prism",
+			note : "\n  \u2022 Awakened State (EGtW 274)" + desc([
+				"You have darkvision out to a range of 60 feet. If you already have darkvision, wearing the wreath increases the range of your darkvision by 60 feet.",
+				"When you hit a beast, dragon, or monstrosity of challenge rating 10 or lower with an attack, or when you grapple it, you can use the wreath to cast dominate monster on the creature (save DC 15). On a successful save, the target is immune to the power of the wreath for 24 hours. On a failure, a shimmering, golden image of the wreath appears as a collar around the target’s neck or as a crown on its head (your choice) until it is no longer charmed by the spell. If you use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by you.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Wreath of the Prism: Exaulted",
+		description : "This loop of golden thorns is inset with dozens of gems representing the five colors of Tiamat. I gain darkvision to 60 ft, or extend my darkvision by 60 ft. When I hit a beast, dragon, or monstrosity of CR 15 or lower with an attack, I can cast dominate monster on that creature (save DC 17). See notes page for info.",
+		fixedDC : 17,
+		spellcastingBonus : [{
+			name : "CR 15 or lower, DC 17",
+			spells : ["dominate monster"],
+			selection : ["dominate monster"],
+		}],
+		spellChanges : {
+			"dominate monster" : {
+				name : "Dominate Monster (special)",
+				description : "Beast, dragon, or monstrosity, CR =<15, on attack hit (DC 17).",
+				changes : "I can cast dominate monster on a beast, dragon, or monstrosity of CR 15 when I hit it with an attack (save DC 17). If I use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by me."
+			},
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Wreath of the Prism",
+			note : "\n  \u2022 Exaulted State (EGtW 274)" + desc([
+				"You have darkvision out to a range of 60 feet. If you already have darkvision, wearing the wreath increases the range of your darkvision by 60 feet.",
+				"When you hit a beast, dragon, or monstrosity of challenge rating 15 or lower with an attack, or when you grapple it, you can use the wreath to cast dominate monster on the creature (save DC 17). On a successful save, the target is immune to the power of the wreath for 24 hours. On a failure, a shimmering, golden image of the wreath appears as a collar around the target’s neck or as a crown on its head (your choice) until it is no longer charmed by the spell. If you use the wreath to charm a second creature, the first spell immediately ends. When the spell ends, the target knows it was charmed by you.",
+			]) 
 		}]
 	}
 };
