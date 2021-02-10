@@ -1801,3 +1801,106 @@ MagicItemsList["wreath of the Prism"] = {
 		}]
 	}
 };
+
+MagicItemsList["grimoire infinitus"] = {
+	name : "Grimoire Infinitus",
+	source : ["W", 271],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	description : "Several of these spellbooks with gilded pages and silver-plated covers were created during the Age of Arcanum, but only one has been found since the Calamity ended. See notes page for more info.",
+	prerequisite : "Requires attunement by a wizard",
+	prereqeval : function (v) { return classes.known.wizard ? true : false; },
+	spellcastingAbility : "class",
+	spellcastingBonus : {
+		spells : ["alarm", "antimagic field", "bigby's hand", "blight", "charm person", "confusion", "control weather", "create undead", "detect thoughts", "enlarge/reduce", "fear", "foresight", "gaseous form", "glyph of warding", "legend lore", "leomund's tiny hut", "mass suggestion", "mislead", "misty step", "mordenkainen's faithful hound"],
+		selection : ["alarm", "antimagic field", "bigby's hand", "blight", "charm person", "confusion", "control weather", "create undead", "detect thoughts", "enlarge/reduce", "fear", "foresight", "gaseous form", "glyph of warding", "legend lore", "leomund's tiny hut", "mass suggestion", "mislead", "misty step", "mordenkainen's faithful hound"],
+		times: 20
+	},
+	eval : function () {
+		// get the CurrentSpells object or create it if it didn't exists yet.
+		var spObj = CreateCurrentSpellsEntry("items", "grimoire infinitus");
+		// now set some of the attributes for it, adding the 5 spells that didn't fit as spellcastingBonus
+		spObj.typeSp = "known";
+		spObj.known = { cantrips : 0, spells : 5 };
+		spObj.list = { spells : ["prismatic spray", "ray of enfeeblement", "silent image", "teleport", "thunderwave"] };
+		spObj.selectSp = ["prismatic spray", "ray of enfeeblement", "silent image", "teleport", "thunderwave"];
+		spObj.typeList = 2;
+	},
+	removeeval : function () {
+		if (CurrentSpells["grimoire infinitus"]) {
+			// delete the CurrentSpells object
+			delete CurrentSpells["grimoire infinitus"];
+			SetStringifieds('spells');
+			CurrentUpdates.types.push("spells");
+		}
+	},
+	choices : ["dormant state", "awakened state", "exaulted state"],
+	"dormant state" : {
+		name : "Grimoire Infinitus: Dormant",
+		calcChanges: {
+			spellCalc: [
+                function (type, spellcasters, ability) {
+                    if (type == "prepare") return 1;
+                },
+			],
+		},
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Grimoire Infinitus",
+			note : "\n  \u2022 Dormant State (EGtW 274)" + desc([
+				"Most of the book is blank, but the following spells are recorded in the first pages of the tome: alarm, antimagic field, Bigby's hand, blight, charm person, confusion, control weather, create undead, detect thoughts, enlarge/reduce, fear, foresight, gaseous form, glyph of warding, legend lore, Leomund's tiny hut, mass suggestion, mislead, misty step, Mordenkainen's faithful hound, prismatic spray, ray of enfeeblement, silent image, teleport, and thunderwave.",
+				"You can use the grimoire as your spellbook, and you can scribe new spells into it as normal.",
+				"When you prepare wizard spells using the grimoire, the number of wizard spells you can prepare increases by 1.",
+			])  
+		}]
+	},
+	"awakened state" : {
+		name : "Grimoire Infinitus: Awakened",
+		calcChanges: {
+			spellCalc: [
+                function (type, spellcasters, ability) {
+                    if (type == "prepare") return 2;
+                },
+			],
+		},
+		savetxt : { adv_vs : ["spells and other magical effects"] },
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Grimoire Infinitus",
+			note : "\n  \u2022 Awakened State (EGtW 274)" + desc([
+				"Most of the book is blank, but the following spells are recorded in the first pages of the tome: alarm, antimagic field, Bigby's hand, blight, charm person, confusion, control weather, create undead, detect thoughts, enlarge/reduce, fear, foresight, gaseous form, glyph of warding, legend lore, Leomund's tiny hut, mass suggestion, mislead, misty step, Mordenkainen's faithful hound, prismatic spray, ray of enfeeblement, silent image, teleport, and thunderwave.",
+				"You can use the grimoire as your spellbook, and you can scribe new spells into it as normal.",
+				"When you prepare wizard spells using the grimoire, the number of wizard spells you can prepare increases by 2.",
+				"While you carry the spellbook, you have advantage on saving throws against spells and magical effects.",
+			]) 
+		}]
+	},
+	"exaulted state" : {
+		name : "Grimoire Infinitus: Exaulted",
+		calcChanges: {
+			spellCalc: [
+                function (type, spellcasters, ability) {
+                    if (type == "prepare") return 3;
+                },
+			],
+		},
+		savetxt : { adv_vs : ["spells and other magical effects"] },
+		extraLimitedFeatures : [{
+			name : "Arcane Recovery (Grimoire Infinitus)",
+			usages : 1,
+			recovery : "long rest"
+		}],	
+		toNotesPage : [{
+			name : "Features",
+			popupName : "Features of Grimoire Infinitus",
+			note : "\n  \u2022 Exaulted State (EGtW 274)" + desc([
+				"Most of the book is blank, but the following spells are recorded in the first pages of the tome: alarm, antimagic field, Bigby's hand, blight, charm person, confusion, control weather, create undead, detect thoughts, enlarge/reduce, fear, foresight, gaseous form, glyph of warding, legend lore, Leomund's tiny hut, mass suggestion, mislead, misty step, Mordenkainen's faithful hound, prismatic spray, ray of enfeeblement, silent image, teleport, and thunderwave.",
+				"You can use the grimoire as your spellbook, and you can scribe new spells into it as normal.",
+				"When you prepare wizard spells using the grimoire, the number of wizard spells you can prepare increases by 3.",
+				"While you carry the spellbook, you have advantage on saving throws against spells and magical effects.",
+				"You gain one additional use of your Arcane Recovery feature between long rests.",
+			]) 
+		}]
+	}
+};
