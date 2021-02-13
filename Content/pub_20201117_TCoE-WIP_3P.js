@@ -6484,6 +6484,7 @@ SpellsList["mind sliver"] = {
 	range : "60 feet",
 	components : "V",
 	duration : "1 rnd",
+	save : "Int",
     description : "1 crea I see save or -1d4 from next save and 1d6 Psychic dmg; +1d6 at CL 5, 11, and 17",
     descriptionCantripDie : "1 crea I see save or -1d4 from next save and `CD`d6 Psychic dmg",
 	descriptionFull : "You drive a disorienting spike of psychic energy into the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn." + "\n   " + "This spell's damage increases by 1d6 when you reach certain levels: 5th level (2d6), 11th level (3d6), and 17th level (4d6)."
@@ -6686,4 +6687,17 @@ SpellsList["tasha's otherwordly guise"] = {
 	duration : "Conc, 1 min",
     description : "Fire+Poison+Poisoned or Radiant+Necrotic+Charm immune; 40ft fly; +2 ac; extra atk (500gp)",
     descriptionFull : "Uttering an incantation, you draw on the magic of the Lower Planes or Upper Planes (your choice) to transform yourself. You gain the following benefits until the spell ends:" + "\n \u2022 " + "You are immune to fire and poison damage (Lower Planes) or radiant and necrotic damage (Upper Planes)." + "\n \u2022 " + "You are immune to the poisoned condition (Lower Planes) or the charmed condition (Upper Planes)." + "\n \u2022 " + "Spectral wings appear on your back, giving you a flying speed of 40 feet." + "\n \u2022 " + "You have a +2 bonus to AC." + "\n \u2022 " + "All your weapon attacks are magical, and when you make a weapon attack, you can use your spellcasting ability modifier, instead of Strength or Dexterity, for the attack and damage rolls." + "\n \u2022 " + "You can attack twice, instead of once, when you take the Attack action on your turn. You ignore this benefit if you already have a feature, like Extra Attack, that lets you attack more than once when you take the Attack action on your turn."
+};
+WeaponsList["mind sliver"] = {
+	regExpSearch : /mind sliver/i,
+	name : "Mind Sliver",
+	source : ["TCoE", 108],
+	list : "spell",
+	ability : 6,
+	type : "Cantrip",
+	damage : ["C", 6, "psychic"],
+	range : "60 ft",
+	description : "Int save, success = no damage, fail = also -1d4 from next save.",
+	abilitytodamage : false,
+	dc : true
 };
