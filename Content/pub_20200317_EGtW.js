@@ -1133,7 +1133,718 @@ SpellsList["time ravage"] = {
 	descriptionFull : "You target a creature you can see within range, putting its physical form through the devastation of rapid aging. The target must make a Constitution saving throw, taking 10d12 necrotic damage on a failed save, or half as much damage on a successful one. If the save fails, the target also ages to the point where it has only 30 days left before it dies of old age. In this aged state, the target has disadvantage on attack rolls, ability checks, and saving throws, and its walking speed is halved. Only the wish spell or the greater restoration cast with a 9th-level spell slot can end these effects and restore the target to its previous age.",
 };
 
-//Add Magic Items (contributed by kat9137 [discord] aka sophiechiabatta [github])
+//Add Treasures of Wildemount (contributed by kat9137 [discord] aka sophiechiabatta [github])
+
+//Magic Items
+//Ersatz Eye and Prosthetic Limb are not included as they are already scripted in E:RLW and XGtE
+MagicItemsList["acheron blade"] = {
+	name : "Acheron Blade",
+	nameTest : "Acheron",
+	source : ["W", 265],
+	type : "weapon (any sword)",
+	rarity : "rare",
+	description : "This sword gives +1 to hit and damage. I am immune to effects that turn undead. Action to gain 1d4 + 4 temp hp. Once per dusk, I can give target disadvantage on their next saving throw until the end of my next turn.",
+	descriptionFull : "The black blade of this sword is crafted from a mysterious arcane alloy. You gain a +1 bonus to attack and damage rolls made with this magic weapon. While the sword is on your person, you are immune to effects that turn undead. Dark Blessing: While holding the sword, you can use an action to give yourself 1d4 + 4 temporary hit points. This property can't be used again until the next dusk. Disheartening Strike: When you hit a creature with an attack using this weapon, you can fill the target with unsettling dread: the target has disadvantage on the next saving throw it makes before the end of your next turn. The creature ignores this effect if it's immune to the frightened condition. Once you use this property, you can't do so again until the next dusk.",
+	attunement : true,
+	action : [["action", " (Dark Blessing)"]], 
+	savetxt : { immune : ["effects that turn undead"] },
+	extraLimitedFeatures : [{
+			name : "Acheron Blade (Dark Blessing)",
+			usages : 1,
+			recovery : "dusk"
+		}, {
+			name : "Acheron Blade (Disheartening Strike)",
+			usages : 1,
+			recovery : "dusk"
+		}],
+	chooseGear : {
+		type : "weapon",
+		prefixOrSuffix : "suffix",
+		descriptionChange : ["replace", "blade"],
+		excludeCheck : function (inObjKey, inObj) {
+			var testRegex = /sword|scimitar|rapier/i;
+			return !(testRegex).test(inObjKey) && (!inObj.baseWeapon || !(testRegex).test(inObj.baseWeapon));
+		}
+	},
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (!v.theWea.isMagicWeapon && v.isMeleeWeapon && (/sword|scimitar|rapier/i).test(v.baseWeaponName) && (/acheron/i).test(v.WeaponText)) {
+					v.theWea.isMagicWeapon = true;
+					fields.Description = fields.Description.replace(/(, |; )?Counts as magical/i, '');
+					fields.Description += (fields.Description ? '; ' : '') + 'Action 1d4+4 temp hp; Can give target disadv on next save; see item info';
+				}
+			},
+			'If I include the words "Acheron" in a the name of a sword, it will be treated as the magic weapon Blade of the Medusa.'
+		],
+		atkCalc : [
+			function (fields, v, output) {
+				if (v.isMeleeWeapon && (/sword|scimitar|rapier/i).test(v.baseWeaponName) && (/acheron/i).test(v.WeaponText)) {
+					output.magic = v.thisWeapon[1] + 1;
+				}
+			}, 
+			'+1 to attack and damage rolls'
+		]
+	}
+};
+
+MagicItemsList["amulet of the drunkard"] = {
+	name : "Amulet of the Drunkard",
+	source : ["W", 265],
+	type : "wondrous item",
+	rarity : "uncommon",
+	description : "This amulet smells of old, ale-stained wood. While wearing it, you can regain 4d4 + 4 hit points when you drink a pint of beer, ale, mead, or wine. Once the amulet has restored hit points, it can't do so again until the next dawn.",
+	descriptionFull : "This amulet smells of old, ale-stained wood. While wearing it, you can regain 4d4 + 4 hit points when you drink a pint of beer, ale, mead, or wine. Once the amulet has restored hit points, it can't do so again until the next dawn.",
+	usages : 1, 
+	recovery: "dawn",
+};
+
+MagicItemsList["arcane cannon"] = {
+	name : "Arcane Cannon",
+	source : ["W", 265],
+	type : "wondrous item",
+	rarity : "very rare",
+	description : "This Large cannon is imbued with magic. It requires no ammunition and doesn't need to be loaded. It takes one action to aim the cannon and one action to fire it. Recharge 5 minutes. The creature firing the cannon chooses the effect from options listed on the notes page.",
+	descriptionFull : "This Large cannon is imbued with magic. It requires no ammunition and doesn't need to be loaded. It takes one action to aim the cannon and one action to fire it. After the cannon has fired, it must recharge for 5 minutes before it can be fired again.\n  The creature firing the cannon chooses the effect from the following options:\n" + [
+	toUni("Acid Jet") + ". The cannon discharges acid in a line 300 feet long and 5 feet wide. Each creature in that line must make a DC 15 Dexterity saving throw, taking 22 (4d10) acid damage on a failed save, or half as much damage on a successful one. In addition, a creature that fails its saving throw takes 11 (2d10) acid damage at the start of each of its turns; a creature can end this damage by using its action to wash off the acid with a pint or more of water.",
+	toUni("Fire Jet") + ". The cannon discharges fire in a line 300 feet long and 5 feet wide. Each creature in the area must make a DC 15 Dexterity saving throw, taking 33 (6d10) fire damage on a failed save, or half as much damage on a successful one. The fire ignites any flammable objects in the area that aren't being worn or carried.",
+	toUni("Frost Shot") + ". The cannon shoots a ball of frost to a point you can see within 1,200 feet of the cannon. The ball then expands to form a 30-foot-radius sphere centered on that point. Each creature in that area must make a DC 15 Constitution saving throw. On a failed save, a creature takes 22 (4d10) cold damage, and its speed is reduced by 10 feet for 1 minute. On a successful save, the creature takes half as much damage, and its speed isn't reduced. A creature whose speed is reduced by this effect can repeat the save at the end of each of its turns, ending the effect on itself on a success.",
+	toUni("Lightning Shot") + ". The cannon shoots a ball of lightning to a point you can see within 1,200 feet of the cannon. The lightning then expands to form a 20-foot-radius sphere centered on that point. Each creature in that area must make a DC 15 Dexterity saving throw, taking 33 (6d10) lightning damage on a failed save, or half as much damage on a successful one. Creatures wearing metal armor have disadvantage on the save.",
+	toUni("Poison Spray") + ". The cannon expels poison gas in a 60-foot cone. Each creature in that area must make a DC 15 Constitution saving throw. On a failed save, the creature takes 22 (4d10) poison damage and is poisoned for 1 minute. On a successful save, the creature takes half as much damage and isn't poisoned. A creature poisoned in this way can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+	].join("\n \u2022 "),
+	action : [["action", " (Aim)"], ["action", " (Fire)"]],
+	toNotesPage : [{
+		name : "Arcane Cannon",
+		note: [
+		"This Large cannon is imbued with magic. It requires no ammunition and doesn't need to be loaded. It takes one action to aim the cannon and one action to fire it. After the cannon has fired, it must recharge for 5 minutes before it can be fired again.",
+		"The creature firing the cannon chooses the effect from the following options:",
+		"\u2022 Acid Jet. The cannon discharges acid in a line 300 feet long and 5 feet wide. Each creature in that line must make a DC 15 Dexterity saving throw, taking 22 (4d10) acid damage on a failed save, or half as much damage on a successful one. In addition, a creature that fails its saving throw takes 11 (2d10) acid damage at the start of each of its turns; a creature can end this damage by using its action to wash off the acid with a pint or more of water.",
+		"\u2022 Fire Jet. The cannon discharges fire in a line 300 feet long and 5 feet wide. Each creature in the area must make a DC 15 Dexterity saving throw, taking 33 (6d10) fire damage on a failed save, or half as much damage on a successful one. The fire ignites any flammable objects in the area that aren't being worn or carried.",
+		"\u2022 Frost Shot. The cannon shoots a ball of frost to a point you can see within 1,200 feet of the cannon. The ball then expands to form a 30-foot-radius sphere centered on that point. Each creature in that area must make a DC 15 Constitution saving throw. On a failed save, a creature takes 22 (4d10) cold damage, and its speed is reduced by 10 feet for 1 minute. On a successful save, the creature takes half as much damage, and its speed isn't reduced. A creature whose speed is reduced by this effect can repeat the save at the end of each of its turns, ending the effect on itself on a success.",
+		"\u2022 Lightning Shot. The cannon shoots a ball of lightning to a point you can see within 1,200 feet of the cannon. The lightning then expands to form a 20-foot-radius sphere centered on that point. Each creature in that area must make a DC 15 Dexterity saving throw, taking 33 (6d10) lightning damage on a failed save, or half as much damage on a successful one. Creatures wearing metal armor have disadvantage on the save.",
+		"\u2022 Poison Spray. he cannon expels poison gas in a 60-foot cone. Each creature in that area must make a DC 15 Constitution saving throw. On a failed save, the creature takes 22 (4d10) poison damage and is poisoned for 1 minute. On a successful save, the creature takes half as much damage and isn't poisoned. A creature poisoned in this way can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+		]
+	}]
+};
+
+MagicItemsList["battering shield"] = {
+	name : "Battering Shield",
+	source : ["W", 266],
+	type : "wondrous item",
+	rarity : "uncommon",
+	attunement : true,
+	description : "This shield gives me a +1 bonus to AC. This bonus is in addition to the shield's normal bonus to AC. It has 3 charges. When I am holding the shield and push a creature 5 feet away, I can expend 1 charge to push that creature an additional 10 feet, knock it prone, or both.",
+	descriptionFull : "While holding this iron tower shield, you gain a +1 bonus to AC. This bonus is in addition to the shield's normal bonus to AC./n Additionally, the shield has 3 charges, and it regains 1d3 expended charges daily at dawn. If you are holding the shield and push a creature within your reach at least 5 feet away, you can expend 1 charge to push that creature an additional 10 feet, knock it prone, or both.",
+	usages : 3, 
+	recovery: "dawn",
+	shieldAdd : ["Battering Shield", 3]
+};
+
+MagicItemsList["bloodaxe"] = {
+	name : "Bloodaxe",
+	source : ["W", 265],
+	type : "weapon (greataxe)",
+	rarity : "very rare",
+	attunement : true,
+	description : "This magic greataxe grants a +2 bonus to attack and damage rolls, and deals an additional 1d6 necrotic damage to constructs and undead. If you reduce a creature to 0 hit points with an attack using this axe, you gain 10 temporary hit points.",
+	descriptionFull : "You gain a +2 bonus to attack and damage rolls made with this magic axe. The axe deals an extra 1d6 necrotic damage to creatures that aren't constructs or undead. If you reduce such a creature to 0 hit points with an attack using this axe, you gain 10 temporary hit points./n This axe is forged from a dark, rust-colored metal and once belonged to the goliath barbarian Grog Strongjaw of Vox Machina.",
+	weaponsAdd : ["Bloodaxe"],
+	weaponOptions : {
+		baseWeapon : "greataxe",
+		regExpSearch : /bloodaxe/i,
+		name : "Bloodaxe",
+		source : ["W", 266],
+		range : "Melee",
+		damage : [1, 12, "slashing"],
+		description : "Heavy, two-handed; +1d6 necrotic to constructs and undead",
+		modifiers : [2, 2]
+	},
+};
+
+MagicItemsList["breathing bubble"] = {
+	name : "Breathing Bubble",
+	source : ["W", 266],
+	type : "wondrous item",
+	rarity : "common",
+	description : "This translucent, bubble-like sphere has a slightly tacky outer surface, and you gain the item's benefits only while wearing it over your head like a helmet. The bubble contains 1 hour of breathable air. The bubble regains all its expended air daily at dawn.",
+	descriptionFull : "This translucent, bubble-like sphere has a slightly tacky outer surface, and you gain the item's benefits only while wearing it over your head like a helmet. The bubble contains 1 hour of breathable air. The bubble regains all its expended air daily at dawn.",
+	usages : 1,
+	recovery : "dawn",
+};
+
+MagicItemsList["brooch of living essence"] = {
+	name : "Brooch of Living Essence",
+	source : ["W", 266],
+	type : "wondrous item",
+	rarity : "uncommon",
+	attunement : true,
+	description : "While wearing this nondescript brooch, spells and anything else that would detect or reveal your creature type treat you as humanoid, and those that would reveal your alignment treat it as neutral.",
+	descriptionFull : "While wearing this nondescript brooch, spells and anything else that would detect or reveal your creature type treat you as humanoid, and those that would reveal your alignment treat it as neutral.",
+};
+
+MagicItemsList["butcher's bib"] = {
+	name : "Butcher's Bib",
+	source : ["W", 266],
+	type : "wondrous item",
+	rarity : "rare",
+	attunement : true,
+	description : "Once per turn when you roll damage for a melee attack with a weapon, you can reroll the weapon's damage dice. If you do so, you must use the second total. Your weapon attacks that deal slashing damage score a critical hit on a roll of 19 or 20 on the d20.",
+	descriptionFull : "This black leather apron is perpetually covered by blood, even after being washed off. You gain the following benefits while wearing the apron:/n Once per turn when you roll damage for a melee attack with a weapon, you can reroll the weapon's damage dice. If you do so, you must use the second total. Your weapon attacks that deal slashing damage score a critical hit on a roll of 19 or 20 on the d20.",
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (!v.isSpell && !v.CritChance && v.theWea.damage[2] == "slashing") {
+					fields.Description += (fields.Description ? '; ' : '') + 'Crit on 19-20 (Butchers Bib)';
+					v.CritChance = 19;
+				}
+				if (!v.isSpell && v.theWea.list == "melee") {
+				fields.Description += (fields.Description ? '; ' : '') + '1/turn reroll damage, use 2nd result (Butchers Bib)';
+				}
+			},
+			"My weapon attacks that deal slashing damage score a critical on a to hit roll of both 19 and 20. Once per turn, I can reroll the damage of a melee weapon attack and must use the second result."
+		]
+	}
+};
+
+MagicItemsList["coin of delving"] = {
+	name : "Coin of Delving",
+	source : ["W", 266],
+	type : "wondrous item",
+	rarity : "common",
+	description : "This scintillating copper coin sheds dim light in a 5-foot radius. If dropped a distance greater than 5 feet, the coin issues a melodious ringing sound when it hits a surface. Any creature that can hear the chime can determine the distance the coin dropped based on the tone.",
+	descriptionFull : "This scintillating copper coin sheds dim light in a 5-foot radius. If dropped a distance greater than 5 feet, the coin issues a melodious ringing sound when it hits a surface. Any creature that can hear the chime can determine the distance the coin dropped based on the tone.",
+};
+
+MagicItemsList["corpse slayer"] = {
+	name : "Corpse Slayer",
+	nameTest : "Corpse Slaying",
+	source : ["W", 265],
+	type : "weapon (any)",
+	rarity : "rare",
+	attunement : true,
+	description : "You gain a +1 bonus to attack and damage rolls made with this magic weapon. On hit vs undead, +1d8 damage of the weapon's type and target has disadvantage on saves vs effects that turn undead until the start of your next turn.",
+	descriptionFull : "You gain a +1 bonus to attack and damage rolls made with this magic weapon.\n When you hit an undead creature with an attack using this weapon, the attack deals an extra 1d8 damage of the weapon's type, and the creature has disadvantage on saving throws against effects that turn undead until the start of your next turn.",
+	chooseGear : {
+		type : "weapon",
+		prefixOrSuffix : "brackets",
+		itemName1stPage : ["suffix", "Corpse Slayer"],
+		descriptionChange : ["replace", "weapon"],
+	},
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (!v.theWea.isMagicWeapon && (/^(?=.*corpse)(?=.*slayer).*$/i).test(v.WeaponText)) {
+					v.theWea.isMagicWeapon = true;
+					fields.Description = fields.Description.replace(/(, |; )?Counts as magical/i, '');
+					fields.Description += (fields.Description ? '; ' : '') + '+1 to hit/damage; +1d8 damage vs undead; target disadv turn undead';
+				}
+			},
+			'If I include the words "Corpse Slayer" in a the name of a weapon, it will be treated as the magic weapon Corpse Slayer Weapon, which has a +1 bonus, +1d8 damage vs undead, and target disadv on turn undead effects on hit.'
+		],
+		atkCalc : [
+			function (fields, v, output) {
+				if ((/^(?=.*corpse)(?=.*slayer).*$/i).test(v.WeaponText)) {
+					output.magic = v.thisWeapon[1] + 1;
+				}
+			}, ''
+		]
+	}
+};
+
+MagicItemsList["dispelling stone"] = {
+	name : "Dispelling Stone",
+	source : ["W", 266],
+	type : "wondrous item",
+	rarity : "very rare",
+	usages : 1,
+	recovery : "Never",
+	description : "This smooth, rainbow-colored, egg-shaped stone can be thrown up to 30 feet and explodes in a 10-foot-radius sphere of magical energy on impact, destroying the stone. Any active spell of 5th level or lower in the sphere ends.",
+	descriptionFull : "This smooth, rainbow-colored, egg-shaped stone can be thrown up to 30 feet and explodes in a 10-foot-radius sphere of magical energy on impact, destroying the stone. Any active spell of 5th level or lower in the sphere ends.",
+};
+
+MagicItemsList["duskcrusher"] = {
+	name : "Duskcrusher",
+	source : ["W", 266],
+	type : "weapon (warhammer)",
+	rarity : "very rare",
+	attunement : true,
+	description : "Bonus action transform to a warhammer, action to dismiss it. While transformed, radiant head sheds bright sunlight in 15 ft radius, dim sunlight additional 15 ft. While active: +2 attack/damage, radiant damage, +1d8 to undead, 1/dawn action to cast Sunbeam. See notes page.",
+	descriptionFull : "This item takes the form of a leather-wrapped metal rod emblazoned with the symbol of Pelor, the Dawn Father. While grasping the rod, you can use a bonus action to cause a warhammer head of crackling radiance to spring into existence. The warhammer's radiant head emits bright light in a 15-foot radius and dim light for an additional 15 feet. The light is sunlight. You can use an action to make the radiant head disappear.\n While the radiant head is active, you gain a +2 bonus to attack and damage rolls made with this magic weapon, and attacks with the weapon deal radiant damage instead of bludgeoning damage. An undead creature hit by the weapon takes an extra 1d8 radiant damage.\n While you are holding Duskcrusher and its radiant head is active, you can use an action to cast the sunbeam spell (save DC 15) from the weapon, and this action can't be used again until the next dawn.",
+	action : [["bonus action", " (transform)"], ["action", " (dismiss)"], ["action", " (Sunbeam)"]],
+	extraLimitedFeatures : [{
+		name : "Duskcrusher (Sunbeam)",
+		usages : 1,
+		recovery : "dawn"
+	}],	
+	weaponsAdd : ["Duskcrusher"],
+	weaponOptions : {
+		baseWeapon : "warhammer",
+		regExpSearch : /duskcrusher/i,
+		name : "Duskcrusher",
+		source : ["W", 266],
+		range : "Melee",
+		damage : [1, 8, "radiant"],
+		description : "Versitile (1d10); +2 attack & damage (+1d8 damage vs undead)",
+		modifiers : [2, 2]
+	},
+	fixedDC : 15,
+	spellcastingBonus : {
+		name : "Once per dawn",
+		spells : ["sunbeam"],
+		selection : ["sunbeam"],
+		firstCol : 'oncelr',
+		modifiers : ["dc+7", ""]
+	},
+	toNotesPage : [{
+		name : "Features",
+		popupName : "Features of Duskcrusher",
+		note: "\n  \u2022 Duskcrusher (EGtW 266)" + desc([
+		"While grasping the rod, you can use a bonus action to cause a warhammer head of crackling radiance to spring into existence. The warhammer's radiant head emits bright light in a 15-foot radius and dim light for an additional 15 feet. The light is sunlight. You can use an action to make the radiant head disappear.",
+		"While the radiant head is active, you gain a +2 bonus to attack and damage rolls made with this magic weapon, and attacks with the weapon deal radiant damage instead of bludgeoning damage. An undead creature hit by the weapon takes an extra 1d8 radiant damage.",
+		"While you are holding Duskcrusher and its radiant head is active, you can use an action to cast the sunbeam spell (save DC 15) from the weapon, and this action can't be used again until the next dawn.",
+		])
+	}]
+};
+
+MagicItemsList["dust of deliciousness"] = {
+	name : "Dust of Deliciousness",
+	source : ["W", 267],
+	type : "wondrous item",
+	rarity : "uncommon",
+	description : "This reddish brown dust can be sprinkled over any edible substance to greatly improve the flavor. The dust also dulls the eater's senses: anyone eating food treated with this dust has disadvantage on Wisdom ability checks and Wisdom saving throws for 1 hour. There is enough dust to flavor six servings.",
+	descriptionFull : "This reddish brown dust can be sprinkled over any edible substance to greatly improve the flavor. The dust also dulls the eater's senses: anyone eating food treated with this dust has disadvantage on Wisdom ability checks and Wisdom saving throws for 1 hour. There is enough dust to flavor six servings.",
+	usages : 6,
+	recovery : "Never",
+};
+
+MagicItemsList["goggles of object reading"] = {
+	name : "Goggles of Object Reading",
+	source : ["W", 267],
+	type : "wondrous item",
+	rarity : "uncommon",
+	attunement : true,
+	description : "While wearing these goggles, you have advantage on Intelligence (Arcana) checks made to reveal information about a creature or object you can see. In addition, you can cast the identify spell using the googles. Once you do so, you can't do so again until the next dawn.",
+	descriptionFull : "These leather-framed goggles feature purple crystal lenses. While wearing the goggles, you have advantage on Intelligence (Arcana) checks made to reveal information about a creature or object you can see. In addition, you can cast the identify spell using the googles. Once you do so, you can't do so again until the next dawn.",
+	action : [["action", " (Identify)"]],
+	extraLimitedFeatures : [{
+		name : "Goggles of Object Reading (Identify)",
+		usages : 1,
+		recovery : "dawn"
+	}],	
+	spellcastingBonus : {
+		name : "Once per dawn",
+		spells : ["identify"],
+		selection : ["identify"],
+		firstCol : 'oncelr',
+	},
+};
+
+MagicItemsList["hunter's coat"] = {
+	name : "Hunter's Coat",
+	source : ["W", 267],
+	type : "armor (leather)",
+	rarity : "very rare",
+	attunement : true,
+	description : "You have a +1 bonus to AC while wearing this armor. The coat has 3 charges. When you hit a creature with an attack and that creature doesn't have all its hit points, you can expend 1 charge to deal an extra 1d10 necrotic damage to the target. The coat regains 1d3 expended charges at dawn.",
+	descriptionFull : "You have a +1 bonus to AC while wearing this armor. The coat has 3 charges. When you hit a creature with an attack and that creature doesn't have all its hit points, you can expend 1 charge to deal an extra 1d10 necrotic damage to the target. The coat regains 1d3 expended charges daily at dawn.",
+	extraLimitedFeatures : [{
+		name : "Hunter's Coat",
+		usages : 3,
+		recovery : "dawn"
+	}],	
+	armorAdd : "Hunter's Coat",
+	armorOptions : {
+		regExpSearch : /^(?=.*hunter's)(?=.*coat)(?=.*leather).*$/i,
+		name : "Hunter's Coat",
+		source : ["W", 267],
+		type : "light",
+		ac : 12,
+		weight : 10
+	},
+};
+
+MagicItemsList["last stand armor"] = {
+	name : "Last Stand Armor",
+	nameTest : "Last Stand",
+	source : ["W", 267],
+	type : "armor (leather)",
+	rarity : "very rare",
+	description : "You have a +1 bonus to AC while wearing this armor. If you die while wearing the armor, it is destroyed, and each celestial, fey, and fiend with 30 feet of you must succeed on a DC 15 Charisma saving throw or be banished to its home plane of existence, unless it is already there.",
+	descriptionFull : "You have a +1 bonus to AC while wearing this armor, which shimmers softly. If you die while wearing the armor, it is destroyed, and each celestial, fey, and fiend with 30 feet of you must succeed on a DC 15 Charisma saving throw or be banished to its home plane of existence, unless it is already there.",
+	chooseGear : {
+		type : "armor",
+		prefixOrSuffix : "suffix",
+		descriptionChange : ["replace", "armor"],
+		itemName1stPage : ["suffix", "+1 Last Stand"]
+	},
+	extraLimitedFeatures : [{
+		name : "Last Stand Armor",
+		usages : 1,
+		recovery : "Never"
+	}],	
+};
+
+MagicItemsList["luxon beacon"] = {
+	name : "Luxon Beacon",
+	source : ["W", 268],
+	type : "wondrous item",
+	rarity : "legendary",
+	description : "Once per dawn, the Luxon can grant a Fragment of Possibility, allowing the affected creature to roll an extra d20 for attacking, being attacked, an ability check, or a saving throw before the outcome is determined. If a creature consecuted to the Luxon dies within 100 miles of it, they are reincarnated. See notes.",
+	descriptionFull : "This dodecahedron of faintly glowing crystal is heavier than it appears. A set of handles are affixed to its sides, and it pulsates and thrums when touched.\n" + [
+	toUni("Fragment of Possibility") + ". A creature that touches the beacon and concentrates for 1 minute receives a Fragment of Possibility, which looks like a Tiny, grayish bead of energy that follows the creature around, staying within 1 foot of it at all times. The fragment lasts for 8 hours or until used. Once the beacon grants a Fragment of Possibility, it can't grant another until the next dawn. A creature with a Fragment of Possibility from a Luxon Beacon can't gain another Fragment of Possibility from any source.\n When a creature with a Fragment of Possibility makes an attack roll, an ability check, or a saving throw, it can expend its fragment to roll an additional d20 and choose which of the d20s to use. Alternatively, when an attack roll is made against the creature, it can expend its fragment to roll a d20 and choose which of the d20s to use, the one it rolled or the one the attacker rolled.\n If the original d20 roll has advantage or disadvantage, the creature rolls its d20 after advantage or disadvantage has been applied to the original roll.",
+	toUni("Soul Snare") + ". If a follower of the Luxon who has undergone a ritual of consecution dies within 100 miles of a Luxon Beacon, their soul is ensnared by it. This soul will be reincarnated within the body of a random humanoid baby developing within 100 miles of the beacon.",
+	].join("\n \u2022 "),
+	extraLimitedFeatures : [{
+		name : "Luxon Beacon (Fragment of Possibility)",
+		usages : 1,
+		recovery : "Dawn"
+	}],	
+	toNotesPage : [{
+		name : "Features",
+		popupName : "Features of the Luxon Beacon",
+		note: "\n  \u2022 Luxon Beacon (EGtW 268)" + desc([
+		"This dodecahedron of faintly glowing crystal is heavier than it appears. A set of handles are affixed to its sides, and it pulsates and thrums when touched.",
+		"Fragment of Possibility. A creature that touches the beacon and concentrates for 1 minute receives a Fragment of Possibility, which looks like a Tiny, grayish bead of energy that follows the creature around, staying within 1 foot of it at all times. The fragment lasts for 8 hours or until used. Once the beacon grants a Fragment of Possibility, it can't grant another until the next dawn. A creature with a Fragment of Possibility from a Luxon Beacon can't gain another Fragment of Possibility from any source.",
+		"When a creature with a Fragment of Possibility makes an attack roll, an ability check, or a saving throw, it can expend its fragment to roll an additional d20 and choose which of the d20s to use. Alternatively, when an attack roll is made against the creature, it can expend its fragment to roll a d20 and choose which of the d20s to use, the one it rolled or the one the attacker rolled.",
+		"If the original d20 roll has advantage or disadvantage, the creature rolls its d20 after advantage or disadvantage has been applied to the original roll.",
+		"Soul Snare. If a follower of the Luxon who has undergone a ritual of consecution dies within 100 miles of a Luxon Beacon, their soul is ensnared by it. This soul will be reincarnated within the body of a random humanoid baby developing within 100 miles of the beacon.",
+		])
+	}]
+};
+
+MagicItemsList["needle of mending"] = {
+	name : "Needle of Mending",
+	source : ["W", 268],
+	type : "weapon (dagger)",
+	rarity : "rare",
+	attunement : true,
+	description : "This weapon is a magic dagger disguised as a sewing needle. You can use a bonus action to transform it into a dagger or back into a needle.You gain a +1 bonus to attack and damage rolls made with the dagger. While holding it, you can use an action to cast the mending cantrip from it.",
+	descriptionFull : "This weapon is a magic dagger disguised as a sewing needle. When you hold it and use a bonus action to speak its command word, it transforms into a dagger or back into a needle.\n You gain a +1 bonus to attack and damage rolls made with the dagger. While holding it, you can use an action to cast the mending cantrip from it.",
+	action : [["bonus action", " (transform)"], ["action", " (cast)"]],
+	weaponsAdd : ["Needle of Mending"],
+	weaponOptions : {
+		baseWeapon : "dagger",
+		regExpSearch : /^(?=.*needle)(?=.*mending).*$/i,
+		name : "Needle of Mending",
+		source : ["W", 268],
+		range : "20/60 ft",
+		damage : [1, 4, "piercing"],
+		description : "Finesse, light, thrown; +1 attack and damage",
+		modifiers : [1, 1]
+	},
+	spellcastingBonus : {
+		name : "at will",
+		spells : ["mending"],
+		selection : ["mending"],
+		firstCol : 'atwill',
+	},
+};
+
+MagicItemsList["nightfall pearl"] = {
+	name : "Nightfall Pearl",
+	source : ["W", 268],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	action : [["action", " (dispel)"]],
+	description : "You can spend 10 minutes to activate this pearl, causing the area within 10 miles of it at the moment of activation to become night even if it is daytime. This night lasts for 24 hours, until you cancel it as an action, or until your attunement to the pearl ends. Once used, the pearl can't be used again for 24 hours.",
+	descriptionFull : "Used to summon night, this 6-inch-diameter, jet-black orb is cold to the touch. You can spend 10 minutes to activate it, causing the area within 10 miles of it at the moment of activation to become night even if it is daytime. This night lasts for 24 hours, until you cancel it as an action, or until your attunement to the pearl ends. Once used, the pearl can't be used again for 24 hours.",
+	extraLimitedFeatures : [{
+		name : "Nightfall Pearl",
+		usages : 1,
+		recovery : "24 hours"
+	}],	
+};
+
+MagicItemsList["orb of the veil"] = {
+	name : "Orb of the Veil",
+	source : ["W", 268],
+	type : "wondrous item",
+	rarity : "very rare",
+	attunement : true,
+	description : "This orb increases your Wis score and max Wis score by 2, and is cursed. Gain darkvision to 60 ft, or +60 feet darkvision. Advantage on Wis checks to find hidden doors and paths. You become unwilling to part with it, nonmagical flames within 30 ft of you extinguish, and fire damage you deal is halved.",
+	descriptionFull: "This onyx sphere bears deep, spiraling grooves and dangles from an iron chain. While the orb is on your person, you gain the following benefits:\n Your Wisdom score increases by 2, as does your maximum for that score.\n You gain darkvision out to a range of 60 feet. If you already have darkvision, the orb increases its range by 60 feet.\n You have advantage on Wisdom checks to find hidden doors and paths.\n   " + toUni("Curse") + ". The orb is cursed, and becoming attuned to it extends the curse to you. As long as you remain cursed, you are unwilling to part with the orb, keeping it on your person at all times. All nonmagical flames within 30 feet of you automatically extinguish, and fire damage dealt by you is halved.",
+	vision : [["Darkvision", "fixed 60"], ["Darkvision", "+60"]],
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (v.theWea.damage[2] == "fire") {
+					fields.Description += (fields.Description ? '; ' : '') + 'fire damage halved (Orb of the Veil)';
+				}
+			},
+			"All fire damage I deal is halved due to the Orb of the Veil."
+		]
+	},
+	toNotesPage : [{
+	name : "Features",
+	popupName : "Features of the Orb of the Veil",
+	note: "\n  \u2022 Magic Item (EGtW 268)" + desc([
+	"This onyx sphere bears deep, spiraling grooves and dangles from an iron chain. While the orb is on your person, you gain the following benefits:",
+	"\u2022 Your Wisdom score increases by 2, as does your maximum for that score.",
+	"\u2022 You gain darkvision out to a range of 60 feet. If you already have darkvision, the orb increases its range by 60 feet.",
+	"\u2022 You have advantage on Wisdom checks to find hidden doors and paths.",
+		])
+	}],
+	eval : function() {
+		MagicItemsList["manual of bodily health"].applyStatBonus("Orb of the Veil", "Wisdom");
+	}
+};
+
+MagicItemsList["potion of maximum power"] = {
+	name : "Potion of Maximum Power",
+	source : ["W", 268],
+	type : "potion",
+	rarity : "rare",
+	description : "The first time you cast a damage-dealing spell of 4th level or lower within 1 minute after drinking the potion, instead of rolling dice to determine the damage dealt, you can instead use the highest number possible for each die.",
+	descriptionFull : "The first time you cast a damage-dealing spell of 4th level or lower within 1 minute after drinking the potion, instead of rolling dice to determine the damage dealt, you can instead use the highest number possible for each die.\n This glowing purple liquid smells of sugar and plum, but it has a muddy taste.",
+};
+
+MagicItemsList["potion of possibility"] = {
+	name : "Potion of Possibility",
+	source : ["W", 268],
+	type : "potion",
+	rarity : "very rare",
+	description : "After drinking this potion you can two Fragments of Possibility. A Fragment may be expended to roll an extra d20 for attacking, being attacked, an ability check, or a saving throw before the outcome is determined. Each fragment lasts for 8 hours or until used.",
+	descriptionFull : "When you drink this clear potion, you gain two Fragments of Possibility, each of which looks like a Tiny, grayish bead of energy that follows you around, staying within 1 foot of you at all times. Each fragment lasts for 8 hours or until used.\n When you make an attack roll, an ability check, or a saving throw, you can expend your fragment to roll an additional d20 and choose which of the d20s to use. Alternatively, when an attack roll is made against you, you can expend your fragment to roll a d20 and choose which of the d20s to use, the one you rolled or the one the attacker rolled.\n If the original d20 roll has advantage or disadvantage, you roll your d20 after advantage or disadvantage has been applied to the original roll.\n While you have one or more Fragments of Possibility from this potion, you can't gain another Fragment of Possibility from any source.",
+	toNotesPage : [{
+		name : "Features",
+		popupName : "Features of a Potion of Possibility",
+		note: "\n  \u2022 Potion of Possibility (EGtW 268)" + desc([
+		"When you drink this clear potion, you gain two Fragments of Possibility, each of which looks like a Tiny, grayish bead of energy that follows you around, staying within 1 foot of you at all times. Each fragment lasts for 8 hours or until used.",
+		"When you make an attack roll, an ability check, or a saving throw, you can expend your fragment to roll an additional d20 and choose which of the d20s to use. Alternatively, when an attack roll is made against you, you can expend your fragment to roll a d20 and choose which of the d20s to use, the one you rolled or the one the attacker rolled.",
+		"If the original d20 roll has advantage or disadvantage, you roll your d20 after advantage or disadvantage has been applied to the original roll.",
+		"While you have one or more Fragments of Possibility from this potion, you can't gain another Fragment of Possibility from any source.",
+		])
+	}]
+};
+
+MagicItemsList["reincarnation dust"] = {
+	name : "Reincarnation Dust",
+	source : ["W", 268],
+	type : "wondrous item",
+	rarity : "very rare",
+	description : "When this small pouch of purple dust is sprinkled on a dead humanoid or a piece of a dead humanoid, the dust is absorbed by the remains. If willing, the dead creature returns to life with a new body as if the reincarnate spell had been cast on the remains.",
+	descriptionFull : "When this small pouch of purple dust is sprinkled on a dead humanoid or a piece of a dead humanoid, the dust is absorbed by the remains. If willing, the dead creature returns to life with a new body as if the reincarnate spell had been cast on the remains.",
+	spellcastingAbility : "class",
+	spellcastingBonus : {
+		spells : ["reincarnate"],
+		selection : ["reincarnate"],
+		times: 1
+	},
+};
+
+MagicItemsList["ring of obscuring"] = {
+	name : "Ring of Obscuring",
+	source : ["W", 269],
+	type : "ring",
+	rarity : "uncommon",
+	attunement : true,
+	description : "This ring has 3 charges and regains 1d3 expended charges daily at dawn. As an action while wearing the ring, you can expend 1 of its charges to cast the fog cloud spell from it, with these changes: the cloud is centered on you when it first appears, and the spell lasts for 1 minute (no concentration required).",
+	descriptionFull : "This band of iron resembles a skull and is cold to the touch. It has 3 charges and regains 1d3 expended charges daily at dawn. As an action while wearing the ring, you can expend 1 of its charges to cast the fog cloud spell from it, with the following changes: the cloud is centered on you when it first appears, and the spell lasts for 1 minute (no concentration required).",
+	action : [["action", ""]],
+	extraLimitedFeatures : [{
+		name : "Ring of Obscuring",
+		usages : 3,
+		recovery : "Dawn"
+	}],	
+	spellFirstColTitle : "Ch",
+	spellcastingBonus : {
+		name : "1 charge",
+		spells : ["fog cloud"],
+		selection : ["fog cloud"],
+		firstCol : '1',
+	},
+};
+
+MagicItemsList["ring of temporal salvation"] = {
+	name : "Ring of Temporal Salvation",
+	source : ["W", 269],
+	type : "ring",
+	rarity : "rare",
+	attunement : true,
+	description : "If you die while wearing this ring, you vanish and reappear in an unoccupied space within 5 ft of the space you left. You have hp equal to 3d6 + Con mod. If your hp max is lower than the number of hp you regain, your hp max rises to a similar amount. Exhaustion reduced by 1. After use, this ring turns to dust.",
+	descriptionFull : "If you die while wearing this gray crystal ring, you vanish and reappear in an unoccupied space within 5 feet of the space you left (or the nearest unoccupied space). You have a number of hit points equal to 3d6 + your Constitution modifier. If your hit point maximum is lower than the number of hit points you regain, your hit point maximum rises to a similar amount. If you have any levels of exhaustion, reduce your level of exhaustion by 1. Once the ring is used, it turns to dust and is destroyed.",
+	extraLimitedFeatures : [{
+		name : "Ring of Temporal Salvation",
+		usages : 1,
+		recovery : "Never"
+	}],
+};
+
+MagicItemsList["Rod of Retribution"] = {
+	name : "Rod of Retribution",
+	source : ["W", 269],
+	type : "rod",
+	rarity : "uncommon",
+	attunement : true,
+	description : "The rod has 3 charges. When a creature you can see within 60 ft of you damages you , you can use your reaction to expend a charge to force the creature to make a DC 13 Dexterity saving throw. The creature takes 2d10 lightning damage on a failed save, or half as much damage on a successful one.",
+	descriptionFull : "This adamantine rod is tipped with a glowing crystalline eye. The rod has 3 charges and regains all its expended charges daily at dawn.\n When a creature you can see within 60 feet of you damages you while you are holding this rod, you can use your reaction to expend 1 of the rod's charges to force the creature to make a DC 13 Dexterity saving throw. The creature takes 2d10 lightning damage on a failed save, or half as much damage on a successful one.",
+	extraLimitedFeatures : [{
+		name : "Rod of Retribution",
+		usages : 3,
+		recovery : "Dawn"
+	}],
+	action : [["reaction", ""]],
+};
+
+MagicItemsList["spell bottle"] = {
+	name : "Spell Bottle",
+	source : ["W", 269],
+	type : "wondrous item",
+	rarity : "legendary",
+	attunement : true,
+	description : "This bottle stores 1 spell of up to 5th level. While holding the bottle, you can cast the spell stored in it. It uses the spellcasting ability of the original caster. When you see a creature casting a spell within 60 ft of you, you can an empty bottle as a reaction in an attempt to interrupt the spell. See notes.",
+	descriptionFull : "This glass bottle can store one spell of up to 5th level at a time. When found, roll a d6 and subtract 1; the total determines the level of spell in the bottle (the DM chooses the spell, and 0 means the bottle is empty). A swirling blue vapor fills the bottle while it contains a spell.\n When the bottle is empty, any creature can cast a spell of 1st through 5th level into it by touching it while casting. The spell has no effect other than to be stored in the bottle.\n While holding the bottle, you can cast the spell stored in it. The spell uses the slot level, spell save DC, spell attack bonus, and spellcasting ability of the original caster, but is otherwise treated as if you cast the spell. The bottle becomes empty once the spell is cast.\n If you're holding the empty bottle when you see a creature casting a spell within 60 feet of you, you can open the bottle as a reaction in an attempt to interrupt the spell. If the creature is casting a spell of 3rd level or lower, the spell has no effect, and it is stored in the bottle. If it is casting a spell of 4th level or higher, make an Intelligence check. The DC equals 10 + the spell's level. On a success, the spell has no effect, and it is stored in the bottle.",
+	toNotesPage : [{
+		name : "Features",
+		popupName : "Features of a Spell Bottle",
+		note: "\n  \u2022 Spell Bottle (EGtW 269)" + desc([
+		"This glass bottle can store one spell of up to 5th level at a time. When found, roll a d6 and subtract 1; the total determines the level of spell in the bottle (the DM chooses the spell, and 0 means the bottle is empty). A swirling blue vapor fills the bottle while it contains a spell.",
+		"When the bottle is empty, any creature can cast a spell of 1st through 5th level into it by touching it while casting. The spell has no effect other than to be stored in the bottle.",
+		"While holding the bottle, you can cast the spell stored in it. The spell uses the slot level, spell save DC, spell attack bonus, and spellcasting ability of the original caster, but is otherwise treated as if you cast the spell. The bottle becomes empty once the spell is cast.",
+		"If you're holding the empty bottle when you see a creature casting a spell within 60 feet of you, you can open the bottle as a reaction in an attempt to interrupt the spell. If the creature is casting a spell of 3rd level or lower, the spell has no effect, and it is stored in the bottle. If it is casting a spell of 4th level or higher, make an Intelligence check. The DC equals 10 + the spell's level. On a success, the spell has no effect, and it is stored in the bottle.",
+		])
+	}]
+};
+
+MagicItemsList["staff of dunamancy"] = {
+	name : "Staff of Dunamancy",
+	source : ["W", 270],
+	type : "staff",
+	rarity : "very rare",
+	attunement : true,
+	prerequisite : "Requires attunement by a wizard",
+	prereqeval : function (v) { return classes.known.wizard ? true : false; },
+	description : "This staff has 10 charges. You can use an action to expend charges to cast one of the following spells from it, with your save DC and spell attack bonus: fortune's favor (2 ch), pulse wave (3 ch), or gravity sinkhole (4 ch). Once per dawn, you can turn failed save vs spell targeting only you into a success.",
+	descriptionFull : "This staff of polished gray wood bears numerous runes carved along its length. The staff has 10 charges and regains 1d6 + 4 expended charges daily at dawn. If you expend the last charge, roll a d20. On a 1, the staff turns into dust and is destroyed.\n While holding the staff, you can use an action to expend 2 or more of its charges to cast one of the following spells from it, using your spell save DC and spell attack bonus: fortune's favor (2 charges), pulse wave (3 charges), or gravity sinkhole (4 charges).\n  New Possibility. If you are holding the staff and fail a saving throw against a spell that targets only you, you can turn your failed save into a successful one. This property can't be used again until the next dawn.",
+	extraLimitedFeatures : [{
+		name : "Staff of Dunamancy",
+		usages : 10,
+		recovery : "Dawn"
+	}],
+	spellcastingAbility : "class",
+	spellFirstColTitle : "Ch",
+	spellcastingBonus : [{
+		name : "2 charges",
+		spells : ["fortune's favor"],
+		selection : ["fortune's favor"],
+		firstCol : 2,
+		times : 1
+	}, {
+		name : "3 charges",
+		spells : ["pulse wave"],
+		selection : ["pulse wave"],
+		firstCol : 3,
+		times : 1
+	}, {
+		name : "4 charges",
+		spells : ["gravity sinkhole"],
+		selection : ["gravity sinkhole"],
+		firstCol : 4,
+		times : 1
+	}],
+	toNotesPage : [{
+		name : "Features",
+		popupName : "Features of Staff of Dunamancy",
+		note: "\n  \u2022 Staff of Dunamancy (EGtW 270)" + desc([
+		"This staff of polished gray wood bears numerous runes carved along its length. The staff has 10 charges and regains 1d6 + 4 expended charges daily at dawn. If you expend the last charge, roll a d20. On a 1, the staff turns into dust and is destroyed.",
+		"While holding the staff, you can use an action to expend 2 or more of its charges to cast one of the following spells from it, using your spell save DC and spell attack bonus: fortune's favor (2 charges), pulse wave (3 charges), or gravity sinkhole (4 charges).",
+		"New Possibility. If you are holding the staff and fail a saving throw against a spell that targets only you, you can turn your failed save into a successful one. This property can't be used again until the next dawn.",
+		])
+	}]
+};
+
+MagicItemsList["staff of the ivory claw"] = {
+	name : "Staff of the Ivory Claw",
+	source : ["W", 270],
+	type : "staff",
+	rarity : "rare",
+	attunement : true,
+	description : "This gray-and-cerulean staff is topped with a small dragon claw carved from ivory. While holding the staff, you gain a +1 bonus to spell attack rolls. Whenever you score a critical hit with a spell attack, the target takes an extra 3d6 radiant damage.",
+	descriptionFull : "This gray-and-cerulean staff is topped with a small dragon claw carved from ivory. While holding the staff, you gain a +1 bonus to spell attack rolls. Whenever you score a critical hit with a spell attack, the target takes an extra 3d6 radiant damage.",
+	prerequisite : "Requires attunement by a spellcaster",
+	prereqeval : function(v) { return v.isSpellcaster; },
+	calcChanges : {
+		spellCalc : [
+			function (type, spellcasters, ability) {
+				if (type == "attack") return 1;			
+			},
+			"While holding the Staff of the Ivory Claw, I have a +1 bonus to spell attack rolls."
+		],
+		atkAdd : [
+			function (fields, v) {
+				if (v.isSpell && !v.theWea.dc) {
+					fields.Description += (fields.Description ? '; ' : '') + 'On crit, +3d6 radiant damage (Staff of the Ivory Claw)';
+				}
+			},
+			"Whenever I score a critical hit with a spell attack, the target takes an extra 3d6 radiant damage."
+		]
+	},
+};
+
+MagicItemsList["vox seeker"] = {
+	name : "Vox Seeker",
+	source : ["W", 270],
+	type : "wondrous item",
+	rarity : "common",
+	description : "This clockwork device resembles a metal crab the size of a dinner plate. Every action used to wind up this clockwork device allows it to operate for 1 minute, to a maximum of 10 minutes, and turn into a Vox Seeker. This automaton is under the DM's control. A vox seeker reduced to 0 hit points is destroyed.",
+	descriptionFull : "This clockwork device resembles a metal crab the size of a dinner plate. Every action used to wind up the device allows it to operate for 1 minute, to a maximum of 10 minutes. While operational, the item uses the accompanying Vox Seeker stat block. This automaton is under the DM's control. A vox seeker reduced to 0 hit points is destroyed.",
+	toNotesPage : [{
+		name : "Features",
+		popupName : "Features of a Vox Seeker",
+		note: "\n  \u2022 Magic Item (EGtW 270)" + desc([
+		"This clockwork device resembles a metal crab the size of a dinner plate. Every action used to wind up the device allows it to operate for 1 minute, to a maximum of 10 minutes. While operational, the item uses the accompanying Vox Seeker stat block. This automaton is under the DM's control. A vox seeker reduced to 0 hit points is destroyed.\n",
+		"Vox Seeker",
+		"Tiny constuct, unaligned",
+		"AC: 14 (natural armor)",
+		"HP: 7 (2d4 + 2)",
+		"Speed: 20 ft, climb 20 ft\n\nABILITY\tSCORE\tMODIFIER",
+		"Str\t2\t-4",
+		"Dex\t10\t+0",
+		"Con\t12\t+1",
+		"Int\t1\t-5",
+		"Wis\t10\t+0",
+		"Cha\t1\t-5\n",
+		"Damage immunities: poison, psychic",
+		"Condition immunities: blinded, charmed, deafened, exhaustion, frightened, paralyzed, petrified, poisoned",
+		"Senses: blindsight 60ft. (blind beyond this radius), passive Perception 10",
+		"Languages: -",
+		"Challenge: 1/8 (25 XP)\n",
+		"Voice Lock. The vox seeker must move toward and attack the source of the nearest voice within 60 feet of it, to the exclusion of all other targets, for as long as it remains operational.",
+		"Spider Climb. The vox seeker can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.\n",
+		"Actions:",
+		"Pincer. Melee Weapon Attack: +2 to hit, reach 5ft., one target.",
+		"Hit: 2 (1d4) piercing damage plus 3 lightning damage.",
+		])
+	}]
+};
+
+MagicItemsList["weapon of certain death"] = {
+	name : "Weapon of Certain Death",
+	nameTest : "of Certain Death",
+	source : ["W", 270],
+	type : "weapon (any)",
+	rarity : "rare",
+	description : "When you damage a creature with an attack using this magic weapon, the target can't regain hit points until the start of your next turn.",
+	descriptionFull : "When you damage a creature with an attack using this magic weapon, the target can't regain hit points until the start of your next turn.",
+	chooseGear : {
+		type : "weapon",
+		prefixOrSuffix : "prefix",
+		descriptionChange : ["replace", "weapon"]
+	},
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (!v.theWea.isMagicWeapon && (/certain death/i).test(v.WeaponText)) {
+					v.theWea.isMagicWeapon = true;
+					fields.Description = fields.Description.replace(/(, |; )?Counts as magical/i, '');
+					fields.Description += (fields.Description ? '; ' : '') + 'On hit, target cannot heal until start of my next turn';
+				}
+			},
+			'If I include the words "Certain Death" in a the name of a weapon, it will be treated as the magic weapon Weapon of Certain Death. On a hit, the target cannot regain hit points until the start of my next turn.'
+		]
+	}
+};
 
 //Vestiges of Divergence
 MagicItemsList["danoth's visor"] = {
