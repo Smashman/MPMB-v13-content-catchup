@@ -777,7 +777,7 @@ RaceList["sea elf"] = {
 };
 // Pallid Elf
 RaceList["pallid elf"] = {
-	regExpSearch : /^(?!.*half)((?=.*(pallid))|((?=.*\b(elfs?|elves|elvish|elven)\b))).*$/i,
+	regExpSearch : /^(?!.*half)((?=.*\b(elfs?|elves|elvish|elven)\b)(?=.*\b(pallid|pale)\b)).*$/i,
 	name : "Pallid Elf",
 	sortname : "Elf, Pallid",
 	source : ["W", 200],
