@@ -1222,7 +1222,7 @@ MagicItemsList["arcane cannon"] = {
 		"\u2022 Fire Jet. The cannon discharges fire in a line 300 feet long and 5 feet wide. Each creature in the area must make a DC 15 Dexterity saving throw, taking 33 (6d10) fire damage on a failed save, or half as much damage on a successful one. The fire ignites any flammable objects in the area that aren't being worn or carried.",
 		"\u2022 Frost Shot. The cannon shoots a ball of frost to a point you can see within 1,200 feet of the cannon. The ball then expands to form a 30-foot-radius sphere centered on that point. Each creature in that area must make a DC 15 Constitution saving throw. On a failed save, a creature takes 22 (4d10) cold damage, and its speed is reduced by 10 feet for 1 minute. On a successful save, the creature takes half as much damage, and its speed isn't reduced. A creature whose speed is reduced by this effect can repeat the save at the end of each of its turns, ending the effect on itself on a success.",
 		"\u2022 Lightning Shot. The cannon shoots a ball of lightning to a point you can see within 1,200 feet of the cannon. The lightning then expands to form a 20-foot-radius sphere centered on that point. Each creature in that area must make a DC 15 Dexterity saving throw, taking 33 (6d10) lightning damage on a failed save, or half as much damage on a successful one. Creatures wearing metal armor have disadvantage on the save.",
-		"\u2022 Poison Spray. he cannon expels poison gas in a 60-foot cone. Each creature in that area must make a DC 15 Constitution saving throw. On a failed save, the creature takes 22 (4d10) poison damage and is poisoned for 1 minute. On a successful save, the creature takes half as much damage and isn't poisoned. A creature poisoned in this way can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+		"\u2022 Poison Spray. The cannon expels poison gas in a 60-foot cone. Each creature in that area must make a DC 15 Constitution saving throw. On a failed save, the creature takes 22 (4d10) poison damage and is poisoned for 1 minute. On a successful save, the creature takes half as much damage and isn't poisoned. A creature poisoned in this way can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
 		]
 	}]
 };
@@ -1256,7 +1256,7 @@ MagicItemsList["bloodaxe"] = {
 		source : ["W", 266],
 		range : "Melee",
 		damage : [1, 12, "slashing"],
-		description : "Heavy, two-handed; +1d6 necrotic to constructs and undead",
+		description : "Heavy, two-handed; +1d6 necrotic to all creatures except constructs and undead",
 		modifiers : [2, 2]
 	},
 };
@@ -1336,7 +1336,7 @@ MagicItemsList["corpse slayer"] = {
 				if (!v.theWea.isMagicWeapon && (/^(?=.*corpse)(?=.*slayer).*$/i).test(v.WeaponText)) {
 					v.theWea.isMagicWeapon = true;
 					fields.Description = fields.Description.replace(/(, |; )?Counts as magical/i, '');
-					fields.Description += (fields.Description ? '; ' : '') + '+1 to hit/damage; +1d8 damage vs undead; target disadv turn undead';
+					fields.Description += (fields.Description ? '; ' : '') + '+1d8 damage vs undead; target has disadv against turn undead';
 				}
 			},
 			'If I include the words "Corpse Slayer" in a the name of a weapon, it will be treated as the magic weapon Corpse Slayer Weapon, which has a +1 bonus, +1d8 damage vs undead, and target disadv on turn undead effects on hit.'
@@ -1368,7 +1368,7 @@ MagicItemsList["duskcrusher"] = {
 	type : "weapon (warhammer)",
 	rarity : "very rare",
 	attunement : true,
-	description : "Bonus action transform to a warhammer, action to dismiss it. While transformed, radiant head sheds bright sunlight in 15 ft radius, dim sunlight additional 15 ft. While active: +2 attack/damage, radiant damage, +1d8 to undead, 1/dawn action to cast Sunbeam. See notes page.",
+	description : "Bonus action transform to a warhammer, action to dismiss it. While transformed, radiant head sheds sunlight bright 15 ft, dim additional 15 ft. Also while transformed: +2 attack/damage, does radiant instead of bludgeoning, +1d8 to undead, 1/dawn action to cast Sunbeam (DC 15). See notes page.",
 	descriptionFull : "This item takes the form of a leather-wrapped metal rod emblazoned with the symbol of Pelor, the Dawn Father. While grasping the rod, you can use a bonus action to cause a warhammer head of crackling radiance to spring into existence. The warhammer's radiant head emits bright light in a 15-foot radius and dim light for an additional 15 feet. The light is sunlight. You can use an action to make the radiant head disappear.\n While the radiant head is active, you gain a +2 bonus to attack and damage rolls made with this magic weapon, and attacks with the weapon deal radiant damage instead of bludgeoning damage. An undead creature hit by the weapon takes an extra 1d8 radiant damage.\n While you are holding Duskcrusher and its radiant head is active, you can use an action to cast the sunbeam spell (save DC 15) from the weapon, and this action can't be used again until the next dawn.",
 	action : [["bonus action", " (transform)"], ["action", " (dismiss)"], ["action", " (Sunbeam)"]],
 	extraLimitedFeatures : [{
@@ -1384,7 +1384,7 @@ MagicItemsList["duskcrusher"] = {
 		source : ["W", 266],
 		range : "Melee",
 		damage : [1, 8, "radiant"],
-		description : "Versitile (1d10); +2 attack & damage (+1d8 damage vs undead)",
+		description : "Versitile (1d10); +1d8 damage vs undead",
 		modifiers : [2, 2]
 	},
 	fixedDC : 15,
@@ -1417,7 +1417,7 @@ MagicItemsList["dust of deliciousness"] = {
 	recovery : "Never",
 };
 
-MagicItemsList["goggles of object reading"] = {
+MagicItemsList["goggles of object reading"] = { //Identify takes a minute to cast. Removed the action.
 	name : "Goggles of Object Reading",
 	source : ["W", 267],
 	type : "wondrous item",
@@ -1425,7 +1425,6 @@ MagicItemsList["goggles of object reading"] = {
 	attunement : true,
 	description : "While wearing these goggles, you have advantage on Intelligence (Arcana) checks made to reveal information about a creature or object you can see. In addition, you can cast the identify spell using the googles. Once you do so, you can't do so again until the next dawn.",
 	descriptionFull : "These leather-framed goggles feature purple crystal lenses. While wearing the goggles, you have advantage on Intelligence (Arcana) checks made to reveal information about a creature or object you can see. In addition, you can cast the identify spell using the googles. Once you do so, you can't do so again until the next dawn.",
-	action : [["action", " (Identify)"]],
 	extraLimitedFeatures : [{
 		name : "Goggles of Object Reading (Identify)",
 		usages : 1,
@@ -1452,10 +1451,10 @@ MagicItemsList["hunter's coat"] = {
 		usages : 3,
 		recovery : "dawn"
 	}],	
-	armorAdd : "Hunter's Coat",
+	armorAdd : "Hunter's Coat (Leather)",
 	armorOptions : {
 		regExpSearch : /^(?=.*hunter's)(?=.*coat)(?=.*leather).*$/i,
-		name : "Hunter's Coat",
+		name : "Hunter's Coat (Leather)",
 		source : ["W", 267],
 		type : "light",
 		ac : 12,
@@ -1467,14 +1466,14 @@ MagicItemsList["last stand armor"] = {
 	name : "Last Stand Armor",
 	nameTest : "Last Stand",
 	source : ["W", 267],
-	type : "armor (leather)",
+	type : "armor (any)",
 	rarity : "very rare",
 	description : "You have a +1 bonus to AC while wearing this armor. If you die while wearing the armor, it is destroyed, and each celestial, fey, and fiend with 30 feet of you must succeed on a DC 15 Charisma saving throw or be banished to its home plane of existence, unless it is already there.",
 	descriptionFull : "You have a +1 bonus to AC while wearing this armor, which shimmers softly. If you die while wearing the armor, it is destroyed, and each celestial, fey, and fiend with 30 feet of you must succeed on a DC 15 Charisma saving throw or be banished to its home plane of existence, unless it is already there.",
 	chooseGear : {
 		type : "armor",
-		prefixOrSuffix : "suffix",
-		descriptionChange : ["replace", "armor"],
+		prefixOrSuffix : "brackets",
+		descriptionChange : ["prefix", "armor"],
 		itemName1stPage : ["suffix", "+1 Last Stand"]
 	},
 	extraLimitedFeatures : [{
@@ -1504,15 +1503,15 @@ MagicItemsList["luxon beacon"] = {
 		popupName : "Features of the Luxon Beacon",
 		note: "\n  \u2022 Luxon Beacon (EGtW 268)" + desc([
 		"This dodecahedron of faintly glowing crystal is heavier than it appears. A set of handles are affixed to its sides, and it pulsates and thrums when touched.",
-		"Fragment of Possibility. A creature that touches the beacon and concentrates for 1 minute receives a Fragment of Possibility, which looks like a Tiny, grayish bead of energy that follows the creature around, staying within 1 foot of it at all times. The fragment lasts for 8 hours or until used. Once the beacon grants a Fragment of Possibility, it can't grant another until the next dawn. A creature with a Fragment of Possibility from a Luxon Beacon can't gain another Fragment of Possibility from any source.",
+		"\u2022 Fragment of Possibility. A creature that touches the beacon and concentrates for 1 minute receives a Fragment of Possibility, which looks like a Tiny, grayish bead of energy that follows the creature around, staying within 1 foot of it at all times. The fragment lasts for 8 hours or until used. Once the beacon grants a Fragment of Possibility, it can't grant another until the next dawn. A creature with a Fragment of Possibility from a Luxon Beacon can't gain another Fragment of Possibility from any source.",
 		"When a creature with a Fragment of Possibility makes an attack roll, an ability check, or a saving throw, it can expend its fragment to roll an additional d20 and choose which of the d20s to use. Alternatively, when an attack roll is made against the creature, it can expend its fragment to roll a d20 and choose which of the d20s to use, the one it rolled or the one the attacker rolled.",
 		"If the original d20 roll has advantage or disadvantage, the creature rolls its d20 after advantage or disadvantage has been applied to the original roll.",
-		"Soul Snare. If a follower of the Luxon who has undergone a ritual of consecution dies within 100 miles of a Luxon Beacon, their soul is ensnared by it. This soul will be reincarnated within the body of a random humanoid baby developing within 100 miles of the beacon.",
+		"\u2022 Soul Snare. If a follower of the Luxon who has undergone a ritual of consecution dies within 100 miles of a Luxon Beacon, their soul is ensnared by it. This soul will be reincarnated within the body of a random humanoid baby developing within 100 miles of the beacon.",
 		])
 	}]
 };
 
-MagicItemsList["needle of mending"] = {
+MagicItemsList["needle of mending"] = { // Mending has a 1 minute cast time, removed the action
 	name : "Needle of Mending",
 	source : ["W", 268],
 	type : "weapon (dagger)",
@@ -1520,7 +1519,7 @@ MagicItemsList["needle of mending"] = {
 	attunement : true,
 	description : "This weapon is a magic dagger disguised as a sewing needle. You can use a bonus action to transform it into a dagger or back into a needle.You gain a +1 bonus to attack and damage rolls made with the dagger. While holding it, you can use an action to cast the mending cantrip from it.",
 	descriptionFull : "This weapon is a magic dagger disguised as a sewing needle. When you hold it and use a bonus action to speak its command word, it transforms into a dagger or back into a needle.\n You gain a +1 bonus to attack and damage rolls made with the dagger. While holding it, you can use an action to cast the mending cantrip from it.",
-	action : [["bonus action", " (transform)"], ["action", " (cast)"]],
+	action : ["bonus action", " (transform)"],
 	weaponsAdd : ["Needle of Mending"],
 	weaponOptions : {
 		baseWeapon : "dagger",
@@ -1529,7 +1528,7 @@ MagicItemsList["needle of mending"] = {
 		source : ["W", 268],
 		range : "20/60 ft",
 		damage : [1, 4, "piercing"],
-		description : "Finesse, light, thrown; +1 attack and damage",
+		description : "Finesse, light, thrown;",
 		modifiers : [1, 1]
 	},
 	spellcastingBonus : {
@@ -1552,11 +1551,11 @@ MagicItemsList["nightfall pearl"] = {
 	extraLimitedFeatures : [{
 		name : "Nightfall Pearl",
 		usages : 1,
-		recovery : "24 hours"
+		recovery : "24hr"
 	}],	
 };
 
-MagicItemsList["orb of the veil"] = {
+MagicItemsList["orb of the veil"] = { //added for items like Flame Tongue that include fire damage in the description
 	name : "Orb of the Veil",
 	source : ["W", 268],
 	type : "wondrous item",
@@ -1568,7 +1567,8 @@ MagicItemsList["orb of the veil"] = {
 	calcChanges : {
 		atkAdd : [
 			function (fields, v) {
-				if (v.theWea.damage[2] == "fire") {
+				var testRegex = /^(?=.*fire damage).*$/i;
+				if (v.theWea.damage[2] == "fire" || !(testRegex).test(fields.description)) {
 					fields.Description += (fields.Description ? '; ' : '') + 'fire damage halved (Orb of the Veil)';
 				}
 			},
@@ -1623,6 +1623,8 @@ MagicItemsList["reincarnation dust"] = {
 	source : ["W", 268],
 	type : "wondrous item",
 	rarity : "very rare",
+	usages : 1,
+	recovery : "Never",
 	description : "When this small pouch of purple dust is sprinkled on a dead humanoid or a piece of a dead humanoid, the dust is absorbed by the remains. If willing, the dead creature returns to life with a new body as if the reincarnate spell had been cast on the remains.",
 	descriptionFull : "When this small pouch of purple dust is sprinkled on a dead humanoid or a piece of a dead humanoid, the dust is absorbed by the remains. If willing, the dead creature returns to life with a new body as if the reincarnate spell had been cast on the remains.",
 	spellcastingAbility : "class",
@@ -1654,6 +1656,13 @@ MagicItemsList["ring of obscuring"] = {
 		selection : ["fog cloud"],
 		firstCol : '1',
 	},
+	spellChanges : {
+		"fog cloud" : {
+			range : "Self",
+			duration : "1 min",
+			changes : "When I cast fog cloud with the Ring of Obscuring, the spell is centered on me and lasts for 1 minute (no concentration required).",
+		}
+	}
 };
 
 MagicItemsList["ring of temporal salvation"] = {
@@ -1671,7 +1680,7 @@ MagicItemsList["ring of temporal salvation"] = {
 	}],
 };
 
-MagicItemsList["Rod of Retribution"] = {
+MagicItemsList["rod of retribution"] = {
 	name : "Rod of Retribution",
 	source : ["W", 269],
 	type : "rod",
@@ -1718,8 +1727,12 @@ MagicItemsList["staff of dunamancy"] = {
 	description : "This staff has 10 charges. You can use an action to expend charges to cast one of the following spells from it, with your save DC and spell attack bonus: fortune's favor (2 ch), pulse wave (3 ch), or gravity sinkhole (4 ch). Once per dawn, you can turn failed save vs spell targeting only you into a success.",
 	descriptionFull : "This staff of polished gray wood bears numerous runes carved along its length. The staff has 10 charges and regains 1d6 + 4 expended charges daily at dawn. If you expend the last charge, roll a d20. On a 1, the staff turns into dust and is destroyed.\n While holding the staff, you can use an action to expend 2 or more of its charges to cast one of the following spells from it, using your spell save DC and spell attack bonus: fortune's favor (2 charges), pulse wave (3 charges), or gravity sinkhole (4 charges).\n  New Possibility. If you are holding the staff and fail a saving throw against a spell that targets only you, you can turn your failed save into a successful one. This property can't be used again until the next dawn.",
 	extraLimitedFeatures : [{
-		name : "Staff of Dunamancy",
+		name : "Staff of Dunamancy (Charges)",
 		usages : 10,
+		recovery : "Dawn"
+	}, {
+		name : "Staff of Dunamancy (New Possibility)",
+		usages : 1,
 		recovery : "Dawn"
 	}],
 	spellcastingAbility : "class",
@@ -2428,7 +2441,7 @@ MagicItemsList["verminshroud"] = {
 	}
 };
 
-MagicItemsList["wreath of the Prism"] = {
+MagicItemsList["wreath of the prism"] = {
 	name : "Wreath of the Prism",
 	source : ["W", 274],
 	type : "wondrous item",
