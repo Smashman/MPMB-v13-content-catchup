@@ -2,23 +2,13 @@
 NOT the official MPMB release, just content gathered from reddit and discord. All work is third party and not endorsed by MPMB.
 Work was originally gathered and compiled by Nod_Hero#2046 on Discord
 -----
-Most recent update : 2021/01/21 - Various bits edited to play better with the sheet, some Optional Class Features added or updated
-Previous updates - Updateded Artificer infusions, Added Rogue Soulknife, Added Optional Class Features
+Most recent update : https://github.com/Metacomet10/MPMB-v13-content-catchup/projects/1
 -----
 Missing stuff:
-Ranger Beast Master Companions
-Bard College of Creation's Dancing Item statblock
-Magic Items
-Sidekicks
-Patrons
+https://github.com/Metacomet10/MPMB-v13-content-catchup/projects/1#column-12792419
 -----
 Has code but Incomplete or Needs Fixing stuff:
-Artificer Steel Defender - updated, needs review
-Artificer Homunculous Servant
-Artificer Eldritch Cannon
-Feats
-Sorcerer subclasses
-Optional Class Features
+https://github.com/Metacomet10/MPMB-v13-content-catchup/projects/1#column-12792400
 */
 
 var iFileName = "pub_20201117_TCoE.js";
