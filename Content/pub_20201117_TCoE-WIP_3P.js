@@ -5113,6 +5113,7 @@ AddFeatureChoice(ClassList.paladin.features["fighting style"], true, "Martial Ve
 	"Optional Class Features");
 
 // Ranger Optional Class Features
+/*
 //Deft Explorer
 var origNatExpl = ClassList.ranger.features["natural explorer"];
 var origNatExplNm = "\x1B[original] " + origNatExpl.name;
@@ -5212,7 +5213,7 @@ if (origNatExplCurSel) {
 	origNatExpl.extraname = origNatExpl[origNatExplCurSel].extraname ? origNatExpl[origNatExplCurSel].extraname : "";
 	origNatExpl.extrachoices = origNatExpl[origNatExplCurSel].extrachoices ? origNatExpl[origNatExplCurSel].extrachoices : "";
 	origNatExpl.extraTimes = origNatExpl[origNatExplCurSel].extraTimes ? origNatExpl[origNatExplCurSel].extraTimes : "";
-}
+}*/
 // Favored Foe
 var origFavoredEnemy = ClassList.ranger.features["favored enemy"];
 var origFavoredEnemyNm = "\x1B[original] " + origFavoredEnemy.name;
