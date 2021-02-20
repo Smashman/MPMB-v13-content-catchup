@@ -5901,7 +5901,7 @@ FeatsList["crusher"] = {
 	name: "Crusher",
 	source: ["TCoE"],
 	descriptionFull : "You are practiced in the art of crushing your enemies, granting you the following benefits:\n \u2022Increase your Strength or Constitution by 1, to a maximum of 20.\n \u2022Once per turn, when you hit a creature with an attack that deals bludgeoning damage, you can move it 5 feet to an unoccupied space, provided the target is no more than one size larger than you.\n \u2022When you score a critical hit that deals bludgeoning damage to a creature, attack rolls against that creature are made with advantage until the start of your next turn.",
-	description: "Once per turn when I deal bludgeoning damage to a target, I can move it 5 feet if it is less than 1 size larger than me. If I deal bludgeoning damage on a critical hit to a target attack rolls against it are with advantage until start of my next turn. [+1 Strength or Constitution]",
+	description: (typePF ? "Once per turn, when I hit a creature with an attack that deals bludgeoning damage, I can move it 5 ft to an unoccupied space, if it is no more than one size larger than me. On a critical hit that deals bludgeoning damage to a creature, attacks vs. it have adv. until the start of my next turn. [+1 Strength or Constitution]" : "Once per turn, when I hit a creature with bludg. attack, I can move it 5 ft to an unoccupied space, if it is no more than one size larger than me. On a critical bludg. hit on a creature, attacks vs. it have adv. until the start of my next turn. [+1 Str or Con]"),
 	improvements: "Crusher (feat): +1 Strength or Constitution;"
 };
 FeatsList["eldritch adept"] = { // <-- not complete
